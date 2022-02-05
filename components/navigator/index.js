@@ -37,9 +37,9 @@ export default function Navigator() {
                   <div className="flex space-x-4 absolute right-0">
                     <a href="/sounds" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Sounds</a>
 
-                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                    <a href="/sign-in" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
 
-                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Up</a>
+                    <a href="/sign-up" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Up</a>
                   </div>
                 </div>
               </div>
