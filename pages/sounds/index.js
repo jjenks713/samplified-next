@@ -1,8 +1,10 @@
+import Table from "../../components/table"
+
 export default function Sounds() {
 
     return (
         <>
-        <h1>Sounds</h1>
+        <Table></Table>
         </>
     )
 }
