@@ -159,7 +159,7 @@ export default function CustomPaginationActionsTable() {
       setSearch('')
     if (!search) {
         alert("Please enter something")
-    } else if (search === rows.name) {
+    } else if (search === rows.name || search === rows.BPM || search === rows.key || search === rows.user) {
         
     }
   }

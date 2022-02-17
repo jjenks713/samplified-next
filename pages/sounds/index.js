@@ -1,10 +1,15 @@
 import Table from "../../components/table"
+import Navigator from '../../components/navigator'
+import Footer from '../../components/footer'
+
 
 export default function Sounds() {
 
     return (
         <>
-        <Table></Table>
+        <Navigator />
+        <Table />
+        <Footer />
         </>
     )
 }
