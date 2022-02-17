@@ -21,9 +21,9 @@ export default function Home() {
       
       <Navigator />
 
-      <main>
-        <div className="bg-[url('/main.jpg')]"></div>
-      <img //eslint-disable-line
+    <main>
+
+    <img //eslint-disable-line
       style={{
         width: '100%'
       }}
@@ -33,8 +33,8 @@ export default function Home() {
 
       <div>
         <Container maxWidth="md">
-          <div className='py-24 flex flex-row justify-between'>
-            <div className=''>
+          <div className='py-24 flex flex-wrap md:flex-nowrap justify-between'>
+            <div className='py-5'>
               <a className='py-1 font-extrabold font text-3xl'>
               Find that sound
               in your head
@@ -49,8 +49,63 @@ export default function Home() {
               <Link href="/sounds"><Button variant='contained' className='bg-gray'>Click Here</Button></Link>
               </a>
             </div>
-            <div className='pl-8'>
+            <div className='lg:pl-8 md:pl-0 sm:pl-0'>
             <img src="https://www.image-line.com/wp-content/uploads/2020/11/fl-studio-UI.png" alt="DAW"></img>
+            </div>
+          
+          </div>
+        </Container>
+
+      </div>
+
+      <div className='py-10 bg-gray-800 grid justify-center text-white'>
+        <p>
+          something fun here
+        </p>
+      </div>
+
+      <div>
+        <Container maxWidth="md">
+        <div className='py-10 font-extrabold font text-3xl grid justify-center'>
+          <p className='text-center'>
+            What peeps say about stuff
+          </p>
+        </div>
+
+          <div className='pb-10 flex flex-wrap md:flex-nowrap justify-center md:justify-between'>
+
+          <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3'>
+            <img 
+            className="rounded-full h-44 w-full"
+            src="https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg" alt="DAW"></img>
+            <div className='font-extrabold font text-1xl grid justify-center'>
+              <p>
+                Josh probably
+              </p>
+            </div>
+            <p className='text-center'>Something something something darkside</p>
+            </div>
+            <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3'>
+            <img 
+            className="rounded-full h-44 w-full"
+            src="https://img.favpng.com/19/6/14/stock-photography-royalty-free-person-png-favpng-DZGTnmn1uqimHihD8vgVJMRFG.jpg" alt="DAW"></img>
+            <div className='font-extrabold font text-1xl grid justify-center'>
+              <p>
+                Josh probably
+              </p>
+            </div>
+            <p className='text-center'>Something something something darkside</p>
+            </div>
+            <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3'>
+            <img 
+            className="rounded-full h-44 w-full"
+            src="https://d32ijn7u0aqfv4.cloudfront.net/wp/wp-content/uploads/20190130110644/man-cafe-newspaper_SOIN18127_586670_st_780x440.jpg" alt="DAW"></img>
+            <div className='font-extrabold font text-1xl grid justify-center'>
+              <p>
+                Josh probably
+              </p>
+            </div>
+            <p className='text-center'>Something something something darkside</p>
             </div>
           
           </div>
