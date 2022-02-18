@@ -19,6 +19,8 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Search from '../search';
+import data from '../../data'
+
 
 
 
@@ -91,46 +93,15 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired
 };
 
-function createData(name, BPM, key, user, download, listen) {
-  return { name, BPM, key, user, download, listen };
-}
-
-const rows = [
-  createData("Sound", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 1", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 2", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 3", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 4", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 5", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 6", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 7", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 8", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 9", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 10", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 11", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 12", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 13", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 14", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 15", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 16", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 17", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 18", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 19", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 20", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 21", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 22", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 23", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 24", 120, "F", "Jenkin79", "Link", "player"),
-  createData("Sound 25", 120, "F", "Jenkin79", "Link", "player"),
-];
 
 export default function CustomPaginationActionsTable() {
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - data.length) : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -159,7 +130,7 @@ export default function CustomPaginationActionsTable() {
       setSearch('')
     if (!search) {
         alert("Please enter something")
-    } else if (search === rows.name || search === rows.BPM || search === rows.key || search === rows.user) {
+    } else if (search === data.name || search === data.BPM || search === data.key || search === data.user) {
         
     }
   }
@@ -176,8 +147,7 @@ export default function CustomPaginationActionsTable() {
         variant="standard" />
         <button type="submit" value="Submit">Submit</button>
         </form>
-{/*         <Search></Search>
- */}        </div>
+      </div>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
         <TableHead>
@@ -192,27 +162,27 @@ export default function CustomPaginationActionsTable() {
         </TableHead>
         <TableBody>
           {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
+            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : data
+          ).map((data) => (
+            <TableRow key={data.name}>
+              <TableCell component="th" scope="data">
+                {data.name}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.BPM}
+                {data.BPM}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.key}
+                {data.key}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.user}
+                {data.user}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.download}
+                {data.download}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.listen}
+                {data.listen}
               </TableCell>
             </TableRow>
           ))}
@@ -228,7 +198,7 @@ export default function CustomPaginationActionsTable() {
             <TablePagination
               rowsPerPageOptions={[10, 25, 50, { label: "All", value: -1 }]}
               colSpan={6}
-              count={rows.length}
+              count={data.length}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{
