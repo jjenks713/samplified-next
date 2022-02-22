@@ -7,7 +7,7 @@ export default (req, res) => //eslint-disable-line
 
 NextAuth(req, res, {
     session: {
-        // use JWTs instead
+        // use JWTs instead adding again
       jwt: true,
     },
     jwt: {
