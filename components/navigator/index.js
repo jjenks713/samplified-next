@@ -1,7 +1,22 @@
-import Link from 'next/link';
+import * as React from 'react';
+import NextLink from 'next/link';
 import { useState } from 'react';
+import { useSession, signOut } from 'next-auth/client'
+import DropDown from '../dropdown'
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
 
 export default function Navigator() {
+  const [session] = useSession()
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const [show, setShow] = useState(false);
 
@@ -27,19 +42,23 @@ export default function Navigator() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
+                <a>
+                <DropDown/>
+                </a>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                  <Link href="/" ><a><img className="block lg:hidden h-8 w-auto hover:bg-opacity-30 hover:cursor-pointer" src="/s-logo.png" alt="Workflow" /></a></Link> 
-                  <Link href="/"><a><img className="hidden lg:block h-8 w-auto hover:bg-opacity-30 hover:cursor-pointer" src="/s-logo.png" alt="Workflow" /></a></Link>
+                  <NextLink href="/" ><a><img className="block lg:hidden h-8 w-auto hover:bg-opacity-30 hover:cursor-pointer" src="/s-logo.png" alt="Workflow" /></a></NextLink> 
+                  <NextLink href="/"><a><img className="hidden lg:block h-8 w-auto hover:bg-opacity-30 hover:cursor-pointer justify-left" src="/s-logo.png" alt="Workflow" /></a></NextLink>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4 absolute right-0">
-                    <Link href="/sounds"><a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Sounds</a></Link>
+                    <NextLink href="/sounds"><a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Sounds</a></NextLink>
+{/* 
+                    <NextLink href="/sign-in"><a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a></NextLink>
 
-                    <Link href="/sign-in"><a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a></Link>
-
-                    <Link  href="/sign-up"><a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Up</a></Link>
+                    <NextLink  href="/sign-up"><a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Up</a></NextLink> */}
+                    <DropDown />
                   </div>
                 </div>
               </div>
@@ -67,12 +86,31 @@ export default function Navigator() {
           <div
           id="mobile-menu"
           style={{ display: show ? "block" : "none" }}>
+                              
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link href="/sounds" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Sounds</Link>
+              {session ? 
+              <div className='text-white'>
+                <ul>
+                  <li>
 
-              <Link href="/sign-in" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Login</Link>
+                  </li><br></br>
+                  <li>
+                  <NextLink href="/sounds"><a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Sounds</a></NextLink>
+                  </li>
+                </ul>
 
-              <Link href="/sign-up" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Sign Up</Link>
+              </div> :
+                <div className='text-white'>
+                <ul>
+                  <li>
+                  <NextLink href="/sounds"><a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Sounds</a></NextLink>                  </li><br></br>
+                  <li>
+                  <NextLink href="/sign-up"><a className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Up/In</a></NextLink>
+                  </li>
+                </ul>
+
+              </div>
+             }
             </div>
           </div>
         </nav>

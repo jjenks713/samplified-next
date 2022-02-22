@@ -1,15 +1,38 @@
-import Table from "../../components/table"
-import Navigator from "../../components/navigator"
 import Container from '@mui/material/Container';
 import Link from 'next/link'
 import Button from '@mui/material/Button';
+import Table from "../../components/table"
+//import { session } from 'next-auth/client';
+import { getSession, useSession } from 'next-auth/client'
+//import { connectToDB } from '../../db/connect'
+import Navigator from '../../components/navigator';
 
+const User = () => {
+    const [session, loading] = useSession()
+    const sessionArray = [session]
+    const name = sessionArray[0]
+    console.log(name)
 
-export default function User() {
+    if (!loading && !session) {
+        return (
+          <div
+            isShown
+            title="Session expired"
+            confirmLabel="Ok"
+            hasCancel={false}
+            hasClose={false}
+            shouldCloseOnOverlayClick={false}
+            shouldCloseOnEscapePress={false}
+            onConfirm={() => router.push('/signin')}
+          >
+            Sign in to continue
+          </div>
+        )
+      }
 
     return (
         <>
-        <Navigator />
+        <Navigator/>
         <Container maxWidth="md" className="grid justify-center">
         <div className="max-w-sm w-full lg:max-w-full lg:flex py-10">
             <div 
@@ -21,7 +44,7 @@ export default function User() {
             </div>
             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                 <div className="mb-8">
-                <div className="text-gray-900 font-bold text-xl mb-2">Your name here</div>
+                <div className="text-gray-900 font-bold text-xl mb-2">{/* {name.user.name} */}</div>
                 <p className="text-gray-700 text-base">quick description</p>
                 </div>
                 <div className="flex items-center">
@@ -37,3 +60,22 @@ export default function User() {
         </>
     )
 }
+
+export async function getServerSideProps(ctx) {
+    const session = await getSession(ctx)
+    console.log(session)
+
+
+    if (!session || !session.user) {
+        return { props: {} }
+      }
+
+    const props = { }
+
+    return {
+        props,
+      }
+
+}
+
+export default User

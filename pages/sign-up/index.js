@@ -1,6 +1,23 @@
 import Link from 'next/link'
+import {signIn, useSession} from 'next-auth/client'
+import SocialButton from '../../components/socialButton'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+
 
 export default function SignIn() {
+
+    const [session, loading] = useSession()
+    const router = useRouter()
+  
+   // if a user is logged it, never show them this page,
+   // go straight to app
+    useEffect(() => {
+      console.log(session)
+      if (session) {
+        router.push('/user')
+      }
+    }, [session, router])
 
     return (
         <>
@@ -49,6 +66,7 @@ export default function SignIn() {
                     </button>
                 </div>
                 </form>
+                <SocialButton type="github" onClick={() => signIn('github')} />
                 <div className="text-sm text-center">
                     Already have an account? <Link href="/sign-in"><a className="font-medium text-indigo-600 hover:text-indigo-500">Sign In</a></Link>
                 </div>
