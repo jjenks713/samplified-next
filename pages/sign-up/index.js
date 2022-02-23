@@ -70,8 +70,10 @@ export default function SignIn() {
                     </button>
                 </div>
                 </form>
-                <SocialButton type="github" onClick={() => signIn('github')} />
-                <Button type="facebook" onClick={() => signIn('facebook')}>Continue with Facbook</Button>
+{/*                 <SocialButton type="github" onClick={() => signIn('github')} />
+                <Button type="facebook" onClick={() => signIn('facebook')}>Continue with Facbook</Button> */}
+                <Button type="google" onClick={() => signIn('google')}>Continue with Google</Button>
+
 
                 <div className="text-sm text-center">
                     Already have an account? <Link href="/sign-in"><a className="font-medium text-indigo-600 hover:text-indigo-500">Sign In</a></Link>
