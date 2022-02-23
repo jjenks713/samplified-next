@@ -42,9 +42,7 @@ export default function Navigator() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
-                <a>
-                <DropDown/>
-                </a>
+ 
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">

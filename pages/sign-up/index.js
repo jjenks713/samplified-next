@@ -3,6 +3,9 @@ import {signIn, useSession} from 'next-auth/client'
 import SocialButton from '../../components/socialButton'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+import Button from '@mui/material/Button';
+
 
 
 export default function SignIn() {
@@ -21,6 +24,7 @@ export default function SignIn() {
 
     return (
         <>
+
         <div className="position absolute top-3 right-8 font-bold">
         <Link href="/">X</Link>
         </div>   
@@ -67,6 +71,8 @@ export default function SignIn() {
                 </div>
                 </form>
                 <SocialButton type="github" onClick={() => signIn('github')} />
+                <Button type="facebook" onClick={() => signIn('facebook')}>Continue with Facbook</Button>
+
                 <div className="text-sm text-center">
                     Already have an account? <Link href="/sign-in"><a className="font-medium text-indigo-600 hover:text-indigo-500">Sign In</a></Link>
                 </div>

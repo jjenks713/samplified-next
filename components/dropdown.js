@@ -19,6 +19,14 @@ const handleClose = () => {
   setAnchorEl(null);
 };
 
+/* function signOutFunction() {
+    signOut()
+    homePage()
+}
+function homePage() {
+    window.location.href = '/'
+} */
+
 
     return (
         <button appearance="primary" fontSize="16px">
@@ -43,7 +51,7 @@ const handleClose = () => {
                 'aria-labelledby': 'basic-button',
             }}
             >
-            <NextLink href='/user'>Profile</NextLink>
+            <MenuItem><NextLink href='/user'>Profile</NextLink></MenuItem>
             <MenuItem onClick={signOut}>Logout</MenuItem>
             </Menu>
           </> :

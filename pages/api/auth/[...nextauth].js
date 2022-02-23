@@ -3,6 +3,7 @@ import Providers from 'next-auth/providers'
 import connectToDB  from '../../../db/connect'
 
 
+
 export default (req, res) => //eslint-disable-line
 
 NextAuth(req, res, {
@@ -18,6 +19,10 @@ NextAuth(req, res, {
         clientId: process.env.GITHUB_ID,
         clientSecret: process.env.GITHUB_SECRET,
       }),
+      Providers.Facebook({
+        clientId: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET
+      })
       // ...add more providers here
     ],
 

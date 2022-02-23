@@ -6,12 +6,17 @@ import Table from "../../components/table"
 import { getSession, useSession } from 'next-auth/client'
 //import { connectToDB } from '../../db/connect'
 import Navigator from '../../components/navigator';
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
+
 
 const User = () => {
     const [session, loading] = useSession()
     const sessionArray = [session]
     const name = sessionArray[0]
     console.log(name)
+    const router = useRouter()
+
 
     if (!loading && !session) {
         return (
@@ -23,9 +28,10 @@ const User = () => {
             hasClose={false}
             shouldCloseOnOverlayClick={false}
             shouldCloseOnEscapePress={false}
-            onConfirm={() => router.push('/signin')}
-          >
-            Sign in to continue
+            onConfirm={() => router.push('/')}
+          > 
+            <Navigator />
+            <NextLink href="/sign-up"><Button>Sign in to continue</Button></NextLink>
           </div>
         )
       }

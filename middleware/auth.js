@@ -1,6 +1,6 @@
 import jwt from 'next-auth/jwt'
 
-export default async (req, res, next) => {
+export default async (req, res, next) => { //eslint-disable-line
   const token = await jwt.getToken({ req, secret: process.env.JWT_SECRET })
 
   if (token) {
