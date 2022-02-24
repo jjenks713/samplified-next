@@ -46,8 +46,9 @@ export default function Navigator() {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                  <NextLink href="/" ><a><img className="block lg:hidden h-8 w-auto hover:bg-opacity-30 hover:cursor-pointer" src="/s-logo.png" alt="Workflow" /></a></NextLink> 
-                  <NextLink href="/"><a><img className="hidden lg:block h-8 w-auto hover:bg-opacity-30 hover:cursor-pointer justify-left" src="/s-logo.png" alt="Workflow" /></a></NextLink>
+                  <NextLink href="/" ><a><img className="block lg:hidden h-8 w-auto hover:bg-opacity-30 hover:cursor-pointer" src="/s-logo.png" alt="Samplified" /></a></NextLink> 
+                   
+                  <NextLink href="/"><a><img className="hidden lg:block h-8 w-auto hover:bg-opacity-30 hover:cursor-pointer justify-left" src="/s-logo.png" alt="Samplified" /></a></NextLink>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4 absolute right-0">
@@ -59,7 +60,11 @@ export default function Navigator() {
                     <DropDown />
                   </div>
                 </div>
+                <div className="flex space-x-4 absolute right-0">
+                  <a className="block justify-end lg:hidden h-8 w-auto hover:bg-opacity-30 hover:cursor-pointer" alt="Samplified"><DropDown /></a>
+                </div>
               </div>
+
 {/*               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
                 <div className="ml-3 relative">
@@ -89,9 +94,6 @@ export default function Navigator() {
               {session ? 
               <div className='text-white'>
                 <ul>
-                  <li>
-
-                  </li><br></br>
                   <li>
                   <NextLink href="/sounds"><a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Sounds</a></NextLink>
                   </li>

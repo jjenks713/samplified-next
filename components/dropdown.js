@@ -41,7 +41,7 @@ function homePage() {
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
             >
-            <img className='rounded-full' src={session.user.image} width={30}></img>
+            <img className='rounded-full' src={session.user.image} width={34}></img>
             </a>
             <Menu
             id="basic-menu"
