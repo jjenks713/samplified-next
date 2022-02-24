@@ -10,6 +10,7 @@ NextAuth(req, res, {
     session: {
         // use JWTs instead adding again
       jwt: true,
+      maxAge: .1 * 24 * 60 * 60,
     },
     jwt: {
       secret: process.env.JWT_SECRET,
