@@ -9,10 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const IdCard = () => {
     const [session] = useSession()
-/*     const sessionArray = session.map((data) => {
-        console.log(data)
-    }) */
-    console.log(session)
+
         return (
         <div>
             {session ?

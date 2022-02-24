@@ -35,7 +35,7 @@ const User = () => {
 export async function getServerSideProps(ctx) {
     const session = await getSession(ctx)
     console.log(session)
-
+    
 
     if (!session || !session.user) {
         return { props: {} }
