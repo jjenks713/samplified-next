@@ -42,7 +42,7 @@ NextAuth(req, res, {
         async jwt(tokenPayload, user, account, profile, isNewUser) {
         const { db } = await connectToDB()
     
-        if (isNewUser) {
+/*         if (isNewUser) {
             const personalFolder = await folder.createFolder(db, { createdBy: `${user.id}`, name: 'Getting Started' })
             await doc.createDoc(db, {
             name: 'Start Here',
@@ -62,7 +62,7 @@ NextAuth(req, res, {
                 version: '2.12.4',
             },
             })
-        }
+        } */
     
         if (tokenPayload && user) {
             return { ...tokenPayload, id: `${user.id}` }

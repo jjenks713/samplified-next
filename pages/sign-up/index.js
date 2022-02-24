@@ -12,7 +12,13 @@ export default function SignIn() {
 
     const [session, loading] = useSession()
     const router = useRouter()
-  
+
+    const signed = () => {
+        signIn('google')
+        console.log(session)
+
+    }
+
    // if a user is logged it, never show them this page,
    // go straight to app
     useEffect(() => {
@@ -72,7 +78,7 @@ export default function SignIn() {
                 </form>
 {/*                 <SocialButton type="github" onClick={() => signIn('github')} />
                 <Button type="facebook" onClick={() => signIn('facebook')}>Continue with Facbook</Button> */}
-                <div className='grid justify-center'><Button type="google" onClick={() => signIn('google')}><img className='w-64' src="/google.png" alt="Sign in with Google"></img></Button></div>
+                <div className='grid justify-center'><Button type="google" onClick={signed}><img className='w-64' src="/google.png" alt="Sign in with Google"></img></Button></div>
 
 
                 <div className="text-sm text-center">
