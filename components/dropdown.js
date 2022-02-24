@@ -52,7 +52,7 @@ function homePage() {
                 'aria-labelledby': 'basic-button',
             }}
             >
-            <MenuItem><NextLink href='/user'>Profile</NextLink></MenuItem>
+            <MenuItem><NextLink href='/userpage'>Profile</NextLink></MenuItem>
             <MenuItem onClick={signOut}>Logout</MenuItem>
             </Menu>
           </> :
