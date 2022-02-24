@@ -14,7 +14,6 @@ const User = () => {
     const [session, loading] = useSession()
     const sessionArray = [session]
     const name = sessionArray[0]
-    console.log(session)
     const router = useRouter()
 
 
