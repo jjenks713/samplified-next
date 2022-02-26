@@ -20,11 +20,13 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Search from '../search';
 import data from '../../data'
+//import dbInfo from '../../pages/api/db';
 
 
 
 
 function TablePaginationActions(props) {
+  console.log(props)
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
 
@@ -94,8 +96,9 @@ TablePaginationActions.propTypes = {
 };
 
 
-export default function CustomPaginationActionsTable() {
+export default function CustomPaginationActionsTable({ accounts }) {
 
+  console.log(accounts)
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -218,4 +221,19 @@ export default function CustomPaginationActionsTable() {
     </Container>
 
   );
+}
+
+
+export async function getServerSideProps(ctx) {
+
+    const props = { }
+    const accounts = await dbInfo()
+    //const data = await accounts.json()
+    //props.dbI
+    console.log("serversideprops", {accounts})
+
+
+    return {
+        props: { accounts },
+    }
 }

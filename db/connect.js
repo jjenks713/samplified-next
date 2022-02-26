@@ -27,7 +27,7 @@ import { Db, MongoClient } from 'mongodb'
    }
  
    const db = global.mongo.client.db('known')
- 
+
    return { db, dbClient: global.mongo.client }
  }
 
