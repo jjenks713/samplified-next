@@ -20,6 +20,7 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Search from '../search';
 import data from '../../data'
+import { useSession } from "next-auth/client";
 //import dbInfo from '../../pages/api/db';
 
 
@@ -97,8 +98,13 @@ TablePaginationActions.propTypes = {
 
 export default function CustomPaginationActionsTable( props ) {
 
-  
-  const accounts = props.accounts.map(account => ({...account}))
+  const [session] = useSession()
+  let user
+  if (session) {
+      user = session.user.id
+      console.log(user)
+  }
+  const sounds = props.sounds.map(sound => ({...sound}))
   //console.log("this is the thing right here", accounts)
 
   const [page, setPage] = React.useState(0);
@@ -153,73 +159,92 @@ export default function CustomPaginationActionsTable( props ) {
         <button type="submit" value="Submit">Submit</button>
         </form>
       </div>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Name</StyledTableCell>
-            <StyledTableCell align="right">BPM</StyledTableCell>
-            <StyledTableCell align="right">Key</StyledTableCell>
-            <StyledTableCell align="right">User</StyledTableCell>
-            <StyledTableCell align="right">Download</StyledTableCell>
-            <StyledTableCell align="right">Listen/Download</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {(rowsPerPage > 0
-            ? accounts.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : accounts
-          ).map((account) => (
-            <TableRow key={account.name}>
-              <TableCell component="th" scope="data">
-                {account.name}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {account.email}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {account.image}
-              </TableCell>
-{/*               <TableCell style={{ width: 160 }} align="right">
-                {data.user}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {data.download}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {data.listen}
-              </TableCell> */}
-            </TableRow>
-          ))}
+      {session ? 
+          <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Name</StyledTableCell>
+                <StyledTableCell align="right">BPM</StyledTableCell>
+                <StyledTableCell align="right">Key</StyledTableCell>
+                <StyledTableCell align="right">Loop or Oneshot</StyledTableCell>
+                <StyledTableCell align="right">Instrument</StyledTableCell>
+                <StyledTableCell align="right">Genre</StyledTableCell>
+                <StyledTableCell align="right">User</StyledTableCell>
+                <StyledTableCell align="right">Download</StyledTableCell>
+                <StyledTableCell align="right">Listen/Download</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {(rowsPerPage > 0
+                ? sounds.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                : sounds
+              ).map((sound) => (
+                <TableRow key={sound.name}>
+                  <TableCell component="th" scope="data">
+                    {sound.name}
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="right">
+                    {sound.bpm}
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="right">
+                    {sound.key}
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="right">
+                    {sound.loop}
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="right">
+                    {sound.instrument}
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="right">
+                    {sound.genre}
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="right">
+                    {sound.createdBy}
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="right">
+                    {sound.file}
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="right">
+                    {sound.listen}
+                  </TableCell>
+                </TableRow>
+              ))}
+    
+              {emptyRows > 0 && (
+                <TableRow style={{ height: 53 * emptyRows }}>
+                  <TableCell colSpan={6} />
+                </TableRow>
+              )}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[10, 25, 50, { label: "All", value: -1 }]}
+                  colSpan={6}
+                  count={data.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: {
+                      "aria-label": "rows per page"
+                    },
+                    native: true
+                  }}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </TableContainer>
+    :
+    <div>
+      You haven't uploaded any sounds yet
+    </div>
+    }
 
-          {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
-            </TableRow>
-          )}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[10, 25, 50, { label: "All", value: -1 }]}
-              colSpan={6}
-              count={data.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: {
-                  "aria-label": "rows per page"
-                },
-                native: true
-              }}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions}
-            />
-          </TableRow>
-        </TableFooter>
-      </Table>
-    </TableContainer>
     </Container>
 
   );

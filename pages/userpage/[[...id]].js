@@ -12,11 +12,11 @@ import dbInfo from '../api/db';
 //import DbData from '../../components/data'
 
 
-const User = ({ accounts }) => {
+const User = ({ sounds }) => {
     const [session, loading] = useSession()
     const sessionArray = [session]
     const router = useRouter()
-    console.log(accounts)
+    console.log(sounds, session)
     //const [data] = accounts.map(account => ({...account}))
     //data.json()
   
@@ -35,7 +35,7 @@ const User = ({ accounts }) => {
             ))
             }
           </div> */}
-          <Table accounts={accounts} />
+          <Table sounds={sounds} />
           </>
       )
     }
@@ -54,14 +54,14 @@ export async function getServerSideProps(ctx) {
       }
 
     const props = { }
-    const accounts = await dbInfo()
+    const sounds = await dbInfo()
     //const data = await accounts.json()
     //props.dbI
-    console.log("serversideprops", {accounts})
+    console.log("serversideprops", {sounds})
 
 
     return {
-        props: { accounts },
+        props: { sounds },
     }
 }
 

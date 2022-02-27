@@ -7,8 +7,8 @@ export default async function dbInfo() {
 
     const { db } = await connectToDB()
 
-    const accounts = await db
-    .collection("users")
+    const sounds = await db
+    .collection("sounds")
     .find({}, {projection:{_id:0, createdAt:0, updatedAt: 0}})
     .sort({ metacritic: -1 })
     .limit(20)
@@ -17,7 +17,7 @@ export default async function dbInfo() {
     
     //const dataArray = accounts.map((account) => {})
 
-    console.log("db index", accounts)
+    console.log("db index", sounds)
 
-    return accounts
+    return sounds
 }
