@@ -97,10 +97,12 @@ TablePaginationActions.propTypes = {
 export default function AllTable( props ) {
   //console.log(props.allSounds)
 
+  if (props) {
+    const sounds = props.allSounds.map(sound => ({...sound}))
 
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
+    const [rowsPerPage, setRowsPerPage] = React.useState(25);
+    console.log(props.allSounds.length)
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
       page > 0 ? Math.max(0, (1 + page) * rowsPerPage - sounds.length) : 0;
@@ -110,7 +112,7 @@ export default function AllTable( props ) {
     };
 
     const handleChangeRowsPerPage = (event) => {
-      setRowsPerPage(parseInt(event.target.value, 10));
+      setRowsPerPage(parseInt(event.target.value, 25));
       setPage(0);
     };
 
@@ -137,8 +139,7 @@ export default function AllTable( props ) {
       }
     }
     
-    if (props) {
-      const sounds = props.allSounds.map(sound => ({...sound}))
+
 
     return (
       <Container maxWidth="lg" className="py-14">
@@ -219,7 +220,7 @@ export default function AllTable( props ) {
                   <TableFooter>
                     <TableRow>
                       <TablePagination
-                        rowsPerPageOptions={[10, 25, 50, { label: "All", value: -1 }]}
+                        rowsPerPageOptions={[ 25, 50, 100, { label: "All", value: -1 }]}
                         colSpan={9}
                         count={sounds.length}
                         rowsPerPage={rowsPerPage}
