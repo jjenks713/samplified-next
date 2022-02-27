@@ -108,7 +108,7 @@ export default function userTable( props ) {
     const sounds = props.sounds.map((sound) => {
       if (user === sound.createdBy) {
         soundArray.push(sound)
-        console.log(user, sound.createdBy, soundArray)
+        //console.log(user, sound.createdBy, soundArray)
       }
     })
 
@@ -268,7 +268,7 @@ export async function getServerSideProps(ctx) {
     const accounts = await dbInfo()
     //const data = await accounts.json()
     //props.dbI
-    console.log("serversideprops", {accounts})
+    //console.log("serversideprops", {accounts})
 
 
     return {

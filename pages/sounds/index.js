@@ -28,7 +28,7 @@ AllSounds.defaultProps = {
       //const allUsers = await userInfo()
       //const data = await accounts.json()
       //props.dbI
-      console.log("serversideprops", {allSounds})
+      //console.log("serversideprops", {allSounds})
   
   
       return {

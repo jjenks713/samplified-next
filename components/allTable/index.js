@@ -95,7 +95,7 @@ TablePaginationActions.propTypes = {
 
 
 export default function AllTable( props ) {
-  console.log(props.allSounds)
+  //console.log(props.allSounds)
 
 
     const [page, setPage] = React.useState(0);

@@ -57,7 +57,7 @@ export async function getServerSideProps(ctx) {
     const sounds = await dbInfo()
     //const data = await accounts.json()
     //props.dbI
-    console.log("serversideprops", {sounds})
+    //console.log("serversideprops", {sounds})
 
 
     return {

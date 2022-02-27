@@ -39,7 +39,8 @@ export default function Upload() {
     const [allSounds, setAllSounds] = useState(folders || []) */
 
 
-    const submitForm = async () => {
+    const submitForm = async (e) => {
+        //e.preventDefault()
         let dataObj = {
             soundName: name,
             bpm: bpm,
@@ -62,8 +63,6 @@ export default function Upload() {
       
             const { data } = await res.json()
             setAllSounds((state) => [...state, data])
-
-            window.location.href = "/userpage"
       
         if (loading) {
           return null
@@ -87,7 +86,7 @@ export default function Upload() {
             <form className="w-full max-w-sm">
                 <div className="md:flex md:items-center mb-6">
                     <div className="md:w-1/3">
-                    <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                    <label htmlFor='sound' className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                          Sound Name*
                     </label>
                     </div>
@@ -97,7 +96,7 @@ export default function Upload() {
                 </div>
                 <div className="md:flex md:items-center mb-6">
                     <div className="md:w-1/3">
-                    <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                    <label htmlFor="bpm" className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         BPM*
                     </label>
                     </div>
@@ -107,7 +106,7 @@ export default function Upload() {
                 </div>
                 <div className="md:flex md:items-center mb-6">
                     <div className="md:w-1/3">
-                    <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                    <label htmlFor='key' className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         Key*
                     </label>
                     </div>
@@ -135,7 +134,7 @@ export default function Upload() {
                 </div>
                 <div className="md:flex md:items-center mb-6">
                     <div className="md:w-1/3">
-                    <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                    <label htmlFor='genre' className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         Genre*
                     </label>
                     </div>
@@ -159,7 +158,7 @@ export default function Upload() {
                 </div>
                 <div className="md:flex md:items-center mb-6">
                     <div className="md:w-1/3">
-                    <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                    <label htmlFor='loop' className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         Loop or One-Shot*
                     </label>
                     </div>
@@ -179,7 +178,7 @@ export default function Upload() {
                 </div>
                 <div className="md:flex md:items-center mb-6">
                     <div className="md:w-1/3">
-                    <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                    <label htmlFor='instrument' className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         Instrument*
                     </label>
                     </div>
@@ -202,7 +201,7 @@ export default function Upload() {
                 </div>
                 <div className="md:flex md:items-center mb-6">
                     <div className="md:w-1/3">
-                    <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                    <label htmlFor='file' className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         File*
                     </label>
                     </div>

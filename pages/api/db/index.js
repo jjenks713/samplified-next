@@ -17,7 +17,5 @@ export default async function dbInfo() {
     
     //const dataArray = accounts.map((account) => {})
 
-    console.log("db index", sounds)
-
     return sounds
 }
