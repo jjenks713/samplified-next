@@ -8,8 +8,8 @@ export default function Sounds() {
     return (
         <>
         <Navigator />
-        <Table />
-        <Footer />
+{/*         <Table />
+ */}        <Footer />
         </>
     )
 }
