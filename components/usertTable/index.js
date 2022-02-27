@@ -107,7 +107,7 @@ export default function userTable( props ) {
     //console.log(user)
     const sounds = props.sounds.map((sound) => {
       if (user === sound.createdBy) {
-        soundArray.push(sound)
+        soundArray.push(sound, soundArray.length)
         //console.log(user, sound.createdBy, soundArray)
       }
     })
@@ -115,7 +115,7 @@ export default function userTable( props ) {
 
 
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [rowsPerPage, setRowsPerPage] = React.useState(25);
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
@@ -126,7 +126,7 @@ export default function userTable( props ) {
     };
 
     const handleChangeRowsPerPage = (event) => {
-      setRowsPerPage(parseInt(event.target.value, 10));
+      setRowsPerPage(parseInt(event.target.value, 25));
       setPage(0);
     };
 
@@ -232,7 +232,7 @@ export default function userTable( props ) {
                   <TableFooter>
                     <TableRow>
                       <TablePagination
-                        rowsPerPageOptions={[10, 25, 50, { label: "All", value: -1 }]}
+                        rowsPerPageOptions={[ 25, 50, { label: "All", value: -1 }]}
                         colSpan={9}
                         count={sounds.length}
                         rowsPerPage={rowsPerPage}

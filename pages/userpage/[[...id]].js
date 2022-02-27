@@ -9,19 +9,40 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import IdCard from '../../components/idCard'
 import dbInfo from '../api/db';
+import Link from 'next/link'
 //import DbData from '../../components/data'
 
 
 const User = ({ sounds }) => {
     const [session, loading] = useSession()
-    const sessionArray = [session]
     const router = useRouter()
-    console.log(sounds, session)
     //const [data] = accounts.map(account => ({...account}))
     //data.json()
   
-    if (!loading && !session) {
-        window.location.href = "/"
+    if (!session) {
+      return (
+        <>
+        <Navigator />
+        <div
+          className='py-24'
+          isShown
+          title="Session expired"
+          confirmLabel="Ok"
+          hasCancel={false}
+          hasClose={false}
+          shouldCloseOnOverlayClick={false}
+          shouldCloseOnEscapePress={false}
+          onConfirm={() => router.push('/')}
+        >
+            <div>
+                <Link href="/"><a className='hover:bg-opacity-30 hover:cursor-pointer'><img className="mx-auto h-12 w-auto" src="/logo-dark.png" alt="Workflow" /></a></Link>
+                <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900"><Link href="/sign-up">Please sign in to continue</Link></h2>
+                <p className="mt-2 text-center text-sm text-gray-600">
+                </p>
+            </div><br></br><br></br>
+        </div>
+        </>
+      )
       } else {
         return (
           <>
@@ -29,12 +50,6 @@ const User = ({ sounds }) => {
           <Container maxWidth="md" className="grid justify-center">
           <IdCard />
           </Container>
-{/*           <div>
-            {accounts.map((account) => (
-              <div>Hello{account.name}</div>
-            ))
-            }
-          </div> */}
           <UserTable sounds={sounds} />
           </>
       )
