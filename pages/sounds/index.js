@@ -10,8 +10,8 @@ export default function Sounds({ sounds }) {
     return (
         <>
         <Navigator />
-        <Table sounds={sounds}/>
-        <Footer />
+{/*         <Table sounds={sounds}/>
+ */}        <Footer />
         </>
     )
 }
