@@ -29,7 +29,7 @@ export default function Upload() {
     // go straight to app
 
     if (session) {
-        user = session.user.id
+        user = session.user
     }
 
 
@@ -48,7 +48,8 @@ export default function Upload() {
             loop: loop,
             instrument: instrument,
             file: file,
-            user: user
+            user: user.id,
+            userName: user.name
         }
         console.log(dataObj)
           const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/sound`, {

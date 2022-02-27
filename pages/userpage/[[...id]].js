@@ -1,6 +1,6 @@
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Table from "../../components/table"
+import UserTable from "../../components/usertTable"
 //import { session } from 'next-auth/client';
 import { getSession, useSession } from 'next-auth/client'
 //import { connectToDB } from '../../db/connect'
@@ -35,7 +35,7 @@ const User = ({ sounds }) => {
             ))
             }
           </div> */}
-          <Table sounds={sounds} />
+          <UserTable sounds={sounds} />
           </>
       )
     }

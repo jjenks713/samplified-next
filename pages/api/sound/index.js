@@ -23,6 +23,7 @@ export default async function Sounds (req, res) {
             loop: dataObj.loop,
             instrument: dataObj.instrument,
             file: dataObj.file,
+            userName: dataObj.userName,
         }
         console.log(sound, 'THASLDJHFGUIYSBFNFWJSHKFV')
 

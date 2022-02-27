@@ -1,41 +1,37 @@
-import Table from "../../components/table"
+import AllTable from "../../components/allTable"
 import Navigator from '../../components/navigator'
 import Footer from '../../components/footer'
 import dbInfo from '../api/db';
+//import userInfo from '../api/users'
 import { getSession, useSession } from 'next-auth/client'
 
 
-export default function Sounds({ sounds }) {
+export default function AllSounds({ allSounds }) {
 
     return (
         <>
         <Navigator />
-{/*         <Table sounds={sounds}/>
- */}        <Footer />
+        <AllTable allSounds={allSounds}/>
+        <Footer />
         </>
     )
 }
 
-Sounds.defaultProps = {
+AllSounds.defaultProps = {
     props: [],
   }
   
   export async function getServerSideProps(ctx) {
-      const session = await getSession(ctx)
-      //console.log(session)
-  
-      if (!session || !session.user) {
-          return { props: {} }
-        }
   
       const props = { }
-      const sounds = await dbInfo()
+      const allSounds = await dbInfo()
+      //const allUsers = await userInfo()
       //const data = await accounts.json()
       //props.dbI
-      console.log("serversideprops", {sounds})
+      console.log("serversideprops", {allSounds})
   
   
       return {
-          props: { sounds },
+          props: { allSounds },
       }
   }
