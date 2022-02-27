@@ -35,7 +35,7 @@ const User = ({ accounts }) => {
             ))
             }
           </div> */}
-          <Table />
+          <Table accounts={accounts} />
           </>
       )
     }

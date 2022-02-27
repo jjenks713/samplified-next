@@ -26,7 +26,6 @@ import data from '../../data'
 
 
 function TablePaginationActions(props) {
-  console.log(props)
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
 
@@ -96,9 +95,12 @@ TablePaginationActions.propTypes = {
 };
 
 
-export default function CustomPaginationActionsTable({ accounts }) {
+export default function CustomPaginationActionsTable( props ) {
 
-  console.log(accounts)
+  
+  const accounts = props.accounts.map(account => ({...account}))
+  //console.log("this is the thing right here", accounts)
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -165,20 +167,20 @@ export default function CustomPaginationActionsTable({ accounts }) {
         </TableHead>
         <TableBody>
           {(rowsPerPage > 0
-            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : data
-          ).map((data) => (
-            <TableRow key={data.name}>
+            ? accounts.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : accounts
+          ).map((account) => (
+            <TableRow key={account.name}>
               <TableCell component="th" scope="data">
-                {data.name}
+                {account.name}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {data.BPM}
+                {account.email}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {data.key}
+                {account.image}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+{/*               <TableCell style={{ width: 160 }} align="right">
                 {data.user}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
@@ -186,7 +188,7 @@ export default function CustomPaginationActionsTable({ accounts }) {
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
                 {data.listen}
-              </TableCell>
+              </TableCell> */}
             </TableRow>
           ))}
 
@@ -226,6 +228,7 @@ export default function CustomPaginationActionsTable({ accounts }) {
 
 export async function getServerSideProps(ctx) {
 
+    console.log(ctx)
     const props = { }
     const accounts = await dbInfo()
     //const data = await accounts.json()
