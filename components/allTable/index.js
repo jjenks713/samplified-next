@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from 'react'
 import PropTypes from "prop-types";
 import { useTheme, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -21,6 +22,10 @@ import TextField from '@mui/material/TextField';
 import Search from '../search';
 //import data from '../../data'
 import Link from 'next/link'
+import Checkbox from '@mui/material/Checkbox';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
 
 
 
@@ -102,7 +107,7 @@ export default function AllTable( props ) {
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(25);
-    console.log(props.allSounds.length)
+
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
       page > 0 ? Math.max(0, (1 + page) * rowsPerPage - sounds.length) : 0;
@@ -126,17 +131,29 @@ export default function AllTable( props ) {
       }
     }));
 
-    const [search, setSearch] = React.useState('')
+    const [genre, setGenre] = useState('')
+    console.log(genre)
+    const keys = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
+    const genres = ["edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
+    const instruments = ["fx","guitar","drums","percusion","vocals","bass","keys","string","synth"]
 
+    const dubious = sounds.map(sound => {
+      if (genre === sound.genre) {
+        console.log("hooray")
+      }
+    })
+
+    let searchArray = []
     function submitSearch(e) {
-        e.preventDefault()
-        console.log('A search was submitted: ' + search)
-        setSearch('')
+      setGenre(e.target.value, searchArray.push(genre))
+      console.log('A search was submitted: ', searchArray)
+
+/*         setSearch('')
       if (!search) {
           alert("Please enter something")
       } else if (search === sounds.name || search === sounds.BPM || search === sounds.key || search === sounds.user) {
           
-      }
+      } */
     }
     
 
@@ -145,13 +162,37 @@ export default function AllTable( props ) {
       <Container maxWidth="lg" className="py-14">
           <div className="grid justify-center py-14">
           <form onSubmit={submitSearch} className="flex flex-wrap">
-          <TextField 
+{/*           <TextField 
           value={search} 
           onChange={(e) => setSearch(e.target.value)}
           id="standard-basic" 
           label="Search" 
           variant="standard" />
-          <button type="submit" value="Submit">Submit</button>
+          <button type="submit" value="Submit">Submit</button> */}
+{/*           <FormGroup>
+            {genres.map(genre => (
+            <FormControlLabel 
+            control={<Checkbox/>} 
+            label={genre} 
+            value={genre} 
+            onChange={submitSearch}/>
+            ))}
+          </FormGroup> */}
+            <select 
+            value={genre} 
+            placeholder="Genre" 
+            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+            onChange={(e) => setGenre(e.target.value)}
+            required
+            >
+                {
+                    genres.map((genre) => (
+                        <option key={genre}>
+                            {genre}
+                        </option>
+                    ))
+                }
+            </select>
           </form>
         </div>
         

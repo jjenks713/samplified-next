@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Button from '@mui/material/Button';
+import LinearProgress from '@mui/material/LinearProgress';
 
 
 
@@ -21,11 +22,17 @@ export default function SignIn() {
       }
     }, [session, router])
 
+    function signInFunction() {
+        signIn('google')
+        if (loading) {
+            return <div className='grid justify-center pt-24'><LinearProgress /></div> 
+        }
+    }
     
     if (loading) {
         return (
             <>
-            <h1>Loading...</h1>
+            <div className='grid justify-center pt-24'><LinearProgress /></div>          
             </>
         )
     } else {
@@ -78,7 +85,7 @@ export default function SignIn() {
                     </form> */}
     {/*                 <SocialButton type="github" onClick={() => signIn('github')} />
                     <Button type="facebook" onClick={() => signIn('facebook')}>Continue with Facbook</Button> */}
-                    <div className='grid justify-center'><Button type="google" onClick={() => signIn('google')}><img className='w-64' src="/google-1.png" alt="Sign in with Google"></img></Button></div>
+                    <div className='grid justify-center'><Button type="google" onClick={() => signInFunction()}><img className='w-64' src="/google-1.png" alt="Sign in with Google"></img></Button></div>
     
     
 {/*                     <div className="text-sm text-center">
