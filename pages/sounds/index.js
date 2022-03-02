@@ -4,13 +4,16 @@ import Footer from '../../components/footer'
 import dbInfo from '../api/db';
 //import userInfo from '../api/users'
 import { getSession, useSession } from 'next-auth/client'
+import Search from '../../components/search'
 
 
 export default function AllSounds({ allSounds }) {
 
+    console.log(allSounds)
     return (
         <>
         <Navigator />
+        <Search allSounds={allSounds}/>
         <AllTable allSounds={allSounds}/>
         <Footer />
         </>

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from 'react'
 import PropTypes from "prop-types";
 import { useTheme, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -20,11 +19,12 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Search from '../search';
-//import data from '../../data'
+import data from '../../data'
 import Link from 'next/link'
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+//import allSounds from '../search'
 
 
 
@@ -100,7 +100,6 @@ TablePaginationActions.propTypes = {
 
 
 export default function AllTable( props ) {
-  //console.log(props.allSounds)
 
   if (props) {
     const sounds = props.allSounds.map(sound => ({...sound}))
@@ -131,70 +130,9 @@ export default function AllTable( props ) {
       }
     }));
 
-    const [genre, setGenre] = useState('')
-    console.log(genre)
-    const keys = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
-    const genres = ["edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
-    const instruments = ["fx","guitar","drums","percusion","vocals","bass","keys","string","synth"]
-
-    const dubious = sounds.map(sound => {
-      if (genre === sound.genre) {
-        console.log("hooray")
-      }
-    })
-
-    let searchArray = []
-    function submitSearch(e) {
-      setGenre(e.target.value, searchArray.push(genre))
-      console.log('A search was submitted: ', searchArray)
-
-/*         setSearch('')
-      if (!search) {
-          alert("Please enter something")
-      } else if (search === sounds.name || search === sounds.BPM || search === sounds.key || search === sounds.user) {
-          
-      } */
-    }
-    
-
-
     return (
       <Container maxWidth="lg" className="py-14">
-          <div className="grid justify-center py-14">
-          <form onSubmit={submitSearch} className="flex flex-wrap">
-{/*           <TextField 
-          value={search} 
-          onChange={(e) => setSearch(e.target.value)}
-          id="standard-basic" 
-          label="Search" 
-          variant="standard" />
-          <button type="submit" value="Submit">Submit</button> */}
-{/*           <FormGroup>
-            {genres.map(genre => (
-            <FormControlLabel 
-            control={<Checkbox/>} 
-            label={genre} 
-            value={genre} 
-            onChange={submitSearch}/>
-            ))}
-          </FormGroup> */}
-            <select 
-            value={genre} 
-            placeholder="Genre" 
-            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-            onChange={(e) => setGenre(e.target.value)}
-            required
-            >
-                {
-                    genres.map((genre) => (
-                        <option key={genre}>
-                            {genre}
-                        </option>
-                    ))
-                }
-            </select>
-          </form>
-        </div>
+
         
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
@@ -209,6 +147,8 @@ export default function AllTable( props ) {
                   <StyledTableCell align="right">User</StyledTableCell>
                   <StyledTableCell align="right">Download</StyledTableCell>
                   <StyledTableCell align="right">Listen/Download</StyledTableCell>
+{/*                   <StyledTableCell align="right"><a onClick={setGenre(''), setInstrument(""), setLoop(""), setKey("")}>clear</a></StyledTableCell>
+ */}
                 </TableRow>
               </TableHead>
 
@@ -218,7 +158,7 @@ export default function AllTable( props ) {
                       ? sounds.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                       : sounds
                     ).map((sound) => (
-                      <TableRow key={sound.name}>
+                      <TableRow key={sound.createdAt}>
                       
                         <TableCell component="th" scope="sounds">
                           {sound.name}
