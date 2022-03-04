@@ -136,7 +136,7 @@ export default function Search(props) {
           </select>
         </div>
         {searchData.length > 0 ? 
-            <div className='grid justify-center'>
+          <div className='flex justify-center'>
             <TextField 
             id="standard-basic" 
             label="Search Sound Name" 
@@ -150,7 +150,7 @@ export default function Search(props) {
               )}
           </div>
           :
-          <div className='grid justify-center'>
+          <div className='flex justify-center'>
             <TextField 
             id="standard-basic" 
             label="Search Sound Name" 
