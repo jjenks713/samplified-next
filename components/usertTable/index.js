@@ -24,6 +24,9 @@ import { useSession } from "next-auth/client";
 //import dbInfo from '../../pages/api/db';
 import { useState } from 'react'
 import Link from 'next/link'
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 
 
@@ -99,6 +102,9 @@ TablePaginationActions.propTypes = {
 
 export default function userTable( props ) {
   const [session] = useSession()
+  const [filteredData, setFilteredData] = useState([])
+  const [wordEntered, setWordEntered] = useState("");
+  
   let user
   let soundArray = []
 
@@ -107,11 +113,32 @@ export default function userTable( props ) {
     //console.log(user)
     const sounds = props.sounds.map((sound) => {
       if (user === sound.createdBy) {
-        soundArray.push(sound, soundArray.length)
-        //console.log(user, sound.createdBy, soundArray)
+        soundArray.push(sound)
+        //console.log(soundArray)
       }
     })
 
+    function clearDrops() {
+      setFilteredData([]);
+      setWordEntered("");
+  
+    }
+  
+      function handleFilter(event) {
+        const searchWord = event.target.value;
+        setWordEntered(searchWord);
+        const newFilter = soundArray.filter((value) => {
+          console.log(value)
+          return value.name.toLowerCase().includes(searchWord.toLowerCase())
+        });
+  
+        if (searchWord === "") {
+          setFilteredData([]);
+        } else {
+          setFilteredData(newFilter);
+          console.log(filteredData)
+        }
+      };
 
 
     const [page, setPage] = React.useState(0);
@@ -140,33 +167,48 @@ export default function userTable( props ) {
       }
     }));
 
-    const [search, setSearch] = React.useState('')
-
-    function submitSearch(e) {
-        e.preventDefault()
-        console.log('A search was submitted: ' + search)
-        setSearch('')
-      if (!search) {
-          alert("Please enter something")
-      } else if (search === sounds.name || search === sounds.BPM || search === sounds.key || search === sounds.user) {
-          
-      }
-    }
-
     return (
       <Container maxWidth="lg" className="py-14">
           <div className="grid justify-center py-14">
-          <form onSubmit={submitSearch} className="flex flex-wrap">
-          <TextField 
-          value={search} 
-          onChange={(e) => setSearch(e.target.value)}
-          id="standard-basic" 
-          label="Search" 
-          variant="standard" />
-          <button type="submit" value="Submit">Submit</button>
-          </form>
+
+        {filteredData.length > 0 ? 
+            <div className='flex justify-center'>
+            <TextField 
+            id="standard-basic" 
+            label="Search Sound Name" 
+            variant="standard" 
+            value={wordEntered}
+            onChange={handleFilter}/>
+            <div className="align-middle">
+            {filteredData.length === 0 ? (
+              <SearchIcon />
+            ) : (
+                <CloseIcon id="clearBtn" onClick={clearDrops} />
+              )}
+            </div>
+
+          </div>
+          :
+          <div className='flex justify-center'>
+            <TextField 
+            id="standard-basic" 
+            label="Search Sound Name" 
+            variant="standard" 
+            value={wordEntered}
+            onChange={handleFilter}/>
+            <div className="align-bottom">
+              {filteredData.length === 0 ? (
+              <SearchIcon />
+            ) : (
+                <CloseIcon id="clearBtn" onClick={clearDrops} />
+              )}
+            </div>
+          </div>
+        }
+
         </div>
-        
+        {filteredData.length > 0 ?
+
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
               <TableHead>
@@ -182,12 +224,14 @@ export default function userTable( props ) {
                   <StyledTableCell align="right">Listen/Download</StyledTableCell>
                 </TableRow>
               </TableHead>
+                
+
 
                   <TableBody>
                     
                     {(rowsPerPage > 0
-                      ? soundArray.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      : soundArray
+                      ? filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      : filteredData
                     ).map((sound) => (
                       <TableRow key={sound.name}>
                       
@@ -252,6 +296,94 @@ export default function userTable( props ) {
                 </Table>
               </TableContainer>
 
+              :
+
+              <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Name</StyledTableCell>
+                    <StyledTableCell align="right">BPM</StyledTableCell>
+                    <StyledTableCell align="right">Key</StyledTableCell>
+                    <StyledTableCell align="right">Loop or Oneshot</StyledTableCell>
+                    <StyledTableCell align="right">Instrument</StyledTableCell>
+                    <StyledTableCell align="right">Genre</StyledTableCell>
+                    <StyledTableCell align="right">User</StyledTableCell>
+                    <StyledTableCell align="right">Download</StyledTableCell>
+                    <StyledTableCell align="right">Listen/Download</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+
+                    <TableBody>
+                      
+                      {(rowsPerPage > 0
+                        ? soundArray.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        : soundArray
+                      ).map((sound) => (
+                        <TableRow key={sound.name}>
+                        
+                          <TableCell component="th" scope="sounds">
+                            {sound.name}
+                          </TableCell>
+                          <TableCell style={{ width: 160 }} align="right">
+                            {sound.bpm}
+                          </TableCell>
+                          <TableCell style={{ width: 160 }} align="right">
+                            {sound.key}
+                          </TableCell>
+                          <TableCell style={{ width: 160 }} align="right">
+                            {sound.loop}
+                          </TableCell>
+                          <TableCell style={{ width: 160 }} align="right">
+                            {sound.instrument}
+                          </TableCell>
+                          <TableCell style={{ width: 160 }} align="right">
+                            {sound.genre}
+                          </TableCell>
+                          <TableCell style={{ width: 160 }} align="right">
+                            {sound.createdBy}
+                          </TableCell>
+                          <TableCell style={{ width: 160 }} align="right">
+                            {sound.file}
+                          </TableCell>
+                          <TableCell style={{ width: 160 }} align="right">
+                            {sound.listen}
+                          </TableCell>
+                          
+                        </TableRow>
+  
+                      ))}
+            
+                      {emptyRows > 0 && (
+                        <TableRow style={{ height: 53 * emptyRows }}>
+                          <TableCell colSpan={9} />
+                        </TableRow>
+                      )}
+                    </TableBody>
+                    <TableFooter>
+                      <TableRow>
+                        <TablePagination
+                          rowsPerPageOptions={[ 25, 50, { label: "All", value: -1 }]}
+                          colSpan={9}
+                          count={soundArray.length}
+                          rowsPerPage={rowsPerPage}
+                          page={page}
+                          SelectProps={{
+                            inputProps: {
+                              "aria-label": "rows per page"
+                            },
+                            native: true
+                          }}
+                          onPageChange={handleChangePage}
+                          onRowsPerPageChange={handleChangeRowsPerPage}
+                          ActionsComponent={TablePaginationActions}
+                        />
+                      </TableRow>
+                    </TableFooter>
+                  </Table>
+                </TableContainer>
+
+            }
       </Container>
 
     );

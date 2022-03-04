@@ -7,7 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import AllTable from '../allTable';
 
 const keys = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
-const genres = ["edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
+const genres = ["", "edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
 const instruments = ["fx","guitar","drums","percussion","vocals","bass","keys","string","synth"]
 
 export default function Search(props) {
@@ -129,7 +129,7 @@ export default function Search(props) {
             {
                 genres.map((genre) => (
                     <option key={genre} placeholder="Genre">
-                        {genre}
+                      {genre}
                     </option>
                 ))
             }
