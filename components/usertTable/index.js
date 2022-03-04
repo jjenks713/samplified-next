@@ -234,7 +234,7 @@ export default function userTable( props ) {
                       <TablePagination
                         rowsPerPageOptions={[ 25, 50, { label: "All", value: -1 }]}
                         colSpan={9}
-                        count={sounds.length}
+                        count={soundArray.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         SelectProps={{
