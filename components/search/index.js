@@ -3,54 +3,68 @@ import Button from '@mui/material/Button'
 import Link from 'next/link'
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
+import AllTable from '../allTable';
 
-
+const keys = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
+const genres = ["edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
+const instruments = ["fx","guitar","drums","percussion","vocals","bass","keys","string","synth"]
 
 export default function Search(props) {
 
-  let soundArray = []
-  const [genre, setGenre] = useState('')
-  const [key, setKey] = useState('')
-  const [instrument, setInstrument] = useState('')
-  const [loop, setLoop] = useState('')
-  const [searchBox, setSearchBox] = useState('')
-  console.log(genre, key, instrument, loop, searchBox)
-  
-  const keys = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
-  const genres = ["edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
-  const instruments = ["fx","guitar","drums","percussion","vocals","bass","keys","string","synth"]
+  const allSounds = props.allSounds
+  const data = props.allSounds
+
+  const [searchData, setSearchData] = useState([])
+  const [filteredData, setFilteredData] = useState([])
+  const [wordEntered, setWordEntered] = useState("");
+
+  function handleSetData(event) {
+    const drop = event.target.value
+    const newFilter = data.filter((value) => {
+      return value.genre.toLowerCase().includes(drop.toLowerCase())
+/*       value.key.toLowerCase().includes(drop.toLowerCase()),
+      value.instrument.toLowerCase().includes(drop.toLowerCase()),
+      value.loop.toLowerCase().includes(drop.toLowerCase()) */
+    });
+    setSearchData(newFilter)
+  }
 
   function clearDrops() {
-    setGenre('')
-    setKey('')
-    setInstrument('')
-    setLoop('')
-    setSearchBox('')
+    setFilteredData([]);
+    setWordEntered("");
+    setSearchData([])
+
   }
 
-  function submitForm(e) {
-    e.preventDefault()
-    console.log('click', searchBox)
-  }
+    function handleFilter(event) {
+      const searchWord = event.target.value;
+      setWordEntered(searchWord);
+      const newFilter = data.filter((value) => {
+        return value.name.toLowerCase().includes(searchWord.toLowerCase())
+      });
 
+      if (searchWord === "") {
+        setFilteredData([]);
+      } else {
+        setFilteredData(newFilter);
 
-  console.log(soundArray)
+      }
+    };
 
-  const sounds = props.allSounds.map((sound) => {
-    if (genre === sound.genre) {
-      soundArray.push(sound)
-    } 
-    if (key === sound.key) {
-      soundArray.push(sound)
-    }
-    if (instrument === sound.instrument) {
-      soundArray.push(sound)
-    }
-    if (loop === sound.loop) {
-      soundArray.push(sound)
-    }
-  })
+    function handleSpecificFilter(event) {
+      const searchWord = event.target.value;
+      setWordEntered(searchWord);
+      const newFilter = searchData.filter((value) => {
+        return value.name.toLowerCase().includes(searchWord.toLowerCase())
+      });
 
+      if (searchWord === "") {
+        setFilteredData([]);
+      } else {
+        setFilteredData(newFilter);
+      }
+    };
 
   return (
     <>            
@@ -60,25 +74,15 @@ export default function Search(props) {
       <p className="mt-2 text-center text-sm text-gray-600">
       </p>
     </div><br></br><br></br>
-    <div className='grid justify-center'>
-    <form>
-      <TextField 
-      id="standard-basic" 
-      label="Search Sound Name" 
-      variant="standard" 
-      onChange={(e) => setSearchBox(e.target.value)}/>
-      <buton onClick={submitForm}><SearchIcon /></buton>
-    </form>
-    </div>
 
     <div className='mx-auto px-4 py-10'>
       <div className='flex flexwrap justify-center'>
-        <div className='pr-10'>
+      {/*<div className='pr-10'>
           Key
           <select
           placeholder="Key" 
           className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-          onChange={(e) => setKey(e.target.value)}
+          onChange={handleSetData}
           >
           {keys.map(key => (
             <option key={key}>{key}</option>
@@ -92,7 +96,7 @@ export default function Search(props) {
           <select
           placeholder="Loop or One-shot" 
           className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-          onChange={(e) => setLoop(e.target.value)}
+          onChange={handleSetData}
           >
             <option key={"loop"}>Loop</option>
             <option key={"one-shot"}>One-shot</option>
@@ -104,39 +108,70 @@ export default function Search(props) {
           <select
           placeholder="Instrument" 
           className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-          onChange={(e) => setInstrument(e.target.value)}
+          onChange={handleSetData}
           >
-          {instruments.map(key => (
-            <option key={instrument}>{key}</option>
+          {instruments.map(instrument => (
+            <option key={instrument} value={instrument}>{instrument}</option>
           ))
           }
           </select>
-        </div>
+        </div> */}
 
         <div className='pr-10'>
           Genre
           <select 
-          value={genre} 
+          value="Genre"
           placeholder="Genre" 
           className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-          onChange={(e) => setGenre(e.target.value)}
+          onChange={handleSetData}
           required
           >
             {
                 genres.map((genre) => (
-                    <option key={genre}>
+                    <option key={genre} placeholder="Genre">
                         {genre}
                     </option>
                 ))
             }
           </select>
         </div>
+        {searchData.length > 0 ? 
+            <div className='grid justify-center'>
+            <TextField 
+            id="standard-basic" 
+            label="Search Sound Name" 
+            variant="standard" 
+            value={wordEntered}
+            onChange={handleSpecificFilter}/>
+              {filteredData.length === 0 ? (
+              <SearchIcon />
+            ) : (
+                <CloseIcon id="clearBtn" onClick={clearDrops} />
+              )}
+          </div>
+          :
+          <div className='grid justify-center'>
+            <TextField 
+            id="standard-basic" 
+            label="Search Sound Name" 
+            variant="standard" 
+            value={wordEntered}
+            onChange={handleFilter}/>
+              {filteredData.length === 0 ? (
+              <SearchIcon />
+            ) : (
+                <CloseIcon id="clearBtn" onClick={clearDrops} />
+              )}
+          </div>
+        }
         <div className='py-auto'>
           <Button onClick={clearDrops}>Clear</Button>
         </div>
       </div>
     </div>
+    
 
+    <AllTable filteredData={filteredData} allSounds={allSounds} searchData={searchData} /> 
     </>
   )
 }

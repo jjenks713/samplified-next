@@ -25,6 +25,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 //import allSounds from '../search'
+import filteredData from '../search'
 
 
 
@@ -100,49 +101,124 @@ TablePaginationActions.propTypes = {
 
 
 export default function AllTable( props ) {
+  const filteredData = props.filteredData
+  const searchData = props.searchData
+  const sounds = props.allSounds.map(sound => ({...sound}))
 
-  if (props) {
-    const sounds = props.allSounds.map(sound => ({...sound}))
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
 
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  // Avoid a layout jump when reaching the last page with empty rows.
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - sounds.length) : 0;
 
-    // Avoid a layout jump when reaching the last page with empty rows.
-    const emptyRows =
-      page > 0 ? Math.max(0, (1 + page) * rowsPerPage - sounds.length) : 0;
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
-    const handleChangePage = (event, newPage) => {
-      setPage(newPage);
-    };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 25));
+    setPage(0);
+  };
 
-    const handleChangeRowsPerPage = (event) => {
-      setRowsPerPage(parseInt(event.target.value, 25));
-      setPage(0);
-    };
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14
+    }
+  }));
 
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-      [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white
-      },
-      [`&.${tableCellClasses.body}`]: {
-        fontSize: 14
-      }
-    }));
-
+  if (filteredData.length == 0 && searchData.length == 0) {
     return (
       <Container maxWidth="lg" className="py-14">
 
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Name</StyledTableCell>
+                <StyledTableCell align="right">Genre</StyledTableCell>
+                <StyledTableCell align="right">User</StyledTableCell>
+                <StyledTableCell align="right">Download</StyledTableCell>
+                <StyledTableCell align="right">Listen/Download</StyledTableCell>
+{/*                   <StyledTableCell align="right"><a onClick={setGenre(''), setInstrument(""), setLoop(""), setKey("")}>clear</a></StyledTableCell>
+*/}
+              </TableRow>
+            </TableHead>
+                <TableBody>
+                  
+                  {(rowsPerPage > 0
+                    ? sounds.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    : sounds
+                  ).map((sound) => (
+                    <TableRow key={sound.createdAt}>
+                    
+                      <TableCell component="th" scope="sounds">
+                        <a className="text-lg">{sound.name}</a><br></br>
+                        <small>{sound.bpm} bpm, Key {sound.key}, {sound.loop}, {sound.instrument}</small>
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                      <a className="text-md">{sound.genre}</a>
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                      <a className="text-md">{sound.userName}</a>
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                        {sound.file}
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                        {sound.listen}
+                      </TableCell>
+                      
+                    </TableRow>
+
+                  ))}
         
-            <TableContainer component={Paper}>
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 53 * emptyRows }}>
+                      <TableCell colSpan={9} />
+                    </TableRow>
+                  )}
+                </TableBody>
+                <TableFooter>
+                  <TableRow>
+                    <TablePagination
+                      rowsPerPageOptions={[ 25, 50, 100, { label: "All", value: -1 }]}
+                      colSpan={9}
+                      count={sounds.length}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      SelectProps={{
+                        inputProps: {
+                          "aria-label": "rows per page"
+                        },
+                        native: true
+                      }}
+                      onPageChange={handleChangePage}
+                      onRowsPerPageChange={handleChangeRowsPerPage}
+                      ActionsComponent={TablePaginationActions}
+                    />
+                  </TableRow>
+                </TableFooter>
+                </Table>
+            </TableContainer>
+        </Container>
+
+    )
+  } else {
+    return (
+      <Container maxWidth="lg" className="py-14">
+
+        {filteredData.length > 0 ? 
+        <div>
+          <TableContainer component={Paper}>
             <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
               <TableHead>
                 <TableRow>
                   <StyledTableCell>Name</StyledTableCell>
-                  <StyledTableCell align="right">BPM</StyledTableCell>
-                  <StyledTableCell align="right">Key</StyledTableCell>
-                  <StyledTableCell align="right">Loop or Oneshot</StyledTableCell>
-                  <StyledTableCell align="right">Instrument</StyledTableCell>
                   <StyledTableCell align="right">Genre</StyledTableCell>
                   <StyledTableCell align="right">User</StyledTableCell>
                   <StyledTableCell align="right">Download</StyledTableCell>
@@ -151,44 +227,32 @@ export default function AllTable( props ) {
  */}
                 </TableRow>
               </TableHead>
-
                   <TableBody>
                     
                     {(rowsPerPage > 0
-                      ? sounds.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      : sounds
+                      ? filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      : filteredData
                     ).map((sound) => (
                       <TableRow key={sound.createdAt}>
+                    
+                      <TableCell component="th" scope="sounds">
+                        <a className="text-lg">{sound.name}</a><br></br>
+                        <small>{sound.bpm} bpm, Key {sound.key}, {sound.loop}, {sound.instrument}</small>
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                      <a className="text-md">{sound.genre}</a>
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                      <a className="text-md">{sound.userName}</a>
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                        {sound.file}
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                        {sound.listen}
+                      </TableCell>
                       
-                        <TableCell component="th" scope="sounds">
-                          {sound.name}
-                        </TableCell>
-                        <TableCell style={{ width: 160 }} align="right">
-                          {sound.bpm}
-                        </TableCell>
-                        <TableCell style={{ width: 160 }} align="right">
-                          {sound.key}
-                        </TableCell>
-                        <TableCell style={{ width: 160 }} align="right">
-                          {sound.loop}
-                        </TableCell>
-                        <TableCell style={{ width: 160 }} align="right">
-                          {sound.instrument}
-                        </TableCell>
-                        <TableCell style={{ width: 160 }} align="right">
-                          {sound.genre}
-                        </TableCell>
-                        <TableCell style={{ width: 160 }} align="right">
-                          {sound.userName}
-                        </TableCell>
-                        <TableCell style={{ width: 160 }} align="right">
-                          {sound.file}
-                        </TableCell>
-                        <TableCell style={{ width: 160 }} align="right">
-                          {sound.listen}
-                        </TableCell>
-                        
-                      </TableRow>
+                    </TableRow>
 
                     ))}
           
@@ -203,7 +267,81 @@ export default function AllTable( props ) {
                       <TablePagination
                         rowsPerPageOptions={[ 25, 50, 100, { label: "All", value: -1 }]}
                         colSpan={9}
-                        count={sounds.length}
+                        count={filteredData.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        SelectProps={{
+                          inputProps: {
+                            "aria-label": "rows per page"
+                          },
+                          native: true
+                        }}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                        ActionsComponent={TablePaginationActions}
+                      />
+                    </TableRow>
+                  </TableFooter>
+                  </Table>
+              </TableContainer>
+        </div>
+
+                  :
+
+        <div>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+                  <TableHead>
+                      <TableRow>
+                        <StyledTableCell>Name</StyledTableCell>
+                        <StyledTableCell align="right">Genre</StyledTableCell>
+                        <StyledTableCell align="right">User</StyledTableCell>
+                        <StyledTableCell align="right">Download</StyledTableCell>
+                        <StyledTableCell align="right">Listen/Download</StyledTableCell>
+      {/*                   <StyledTableCell align="right"><a onClick={setGenre(''), setInstrument(""), setLoop(""), setKey("")}>clear</a></StyledTableCell>
+      */}
+                      </TableRow>
+                    </TableHead>
+                  <TableBody>
+                    {(rowsPerPage > 0
+                      ? searchData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      : searchData
+                    ).map((sound) => (
+                      <TableRow key={sound.createdAt}>
+                    
+                      <TableCell component="th" scope="sounds">
+                        <a className="text-lg">{sound.name}</a><br></br>
+                        <small>{sound.bpm} bpm, Key {sound.key}, {sound.loop}, {sound.instrument}</small>
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                      <a className="text-md">{sound.genre}</a>
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                      <a className="text-md">{sound.userName}</a>
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                        {sound.file}
+                      </TableCell>
+                      <TableCell style={{ width: 160 }} align="right">
+                        {sound.listen}
+                      </TableCell>
+                      
+                    </TableRow>
+
+                    ))}
+          
+                    {emptyRows > 0 && (
+                      <TableRow style={{ height: 53 * emptyRows }}>
+                        <TableCell colSpan={9} />
+                      </TableRow>
+                    )}
+                  </TableBody>
+                  <TableFooter>
+                    <TableRow>
+                      <TablePagination
+                        rowsPerPageOptions={[ 25, 50, 100, { label: "All", value: -1 }]}
+                        colSpan={9}
+                        count={searchData.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         SelectProps={{
@@ -219,13 +357,12 @@ export default function AllTable( props ) {
                     </TableRow>
                   </TableFooter>
                 </Table>
-              </TableContainer>
-
+            </TableContainer>
+        </div>
+      }
       </Container>
 
     ); 
-  }  else {
-    return <Link href="/sounds"></Link>
   }
 }
 

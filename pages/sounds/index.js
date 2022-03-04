@@ -14,7 +14,6 @@ export default function AllSounds({ allSounds }) {
         <>
         <Navigator />
         <Search allSounds={allSounds}/>
-        <AllTable allSounds={allSounds}/>
         <Footer />
         </>
     )
