@@ -6,9 +6,9 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/client';
 import { useRouter } from 'next/router'
 
-const keys = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
-const genres = ["edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
-const instruments = ["fx","guitar","drums","percusion","vocals","bass","keys","string","synth"]
+const keys = ["", "A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
+const genres = ["", "edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
+const instruments = ["", "fx","guitar","drums","percusion","vocals","bass","keys","string","synth"]
 
 
 export default function Upload() {
@@ -113,7 +113,6 @@ export default function Upload() {
                     <div className="md:w-2/3">
                         <select 
                         placeholder="Key"
-                        value={key} 
                         className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                         disabled={!keys.length}
                         onChange={(e) => updateKey(e.target.value)}
@@ -123,7 +122,7 @@ export default function Upload() {
                 
                         {
                             keys.map((key) => (
-                                <option key={key} value={key}>
+                                <option key={key}>
                                     {key}
                                 </option>
                             ))
@@ -170,6 +169,7 @@ export default function Upload() {
                         onChange={(e) => updateLoop(e.target.value)}
                         required
                         >
+                            <option></option>
                             <option>loop</option>
                             <option>one-shot</option>
 
