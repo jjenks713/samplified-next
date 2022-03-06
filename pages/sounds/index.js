@@ -9,7 +9,7 @@ import Search from '../../components/search'
 
 export default function AllSounds({ allSounds }) {
 
-    console.log(allSounds)
+    //console.log(allSounds)
     return (
         <>
         <Navigator />

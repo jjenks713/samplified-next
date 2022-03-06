@@ -6,9 +6,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import AllTable from '../allTable';
 
-const keys = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
+const keys = ["", "A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
 const genres = ["", "edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
-const instruments = ["fx","guitar","drums","percussion","vocals","bass","keys","string","synth"]
+const instruments = ["", "fx","guitar","drums","percussion","vocals","bass","keys","string","synth"]
 
 export default function Search(props) {
 
@@ -23,10 +23,17 @@ export default function Search(props) {
     const drop = event.target.value
     const newFilter = data.filter((value) => {
       return value.genre.toLowerCase().includes(drop.toLowerCase())
-/*       value.key.toLowerCase().includes(drop.toLowerCase()),
-      value.instrument.toLowerCase().includes(drop.toLowerCase()),
-      value.loop.toLowerCase().includes(drop.toLowerCase()) */
     });
+/*     const newFilter1 = data.filter((value) => {
+      return value.key.toLowerCase().includes(drop.toLowerCase()) 
+    });
+    const newFilter2 = data.filter((value) => {
+      return value.instrument.toLowerCase().includes(drop.toLowerCase())
+    });
+    const newFilter3 = data.filter((value) => {
+      return value.loop.toLowerCase().includes(drop.toLowerCase())
+    }); */
+
     setSearchData(newFilter)
   }
 
@@ -77,7 +84,7 @@ export default function Search(props) {
 
     <div className='mx-auto px-4 py-10'>
       <div className='flex flexwrap justify-center'>
-      {/*<div className='pr-10'>
+{/*       <div className='pr-10'>
           Key
           <select
           placeholder="Key" 
@@ -85,7 +92,7 @@ export default function Search(props) {
           onChange={handleSetData}
           >
           {keys.map(key => (
-            <option key={key}>{key}</option>
+            <option key={key} placeholder="Key">{key}</option>
           ))
           }
           </select>
@@ -98,6 +105,7 @@ export default function Search(props) {
           className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
           onChange={handleSetData}
           >
+            <option></option>
             <option key={"loop"}>Loop</option>
             <option key={"one-shot"}>One-shot</option>
           </select>
@@ -111,7 +119,7 @@ export default function Search(props) {
           onChange={handleSetData}
           >
           {instruments.map(instrument => (
-            <option key={instrument} value={instrument}>{instrument}</option>
+            <option key={instrument} placeholder="Instrument">{instrument}</option>
           ))
           }
           </select>
