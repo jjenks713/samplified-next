@@ -25,22 +25,13 @@ export default function Upload() {
     const [session, loading] = useSession()
     let user
 
-    // if a user is logged it, never show them this page,
-    // go straight to app
-
     if (session) {
         user = session.user
     }
 
 
-    //do something
-
-/*     const [newSoundIsShown, setIsShown] = useState(false)
-    const [allSounds, setAllSounds] = useState(folders || []) */
-
-
     const submitForm = async (e) => {
-        //e.preventDefault()
+        e.preventDefault()
         let dataObj = {
             soundName: name,
             bpm: bpm,
@@ -52,17 +43,17 @@ export default function Upload() {
             user: user.id,
             userName: user.name
         }
-        console.log(dataObj)
-          const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/sound`, {
-            method: 'POST',
-            body: JSON.stringify({dataObj}),
-            headers: {
-              'Content-Type': 'application/json'
-              }
-            }) 
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/sound`, {
+        method: 'POST',
+        body: JSON.stringify({dataObj}),
+        headers: {
+            'Content-Type': 'application/json'
+            }
+        }) 
       
-            const { data } = await res.json()
-            setAllSounds((state) => [...state, data])
+        const { data } = await res.json()
+        setAllSounds((state) => [...state, data])
       
         if (loading) {
           return null
@@ -224,8 +215,3 @@ export default function Upload() {
         </>
     )
 }
-
-/* export async function getServerSideProps(ctx) {
-    const sound = Sound()
-
-} */

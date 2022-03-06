@@ -14,8 +14,6 @@ export default function SignIn() {
     const [session, loading] = useSession()
     const router = useRouter()
 
-   // if a user is logged it, never show them this page,
-   // go straight to app
     useEffect(() => {
       if (session) {
         router.push('/userpage')

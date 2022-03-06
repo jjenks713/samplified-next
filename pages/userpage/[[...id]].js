@@ -1,23 +1,18 @@
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import UserTable from "../../components/usertTable"
-//import { session } from 'next-auth/client';
 import { getSession, useSession } from 'next-auth/client'
-//import { connectToDB } from '../../db/connect'
 import Navigator from '../../components/navigator';
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import IdCard from '../../components/idCard'
 import dbInfo from '../api/db';
 import Link from 'next/link'
-//import DbData from '../../components/data'
 
 
 const User = ({ sounds }) => {
     const [session, loading] = useSession()
     const router = useRouter()
-    //const [data] = accounts.map(account => ({...account}))
-    //data.json()
   
     if (!session) {
       return (
@@ -62,7 +57,6 @@ User.defaultProps = {
 
 export async function getServerSideProps(ctx) {
     const session = await getSession(ctx)
-    //console.log(session)
 
     if (!session || !session.user) {
         return { props: {} }
@@ -70,10 +64,6 @@ export async function getServerSideProps(ctx) {
 
     const props = { }
     const sounds = await dbInfo()
-    //const data = await accounts.json()
-    //props.dbI
-    //console.log("serversideprops", {sounds})
-
 
     return {
         props: { sounds },
