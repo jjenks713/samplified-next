@@ -128,7 +128,7 @@ export default function Search(props) {
         <div className='pr-10'>
           Genre
           <select 
-          value="Genre"
+          
           placeholder="Genre" 
           className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
           onChange={handleSetData}
@@ -136,7 +136,7 @@ export default function Search(props) {
           >
             {
                 genres.map((genre) => (
-                    <option key={genre} placeholder="Genre">
+                    <option key={genre} placeholder="Genre" value={genre}>
                       {genre}
                     </option>
                 ))
