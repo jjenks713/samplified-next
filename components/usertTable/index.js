@@ -13,6 +13,8 @@ export default function userTable( props ) {
   const [session] = useSession()
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState("");
+  const [noData, setNoData] = useState(true)
+
   
   let user
   let soundArray = []
@@ -45,6 +47,12 @@ export default function userTable( props ) {
         } else {
           setFilteredData(newFilter);
         }
+        if (newFilter.length == 0) {
+          console.log('its 0 probably', newFilter.length)
+          setNoData(false)
+        } else {
+          setNoData(true)
+        }
       };
 
 
@@ -52,41 +60,28 @@ export default function userTable( props ) {
     return (
       <Container maxWidth="lg" className="py-14">
           <div className="grid justify-center py-14">
-            {filteredData.length > 0 ? 
-              <div className='flex justify-center'>
-                <TextField 
-                id="standard-basic" 
-                label="Search Sound Name" 
-                variant="standard" 
-                value={wordEntered}
-                onChange={handleFilter}/>
-                <div className="align-middle">
-                  {filteredData.length === 0 ? (
-                    <SearchIcon />
-                  ) : (
-                      <CloseIcon className="hover:opacity-20 hover:cursor-pointer" id="clearBtn" onClick={clearDrops} />
-                  )}
+            <div className='grip grid-cols-1 gap-0 justify-center'>
+              <div className='row'>
+              <TextField 
+              id="standard-basic" 
+              label="Search Sound Name" 
+              variant="standard" 
+              value={wordEntered}
+              onChange={handleFilter}/>
+                {filteredData.length === 0 ? (
+                <SearchIcon />
+              ) : (
+                  <CloseIcon id="clearBtn" onClick={clearDrops} />
+                )}
                 </div>
-
-              </div>
-              :
-              <div className='flex justify-center'>
-                <TextField 
-                id="standard-basic" 
-                label="Search Sound Name" 
-                variant="standard" 
-                value={wordEntered}
-                onChange={handleFilter}/>
-                <div className="align-bottom">
-                  {filteredData.length === 0 ? (
-                  <SearchIcon />
-                  ) : (
-                    <CloseIcon className="hover:opacity-20 hover:cursor-pointer" id="clearBtn" onClick={clearDrops} />
-                  )}
-                </div>
-              </div>
-            }
-        </div>
+                <br/>
+                {noData ?
+                null
+                :
+                <div className='row text-red-500 text-xs'><small>Nothing matches your search! try again...</small></div>
+                }
+            </div>
+          </div>
 
         {filteredData.length > 0 ?
           <TableData props={filteredData} />

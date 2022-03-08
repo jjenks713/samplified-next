@@ -18,6 +18,7 @@ export default function Search(props) {
   const [searchData, setSearchData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState("");
+  const [noData, setNoData] = useState(true)
 
   function handleSetData(event) {
     const drop = event.target.value
@@ -41,7 +42,7 @@ export default function Search(props) {
     setFilteredData([]);
     setWordEntered("");
     setSearchData([])
-
+    setNoData(true)
   }
 
     function handleFilter(event) {
@@ -53,8 +54,15 @@ export default function Search(props) {
 
       if (searchWord === "") {
         setFilteredData([]);
+        setNoData(true)
       } else {
         setFilteredData(newFilter);
+      }
+      if (newFilter.length === 0) {
+        console.log('its 0 probably')
+        setNoData(false)
+      } else {
+        setNoData(true)
 
       }
     };
@@ -70,6 +78,13 @@ export default function Search(props) {
         setFilteredData([]);
       } else {
         setFilteredData(newFilter);
+        console.log(newFilter)
+      }
+      if (newFilter.length == 0) {
+        console.log('its 0 probably', newFilter.length)
+        setNoData(false)
+      } else {
+        setNoData(true)
       }
     };
 
@@ -144,21 +159,30 @@ export default function Search(props) {
           </select>
         </div>
         {searchData.length > 0 ? 
-          <div className='flex justify-center'>
-            <TextField 
-            id="standard-basic" 
-            label="Search Sound Name" 
-            variant="standard" 
-            value={wordEntered}
-            onChange={handleSpecificFilter}/>
-              {filteredData.length === 0 ? (
-              <SearchIcon />
-            ) : (
-                <CloseIcon id="clearBtn" onClick={clearDrops} />
-              )}
-          </div>
+          <div className='grip grid-cols-1 gap-0 justify-center'>
+          <div className='row'>
+          <TextField 
+          id="standard-basic" 
+          label="Search Sound Name" 
+          variant="standard" 
+          value={wordEntered}
+          onChange={handleSpecificFilter}/>
+            {filteredData.length === 0 ? (
+            <SearchIcon />
+          ) : (
+              <CloseIcon id="clearBtn" onClick={clearDrops} />
+            )}
+            </div>
+            <br/>
+            {noData ?
+            null
+            :
+            <div className='row text-red-500 text-xs'><small>Nothing matches your search! try again...</small></div>
+            }
+        </div>
           :
-          <div className='flex justify-center'>
+          <div className='grip grid-cols-1 gap-0 justify-center'>
+            <div className='row'>
             <TextField 
             id="standard-basic" 
             label="Search Sound Name" 
@@ -170,8 +194,17 @@ export default function Search(props) {
             ) : (
                 <CloseIcon id="clearBtn" onClick={clearDrops} />
               )}
+              </div>
+              <br/>
+              {noData ?
+              null
+              :
+              <div className='row text-red-500 text-xs'><small>Nothing matches your search! try again...</small></div>
+              }
           </div>
+
         }
+
         <div className='py-auto'>
           <Button onClick={clearDrops}>Clear</Button>
         </div>
