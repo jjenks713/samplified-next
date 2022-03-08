@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import {signIn, useSession} from 'next-auth/client'
-import SocialButton from '../../components/socialButton'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
