@@ -5,12 +5,19 @@ import Footer from '../components/footer'
 import Container from '@mui/material/Container';
 import Link from 'next/link'
 import Button from '@mui/material/Button';
+import { getSession, useSession } from 'next-auth/client'
+
 
 
 
 
 
 export default function Home() {
+  const [session, loading] = useSession()
+
+  console.log(session)
+
+  
   return (
     <div>
       <Head>
@@ -23,14 +30,36 @@ export default function Home() {
 
     <main>
 
-    <img //eslint-disable-line
-      style={{
-        width: '100%'
-      }}
-      layout='fill' 
-      src="https://creativetechlab.com/wp-content/uploads/2016/08/music-producer-disconnected-1280x640.jpg" 
-      alt='main'></img>
-
+      <div className='relative'>
+        <img //eslint-disable-line
+          style={{
+            width: '100%'
+          }}
+          className="h-96 sm:h-screen"
+          layout='fill' 
+          src="https://creativetechlab.com/wp-content/uploads/2016/08/music-producer-disconnected-1280x640.jpg" 
+          alt='main'></img>
+          <div
+          className='absolute top-12 right-10 left-10 sm:top-1/4 sm:left-24 sm:right-1/4 lg:right-1/3 xl:right-1/2 md:top-1/4 md:left-1/4 flex bg-black bg-opacity-40 bg-cover rounded-xl text-white text-lg text-left font-bold'
+          >
+            <div className='py-5 px-10 max-w-lg'>
+              <a className='py-1 font-extrabold font text-3xl sm:text-5xl'>
+              Samplified
+              </a><br></br><br></br>
+              <p className='text-sm sm:text-2xl'>
+              Samplified is the industrys highest quality,
+              open source sample library. Get access to millions offset
+              sounds made by producers, and sound designers—all
+              available at your fingertips.
+              </p><br></br>
+              {session ?
+              <Button className='bg-gray-800 text-white text-sm'><Link href="/userpage">Go to your Profile</Link></Button>
+              :
+              <Button className='bg-gray-800 text-white text-sm'><Link href="/sign-up">Sign up Now</Link></Button>
+              }
+            </div>
+          </div>
+      </div>
       <div>
         <Container maxWidth="md">
           <div className='py-24 flex flex-wrap md:flex-nowrap justify-between'>
