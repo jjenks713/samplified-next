@@ -11,7 +11,6 @@ export default async function dbInfo() {
     .collection("sounds")
     .find({}, {projection:{_id:0, createdAt:0, updatedAt: 0}})
     .sort({ metacritic: -1 })
-    .limit(20)
     .toArray();
     //const account = accounts.toJSON();
     

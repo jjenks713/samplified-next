@@ -31,7 +31,7 @@ export default function Upload() {
 
 
     const submitForm = async (e) => {
-        e.preventDefault()
+        //e.preventDefault()
         let dataObj = {
             soundName: name,
             bpm: bpm,
@@ -52,8 +52,8 @@ export default function Upload() {
             }
         }) 
       
-        const { data } = await res.json()
-        setAllSounds((state) => [...state, data])
+/*         const { data } = await res.json()
+        setAllSounds((state) => [...state, data]) */
       
         if (loading) {
           return null

@@ -90,9 +90,9 @@ TablePaginationActions.propTypes = {
 
 const TableData = ({props}) => {
     const sounds = props.map(sound => ({...sound}))
-
+    //console.log(sounds)
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(25);
+    const [rowsPerPage, setRowsPerPage] = React.useState(10);
   
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
@@ -103,7 +103,7 @@ const TableData = ({props}) => {
     };
   
     const handleChangeRowsPerPage = (event) => {
-      setRowsPerPage(parseInt(event.target.value, 25));
+      setRowsPerPage(parseInt(event.target.value, 10));
       setPage(0);
     };
     return (
