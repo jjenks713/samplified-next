@@ -20,30 +20,30 @@ export default function Search(props) {
   const [wordEntered, setWordEntered] = useState("");
   const [noData, setNoData] = useState(true)
 
-  function handleSetData(event) {
-    const drop = event.target.value
-    const newFilter = data.filter((value) => {
-      return value.genre.toLowerCase().includes(drop.toLowerCase())
-    });
-/*     const newFilter1 = data.filter((value) => {
-      return value.key.toLowerCase().includes(drop.toLowerCase()) 
-    });
-    const newFilter2 = data.filter((value) => {
-      return value.instrument.toLowerCase().includes(drop.toLowerCase())
-    });
-    const newFilter3 = data.filter((value) => {
-      return value.loop.toLowerCase().includes(drop.toLowerCase())
-    }); */
+    function handleSetData(event) {
+      const drop = event.target.value
+      const newFilter = data.filter((value) => {
+        return value.genre.toLowerCase().includes(drop.toLowerCase())
+      });
+  /*     const newFilter1 = data.filter((value) => {
+        return value.key.toLowerCase().includes(drop.toLowerCase()) 
+      });
+      const newFilter2 = data.filter((value) => {
+        return value.instrument.toLowerCase().includes(drop.toLowerCase())
+      });
+      const newFilter3 = data.filter((value) => {
+        return value.loop.toLowerCase().includes(drop.toLowerCase())
+      }); */
 
-    setSearchData(newFilter)
-  }
+      setSearchData(newFilter)
+    }
 
-  function clearDrops() {
-    setFilteredData([]);
-    setWordEntered("");
-    setSearchData([])
-    setNoData(true)
-  }
+    function clearDrops() {
+      setFilteredData([]);
+      setWordEntered("");
+      setSearchData([])
+      setNoData(true)
+    }
 
     function handleFilter(event) {
       const searchWord = event.target.value;
@@ -90,15 +90,15 @@ export default function Search(props) {
 
   return (
     <>            
-    <div className='mx-auto px-4 pt-24'>
+    <div className='mx-auto px-4 pt-24 justify-center'>
       <Link href="/"><a className='hover:bg-opacity-30 hover:cursor-pointer'><img className="mx-auto h-12 w-auto" src="/logo-dark.png" alt="Workflow" /></a></Link>
       <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Search all our Sounds</h2>
       <p className="mt-2 text-center text-sm text-gray-600">
       </p>
     </div><br></br><br></br>
 
-    <div className='mx-auto px-4 py-10'>
-      <div className='flex flexwrap justify-center'>
+    <div className='mx-auto px-4 py-10 justify-center '>
+      <div className='grid justify-center'>
 {/*       <div className='pr-10'>
           Key
           <select
@@ -140,7 +140,7 @@ export default function Search(props) {
           </select>
         </div> */}
 
-        <div className='pr-10'>
+        <div className='py-4'>
           Genre
           <select 
           
@@ -159,37 +159,15 @@ export default function Search(props) {
           </select>
         </div>
         {searchData.length > 0 ? 
-          <div className='grip grid-cols-1 gap-0 justify-center'>
-          <div className='row'>
-          <TextField 
-          id="standard-basic" 
-          label="Search Sound Name" 
-          variant="standard" 
-          value={wordEntered}
-          onChange={handleSpecificFilter}/>
-            {filteredData.length === 0 ? (
-            <SearchIcon />
-          ) : (
-              <CloseIcon id="clearBtn" onClick={clearDrops} />
-            )}
-            </div>
-            <br/>
-            {noData ?
-            null
-            :
-            <div className='row text-red-500 text-xs'><small>Nothing matches your search! try again...</small></div>
-            }
-        </div>
-          :
-          <div className='grip grid-cols-1 gap-0 justify-center'>
+          <div className='grid grid-cols-1 gap-0 justify-center'>
             <div className='row'>
             <TextField 
             id="standard-basic" 
             label="Search Sound Name" 
             variant="standard" 
             value={wordEntered}
-            onChange={handleFilter}/>
-              {filteredData.length === 0 ? (
+            onChange={handleSpecificFilter}/>
+              {!wordEntered ? (
               <SearchIcon />
             ) : (
                 <CloseIcon id="clearBtn" onClick={clearDrops} />
@@ -199,14 +177,36 @@ export default function Search(props) {
               {noData ?
               null
               :
-              <div className='row text-red-500 text-xs'><small>Nothing matches your search! try again...</small></div>
+              <div className='row text-red-500 text-xs  pb-4'><small>Nothing matches your search! try again...</small></div>
+              }
+          </div>
+          :
+          <div className='grid grid-cols-1 gap-0 justify-center'>
+            <div className='row'>
+            <TextField 
+            id="standard-basic" 
+            label="Search Sound Name" 
+            variant="standard" 
+            value={wordEntered}
+            onChange={handleFilter}/>
+              {!wordEntered ? (
+              <SearchIcon />
+            ) : (
+                <CloseIcon id="clearBtn" onClick={clearDrops} />
+              )}
+              </div>
+              <br/>
+              {noData ?
+              null
+              :
+              <div className='row text-red-500 text-xs pb-4'><small>Nothing matches your search! try again...</small></div>
               }
           </div>
 
         }
-
-        <div className='py-auto'>
-          <Button onClick={clearDrops}>Clear</Button>
+        
+        <div className='grid justify-center bg-gray-800'>
+          <Button className='text-white' onClick={clearDrops}>All Sounds</Button>
         </div>
       </div>
     </div>

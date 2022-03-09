@@ -108,15 +108,14 @@ const TableData = ({props}) => {
     };
     return (
     <>
-      <TableContainer component={Paper} className="flex">
-        <Table aria-label="custom pagination table" className="shrink">
-          <TableHead>
+      <TableContainer component={Paper} className="flex w-full">
+        <Table aria-label="custom pagination table" className="w-full">
+          <TableHead className="bg-gray-800">
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell align="right">Genre</TableCell>
-              <TableCell align="right">User</TableCell>
-              <TableCell align="right">Download</TableCell>
-              <TableCell align="right">Listen/Download</TableCell>
+              <TableCell className="text-white">Name</TableCell>
+              <TableCell className="text-white" align="right">Genre</TableCell>
+              <TableCell className="text-white" align="right">User</TableCell>
+              <TableCell className="text-white" align="right">Download</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -137,9 +136,6 @@ const TableData = ({props}) => {
                 <a className="text-md">{sound.userName}</a>
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="right">
-                  {sound.file}
-                </TableCell>
-                <TableCell style={{ width: 160 }} align="right">
                   {sound.listen}
                 </TableCell>
                 
@@ -153,11 +149,11 @@ const TableData = ({props}) => {
               </TableRow>
             )}
           </TableBody>
-          <TableFooter>
+          <TableFooter className="text-sm">
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[ 25, 50, 100, { label: "All", value: -1 }]}
-                colSpan={9}
+                rowsPerPageOptions={[ 10, 25, 50, 100, { label: "All", value: -1 }]}
+                colSpan={4}
                 count={sounds.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
