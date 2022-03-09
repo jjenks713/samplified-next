@@ -203,7 +203,7 @@ export default function Search(props) {
         }
         
         <div className='grid justify-center bg-gray-800 text-white'>
-          <Button className='text-white' onClick={clearDrops}>All Sounds</Button>
+          <Button style={{color: "white!important"}} onClick={clearDrops}>All Sounds</Button>
         </div>
       </div>
     </div>

@@ -114,11 +114,11 @@ const TableData = ({props}) => {
       <TableContainer component={Paper} className="flex w-full">
         <Table aria-label="custom pagination table" className="w-full">
           <TableHead className="bg-gray-800">
-            <TableRow className="text-white">
-              <TableCell className="text-white">Name</TableCell>
-              <TableCell className="text-white" align="right">Genre</TableCell>
-              <TableCell className="text-white" align="right">User</TableCell>
-              <TableCell className="text-white" align="right">Download</TableCell>
+            <TableRow>
+              <TableCell style={{color: "white!important"}}>Name</TableCell>
+              <TableCell style={{color: "white!important"}} align="right">Genre</TableCell>
+              <TableCell style={{color: "white!important"}} align="right">User</TableCell>
+              <TableCell style={{color: "white!important"}} align="right">Download</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
