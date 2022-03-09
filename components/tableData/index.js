@@ -90,7 +90,6 @@ TablePaginationActions.propTypes = {
 
 const TableData = ({props}) => {
     const sounds = props.map(sound => ({...sound}))
-    //console.log(sounds)
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
   
@@ -99,6 +98,7 @@ const TableData = ({props}) => {
       page > 0 ? Math.max(0, (1 + page) * rowsPerPage - sounds.length) : 0;
   
     const handleChangePage = (event, newPage) => {
+      console.log(newPage)
       setPage(newPage);
     };
   
@@ -106,12 +106,15 @@ const TableData = ({props}) => {
       setRowsPerPage(parseInt(event.target.value, 10));
       setPage(0);
     };
+
+
+ 
     return (
     <>
       <TableContainer component={Paper} className="flex w-full">
         <Table aria-label="custom pagination table" className="w-full">
           <TableHead className="bg-gray-800">
-            <TableRow>
+            <TableRow className="text-white">
               <TableCell className="text-white">Name</TableCell>
               <TableCell className="text-white" align="right">Genre</TableCell>
               <TableCell className="text-white" align="right">User</TableCell>
@@ -145,7 +148,7 @@ const TableData = ({props}) => {
     
             {emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>
-                <TableCell colSpan={9} />
+                <TableCell colSpan={4} />
               </TableRow>
             )}
           </TableBody>

@@ -50,9 +50,9 @@ export default function Home() {
               available at your fingertips.
               </p><br></br>
               {session ?
-              <Button className='bg-gray-800 text-white text-sm'><Link href="/userpage">Go to your Profile</Link></Button>
+              <Button className='bg-gray-800 text-white text-sm'><Link href="/userpage" className="text-white">Go to your Profile</Link></Button>
               :
-              <Button className='bg-gray-800 text-white text-sm'><Link href="/sign-up">Sign up Now</Link></Button>
+              <Button className='bg-gray-800 text-white text-sm'><Link href="/sign-up" className="text-white">Sign up Now</Link></Button>
               }
             </div>
           </div>
