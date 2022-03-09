@@ -59,7 +59,6 @@ export default function Search(props) {
         setFilteredData(newFilter);
       }
       if (newFilter.length === 0) {
-        console.log('its 0 probably')
         setNoData(false)
       } else {
         setNoData(true)
@@ -78,10 +77,8 @@ export default function Search(props) {
         setFilteredData([]);
       } else {
         setFilteredData(newFilter);
-        console.log(newFilter)
       }
       if (newFilter.length == 0) {
-        console.log('its 0 probably', newFilter.length)
         setNoData(false)
       } else {
         setNoData(true)
