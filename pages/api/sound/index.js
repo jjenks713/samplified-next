@@ -9,9 +9,13 @@ const handler = nc({
 })
 
 handler.use(middleware)
+
 handler.post(async(req, res) => {
     const dataObj = req.body.dataObj
-    console.log(dataObj)
+    const file = req.body.dataObj.file
+    
+    
+    console.log(req.body)
     const newSound = await createSound(req.db,
       { 
         createdBy: dataObj.user,
@@ -21,16 +25,10 @@ handler.post(async(req, res) => {
         genre: dataObj.genre,
         loop: dataObj.loop,
         instrument: dataObj.instrument,
-        file: dataObj.file,
+        file: '',
         userName: dataObj.userName,
     })
     res.send({ data: newSound });
   })
-/*   .put(async (req, res) => {
-    res.end("async/await is also supported!");
-  })
-  .patch(async (req, res) => {
-    throw new Error("Throws me around! Error can be caught and handled.");
-  }); */
 
 export default handler;

@@ -14,7 +14,7 @@ export const getSound = async (sound) => {
 
 const createSound = async (Db, data) => {
 
-  console.log(data, "THIS IS THE SOUNDS HERE", Db)
+  //console.log(data, "THIS IS THE SOUNDS HERE", Db)
   const sounds = await Db
     .collection('sounds')
     .insertOne({

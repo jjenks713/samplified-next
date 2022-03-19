@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/client';
 import { useRouter } from 'next/router'
 
+
 const keys = ["", "A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
 const genres = ["", "edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
 const instruments = ["", "fx","guitar","drums","percusion","vocals","bass","keys","string","synth"]
@@ -20,13 +21,35 @@ export default function Upload() {
     const [name, updateName] = useState("");
     const [loop, updateLoop] = useState("")
     const [instrument, updateInstrument] = useState("")
-    const [file, updateFile] = useState('')
+    const [progress , setProgress] = useState(0);
 
     const [session, loading] = useSession()
     let user
 
     if (session) {
         user = session.user
+    }
+
+    const uploadFile = async (e) => {
+        const newFile = e.target.files[0]
+
+        console.log(newFile)
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/aws`, {
+            method: 'POST',
+            body: newFile,
+        })
+        .then(response => response.json())
+        .then(result => {
+        console.log('Success:', result);
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        });
+
+        if (loading) {
+            return null
+        }
     }
 
 
@@ -39,7 +62,6 @@ export default function Upload() {
             genre: genre,
             loop: loop,
             instrument: instrument,
-            file: file,
             user: user.id,
             userName: user.name
         }
@@ -52,13 +74,12 @@ export default function Upload() {
             }
         }) 
       
-/*         const { data } = await res.json()
-        setAllSounds((state) => [...state, data]) */
-      
         if (loading) {
           return null
         }
     }
+
+
 
 
     return (
@@ -197,7 +218,14 @@ export default function Upload() {
                     </label>
                     </div>
                     <div className="md:w-2/3">
-                    <input type="file" className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="File" />
+                    <input 
+                    type="file" 
+                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                    placeholder="File" 
+                    onChange={uploadFile}
+                    />
+                    <div>Progress{progress}%</div>
+
                     </div>
                 </div>
 
