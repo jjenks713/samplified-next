@@ -5,15 +5,15 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/client';
 import { useRouter } from 'next/router'
-
+import AWS from 'aws-sdk'
 
 const keys = ["", "A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
 const genres = ["", "edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
 const instruments = ["", "fx","guitar","drums","percusion","vocals","bass","keys","string","synth"]
 
 
-export default function Upload() {
-    const router = useRouter();
+export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
+    const [session, loading] = useSession()
 
     const [bpm, updateBpm] = useState("");
     const [key, updateKey] = useState("");
@@ -23,33 +23,44 @@ export default function Upload() {
     const [instrument, updateInstrument] = useState("")
     const [progress , setProgress] = useState(0);
 
-    const [session, loading] = useSession()
     let user
-
     if (session) {
         user = session.user
     }
 
-    const uploadFile = async (e) => {
-        const newFile = e.target.files[0]
+    const uploadFile = (file) => {
 
-        console.log(newFile)
+        const REGION ='us-east-1';
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/aws`, {
-            method: 'POST',
-            body: newFile,
+        AWS.config.update({
+            accessKeyId: AWSAccessKeyId,
+            secretAccessKey: AWSSecretKey
+          })
+     
+        const myBucket = new AWS.S3({
+            params: { Bucket: S3_BUCKET},
+            region: REGION,
+            url: `https://${S3_BUCKET}.s3.amazonAWS.com/${file.name}`
         })
-        .then(response => response.json())
-        .then(result => {
-        console.log('Success:', result);
+      
+        console.log(file)
+      
+        const params = {
+            ACL: 'public-read',
+            Body: file,
+            Bucket: S3_BUCKET,
+            Key: file.name,
+            ContentType: file.type,
+        };
+     
+        myBucket.putObject(params)
+            .send((err) => {
+                if (err) {
+                console.log(err)
+                } else (
+                console.log("successfully uploaded")
+                )
         })
-        .catch(error => {
-        console.error('Error:', error);
-        });
-
-        if (loading) {
-            return null
-        }
     }
 
 
@@ -63,10 +74,12 @@ export default function Upload() {
             loop: loop,
             instrument: instrument,
             user: user.id,
-            userName: user.name
+            userName: user.name,
         }
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/sound`, {
+        console.log(dataObj)
+
+        await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/sound`, {
         method: 'POST',
         body: JSON.stringify({dataObj}),
         headers: {
@@ -222,7 +235,7 @@ export default function Upload() {
                     type="file" 
                     className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                     placeholder="File" 
-                    onChange={uploadFile}
+                    onChange={(e) => uploadFile(e.target.files[0])}
                     />
                     <div>Progress{progress}%</div>
 
@@ -242,4 +255,15 @@ export default function Upload() {
         </Container>
         </>
     )
+}
+
+export async function getServerSideProps(ctx) {
+
+    const S3_BUCKET = process.env.S3_BUCKET;
+    const AWSAccessKeyId = process.env.AWSAccessKeyId
+    const AWSSecretKey = process.env.AWSSecretKey
+
+    return {
+        props: { S3_BUCKET, AWSAccessKeyId, AWSSecretKey },
+    }
 }

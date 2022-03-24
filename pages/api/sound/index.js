@@ -12,10 +12,11 @@ handler.use(middleware)
 
 handler.post(async(req, res) => {
     const dataObj = req.body.dataObj
-    const file = req.body.dataObj.file
+    //const file = req.body.dataObj.file
     
     
     console.log(req.body)
+
     const newSound = await createSound(req.db,
       { 
         createdBy: dataObj.user,
