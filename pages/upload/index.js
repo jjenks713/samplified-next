@@ -86,7 +86,8 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
     }
 
     const submitForm = async (e) => {
-        //e.preventDefault()
+        e.preventDefault()
+
         let dataObj = {
             soundName: name,
             bpm: bpm,
@@ -110,6 +111,8 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
         if (loading) {
           return null
         }
+        alert("Your sound was uploaded")
+        window.location.href = '/userpage'
     }
 
 
