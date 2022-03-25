@@ -42,10 +42,14 @@ const User = ({ sounds }) => {
         return (
           <>
           <Navigator/>
-          <Container maxWidth="md" className="grid justify-center">
-          <IdCard />
-          </Container>
-          <UserTable sounds={sounds} />
+          <div className='grid sm:grid-cols-8 sm:grid-rows-1 justify-center'>
+            <div className='col-span-8 lg:col-span-2 bg-gray-200 px-10 py-4 sm:py-10'>
+              <IdCard />     
+            </div> 
+            <div className='col-span-8 lg:col-span-6'>
+              <UserTable sounds={sounds} />
+            </div>
+          </div>
           </>
       )
     }

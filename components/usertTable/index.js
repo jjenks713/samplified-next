@@ -58,8 +58,8 @@ export default function userTable( props ) {
 
 
     return (
-      <Container maxWidth="lg" className="py-14">
-          <div className="grid justify-center py-14">
+      <Container maxWidth="lg" className="pb-10">
+          <div className="grid justify-center pt-14">
             <div className='grip grid-cols-1 gap-0 justify-center'>
               <div className='row'>
               <TextField 
