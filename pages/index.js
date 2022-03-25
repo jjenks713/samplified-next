@@ -86,7 +86,7 @@ export default function Home() {
 
       <div className='py-10 bg-gray-800 grid justify-center text-white'>
         <p>
-          something fun here
+          something super fun will go here
         </p>
       </div>
 
