@@ -112,8 +112,8 @@ const TableData = ({props}) => {
     return (
     <>
       <TableContainer component={Paper} className="flex w-full">
-        <Table aria-label="custom pagination table" className="">
-          <TableHead className="bg-gray-800">
+        <Table aria-label="custom pagination table" className="w-full">
+          <TableHead className="bg-gray-800 w-full">
             <TableRow>
               <TableCell className="text-white text-center">Sounds</TableCell>
 {/*               <TableCell style={{color: "white!important"}} align="right">Genre</TableCell>

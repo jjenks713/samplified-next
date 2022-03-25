@@ -33,8 +33,21 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
 
     const uploadFile = (file) => {
 
-        const REGION ='us-east-1';
+        console.log(file.type)
 
+
+        if (file.type == "audio/mpeg") {
+            awsUpload(file)
+        } else if (file.type == "audio/wav") {
+            awsUpload(file)
+        } else {
+            alert("Please upload only a mp3 or wav file")
+        }
+
+    }
+
+    const awsUpload = (file) => {
+        const REGION ='us-east-1';
         const fileName = file.name.replace(/ /g, '')
 
         setUrl(`https://${S3_BUCKET}.s3.us-west-2.amazonaws.com/${fileName}`)
