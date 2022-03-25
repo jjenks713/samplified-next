@@ -41,7 +41,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
         } else if (file.type == "audio/wav") {
             awsUpload(file)
         } else {
-            alert("Please upload only a mp3 or wav file")
+            alert("Upload must me mp3 or wav")
         }
 
     }
