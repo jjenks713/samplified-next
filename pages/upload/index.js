@@ -6,10 +6,12 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/client';
 import { useRouter } from 'next/router'
 import AWS from 'aws-sdk'
+import LinearProgress from '@mui/material/LinearProgress';
+
 
 const keys = ["", "A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
 const genres = ["", "edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
-const instruments = ["", "fx","guitar","drums","percusion","vocals","bass","keys","string","synth"]
+const instruments = ["", "fx","guitar","drums","percussion","vocals","bass","keys","string","synth"]
 
 
 export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
@@ -21,7 +23,8 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
     const [name, updateName] = useState("");
     const [loop, updateLoop] = useState("")
     const [instrument, updateInstrument] = useState("")
-    const [progress , setProgress] = useState(0);
+    const [progress , setProgress] = useState(false);
+    const [url, setUrl] = useState(``)
 
     let user
     if (session) {
@@ -32,6 +35,10 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
 
         const REGION ='us-east-1';
 
+        const fileName = file.name.replace(/ /g, '')
+
+        setUrl(`https://${S3_BUCKET}.s3.us-west-2.amazonaws.com/${fileName}`)
+
         AWS.config.update({
             accessKeyId: AWSAccessKeyId,
             secretAccessKey: AWSSecretKey
@@ -40,29 +47,31 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
         const myBucket = new AWS.S3({
             params: { Bucket: S3_BUCKET},
             region: REGION,
-            url: `https://${S3_BUCKET}.s3.amazonAWS.com/${file.name}`
+            url: `https://${S3_BUCKET}.s3.us-west-2.amazonaws.com/${fileName}`
         })
       
-        console.log(file)
       
         const params = {
             ACL: 'public-read',
             Body: file,
             Bucket: S3_BUCKET,
-            Key: file.name,
+            Key: fileName,
             ContentType: file.type,
         };
      
         myBucket.putObject(params)
+            .on('httpUploadProgress', (evt) => {
+                setProgress(true)
+            })  
             .send((err) => {
                 if (err) {
                 console.log(err)
-                } else (
+                } else {
+                setProgress(false)
                 console.log("successfully uploaded")
-                )
+                }
         })
     }
-
 
     const submitForm = async (e) => {
         //e.preventDefault()
@@ -75,6 +84,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
             instrument: instrument,
             user: user.id,
             userName: user.name,
+            url: url
         }
 
         console.log(dataObj)
@@ -237,7 +247,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                     placeholder="File" 
                     onChange={(e) => uploadFile(e.target.files[0])}
                     />
-                    <div>Progress{progress}%</div>
+                    <div>{progress ? <LinearProgress /> : null }</div>
 
                     </div>
                 </div>

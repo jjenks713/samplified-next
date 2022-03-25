@@ -139,7 +139,12 @@ const TableData = ({props}) => {
                 <a className="text-md">{sound.userName}</a>
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="right">
-                  {sound.listen}
+                <audio preload="auto" controls>
+                  <source src={sound.url} type="audio/mpeg"/>
+                  <source src={sound.url} type="audio/wav"/>
+                  <source src={sound.url} type="audio/ogg"/>
+                  Your browser does not support HTML5 audio. Please update your browser to view this media content.
+                </audio>
                 </TableCell>
                 
               </TableRow>

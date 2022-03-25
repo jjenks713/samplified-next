@@ -26,7 +26,7 @@ handler.post(async(req, res) => {
         genre: dataObj.genre,
         loop: dataObj.loop,
         instrument: dataObj.instrument,
-        file: '',
+        url: dataObj.url,
         userName: dataObj.userName,
     })
     res.send({ data: newSound });
