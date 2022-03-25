@@ -112,21 +112,21 @@ const TableData = ({props}) => {
     return (
     <>
       <TableContainer component={Paper} className="flex w-full">
-        <Table aria-label="custom pagination table" className="w-full">
-          <TableHead className="bg-gray-800 w-full">
-            <TableRow>
+        <table aria-label="custom pagination table" className="w-full">
+          <thead className="bg-gray-800 w-full">
+            <tr>
               <TableCell className="text-white text-center">Sounds</TableCell>
 {/*               <TableCell style={{color: "white!important"}} align="right">Genre</TableCell>
               <TableCell style={{color: "white!important"}} align="right">User</TableCell>
               <TableCell style={{color: "white!important"}} align="right">Download</TableCell>  */}
-            </TableRow>
-          </TableHead>
+            </tr>
+          </thead>
           <TableBody>
             {(rowsPerPage > 0
               ? sounds.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : sounds
             ).map((sound) => (
-              <TableRow key={sound.createdAt} className="flex flex-wrap sm:flex-nowrap border-b-8 justify-center sm:justify-between">
+              <tr key={sound.createdAt} className="flex flex-wrap sm:flex-nowrap border-b-8 justify-center sm:justify-between">
               
                 <TableCell component="th" scope="sounds" className="w-80 text-center sm:text-left sm:border-b-0">
                   <a className="text-lg">{sound.name}</a><br></br>
@@ -147,18 +147,18 @@ const TableData = ({props}) => {
                 </audio>
                 </TableCell>
                 
-              </TableRow>
+              </tr>
     
             ))}
     
             {emptyRows > 0 && (
-              <TableRow style={{ height: 53 * emptyRows }}>
+              <tr style={{ height: 53 * emptyRows }}>
                 <TableCell colSpan={4} />
-              </TableRow>
+              </tr>
             )}
           </TableBody>
           <TableFooter className="text-sm">
-            <TableRow>
+            <tr>
               <TablePagination
                 rowsPerPageOptions={[ 10, 25, 50, 100, { label: "All", value: -1 }]}
                 colSpan={4}
@@ -175,9 +175,9 @@ const TableData = ({props}) => {
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 ActionsComponent={TablePaginationActions}
               />
-            </TableRow>
+            </tr>
           </TableFooter>
-        </Table>
+        </table>
       </TableContainer>
     </>
     )
