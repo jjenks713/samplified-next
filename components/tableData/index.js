@@ -112,13 +112,13 @@ const TableData = ({props}) => {
     return (
     <>
       <TableContainer component={Paper} className="flex w-full">
-        <Table aria-label="custom pagination table" className="w-full">
+        <Table aria-label="custom pagination table" className="">
           <TableHead className="bg-gray-800">
             <TableRow>
-              <TableCell style={{color: "white!important"}}>Name</TableCell>
-              <TableCell style={{color: "white!important"}} align="right">Genre</TableCell>
+              <TableCell className="text-white text-center">Sounds</TableCell>
+{/*               <TableCell style={{color: "white!important"}} align="right">Genre</TableCell>
               <TableCell style={{color: "white!important"}} align="right">User</TableCell>
-              <TableCell style={{color: "white!important"}} align="right">Download</TableCell>
+              <TableCell style={{color: "white!important"}} align="right">Download</TableCell>  */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -126,19 +126,19 @@ const TableData = ({props}) => {
               ? sounds.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : sounds
             ).map((sound) => (
-              <TableRow key={sound.createdAt}>
+              <TableRow key={sound.createdAt} className="flex flex-wrap sm:flex-nowrap border-b-8 justify-center sm:justify-between">
               
-                <TableCell component="th" scope="sounds">
+                <TableCell component="th" scope="sounds" className="w-80 text-center sm:text-left sm:border-b-0">
                   <a className="text-lg">{sound.name}</a><br></br>
                   <small>{sound.bpm} bpm, Key {sound.key}, {sound.loop}, {sound.instrument}</small>
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="right">
+                <TableCell className=" sm:border-b-0">
                 <a className="text-md">{sound.genre}</a>
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="right">
+                <TableCell className=" sm:border-b-0">
                 <a className="text-md">{sound.userName}</a>
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="right">
+                <TableCell className="text-center sm:text-left sm:border-b-0">
                 <audio preload="auto" controls>
                   <source src={sound.url} type="audio/mpeg"/>
                   <source src={sound.url} type="audio/wav"/>
