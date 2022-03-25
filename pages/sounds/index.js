@@ -10,7 +10,6 @@ export default function AllSounds({ allSounds }) {
         <>
         <Navigator />
         <Search allSounds={allSounds}/>
-        <Footer />
         </>
     )
 }

@@ -114,11 +114,11 @@ const TableData = ({props}) => {
       <TableContainer component={Paper} className="flex w-full">
         <table aria-label="custom pagination table" className="w-full">
           <thead className="bg-gray-800 w-full">
-            <tr>
-              <TableCell className="text-white text-center">Sounds</TableCell>
-{/*               <TableCell style={{color: "white!important"}} align="right">Genre</TableCell>
-              <TableCell style={{color: "white!important"}} align="right">User</TableCell>
-              <TableCell style={{color: "white!important"}} align="right">Download</TableCell>  */}
+            <tr className="text-white text-center grid justify-center">
+              <th className="text-center sm:text-left py-4">Sounds</th>
+{/*               <th className="text-center sm:text-left">Genre</th>
+              <th className="text-center sm:text-left">User</th>
+              <th className="text-center sm:text-left">Download</th>  */}
             </tr>
           </thead>
           <TableBody>
@@ -128,24 +128,29 @@ const TableData = ({props}) => {
             ).map((sound) => (
               <tr key={sound.createdAt} className="flex flex-wrap sm:flex-nowrap border-b-8 justify-center sm:justify-between">
               
-                <TableCell component="th" scope="sounds" className="w-80 text-center sm:text-left sm:border-b-0">
-                  <a className="text-lg">{sound.name}</a><br></br>
-                  <small>{sound.bpm} bpm, Key {sound.key}, {sound.loop}, {sound.instrument}</small>
-                </TableCell>
-                <TableCell className=" sm:border-b-0">
-                <a className="text-md">{sound.genre}</a>
-                </TableCell>
-                <TableCell className=" sm:border-b-0">
-                <a className="text-md">{sound.userName}</a>
-                </TableCell>
-                <TableCell className="text-center sm:text-left sm:border-b-0">
+                <th component="th" scope="sounds" className="p-4 w-72 text-center sm:text-left sm:border-b-0">
+                  <a className="text-lg underline">{sound.name}</a><br></br>
+                  <ul className="text-xs flex flex-wrap justify-center sm:justify-start pt-2 lowercase">
+                    <li className="border rounded-xl p-1 mr-1">{sound.bpm} bpm</li>
+                    <li className="border rounded-xl p-1 mr-1">Key {sound.key}</li>
+                    <li className="border rounded-xl p-1 mr-1">{sound.loop}</li>
+                    <li className="border rounded-xl p-1 mr-1">{sound.instrument}</li>
+                  </ul>
+                </th>
+                <th className="p-4 sm:border-b-0 w-24 sm:mt-4">
+                <a className="text-sm">{sound.genre}</a>
+                </th>
+                <th className="p-4 sm:border-b-0 sm:mt-4">
+                <a className="text-sm">{sound.userName}</a>
+                </th>
+                <th className="p-4 text-center sm:text-left sm:border-b-0">
                 <audio preload="auto" controls>
                   <source src={sound.url} type="audio/mpeg"/>
                   <source src={sound.url} type="audio/wav"/>
                   <source src={sound.url} type="audio/ogg"/>
                   Your browser does not support HTML5 audio. Please update your browser to view this media content.
                 </audio>
-                </TableCell>
+                </th>
                 
               </tr>
     

@@ -86,131 +86,140 @@ export default function Search(props) {
     };
 
   return (
-    <>            
-    <div className='mx-auto px-4 pt-24 justify-center'>
-      <Link href="/"><a className='hover:bg-opacity-30 hover:cursor-pointer'><img className="mx-auto h-12 w-auto" src="/logo-dark.png" alt="Workflow" /></a></Link>
-      <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Search all our Sounds</h2>
-      <p className="mt-2 text-center text-sm text-gray-600">
-      </p>
-    </div><br></br><br></br>
+  <>   
+    <div className='grid md:grid-cols-8 md:grid-rows-1 justify-center'>
 
-    <div className='mx-auto px-4 py-10 justify-center '>
-      <div className='grid justify-center'>
-{/*       <div className='pr-10'>
-          Key
-          <select
-          placeholder="Key" 
-          className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-          onChange={handleSetData}
-          >
-          {keys.map(key => (
-            <option key={key} placeholder="Key">{key}</option>
-          ))
-          }
-          </select>
+        <div className='col-span-8 md:col-span-2 bg-gray-200 px-10 py-4 sm:py-10'>
+          <div className='pt-4 sm:pt-0'>
+              <h2 className="sm:mt-6 text-center text-3xl font-extrabold text-gray-900">Search all our Sounds</h2>
+              <p className="mt-2 text-center text-sm text-gray-600">
+              </p>
+            </div><br></br><br></br>
+
+            <div className='mx-auto px-4 py-10 bg-white justify-center '>
+              <div className='grid justify-center'>
+        {/*       <div className='pr-10'>
+                  Key
+                  <select
+                  placeholder="Key" 
+                  className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                  onChange={handleSetData}
+                  >
+                  {keys.map(key => (
+                    <option key={key} placeholder="Key">{key}</option>
+                  ))
+                  }
+                  </select>
+                </div>
+
+                <div className='pr-10'>
+                  Loop or One-shot
+                  <select
+                  placeholder="Loop or One-shot" 
+                  className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                  onChange={handleSetData}
+                  >
+                    <option></option>
+                    <option key={"loop"}>Loop</option>
+                    <option key={"one-shot"}>One-shot</option>
+                  </select>
+                </div>
+
+                <div className='pr-10'>
+                  Instrument
+                  <select
+                  placeholder="Instrument" 
+                  className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                  onChange={handleSetData}
+                  >
+                  {instruments.map(instrument => (
+                    <option key={instrument} placeholder="Instrument">{instrument}</option>
+                  ))
+                  }
+                  </select>
+                </div> */}
+
+                <div className='py-4'>
+                  Genre
+                  <select 
+                  
+                  placeholder="Genre" 
+                  className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                  onChange={handleSetData}
+                  required
+                  >
+                    {
+                        genres.map((genre) => (
+                            <option key={genre} placeholder="Genre" value={genre}>
+                              {genre}
+                            </option>
+                        ))
+                    }
+                  </select>
+                </div>
+                {searchData.length > 0 ? 
+                  <div className='grid grid-cols-1 gap-0 justify-center'>
+                    <div className='row'>
+                    <TextField 
+                    id="standard-basic" 
+                    label="Search Sound Name" 
+                    variant="standard" 
+                    value={wordEntered}
+                    onChange={handleSpecificFilter}/>
+                      {!wordEntered ? (
+                      <SearchIcon />
+                    ) : (
+                        <CloseIcon id="clearBtn" onClick={clearDrops} />
+                      )}
+                      </div>
+                      <br/>
+                      {noData ?
+                      null
+                      :
+                      <div className='row text-red-500 text-xs  pb-4'><small>Nothing matches your search! try again...</small></div>
+                      }
+                  </div>
+                  :
+                  <div className='grid grid-cols-1 gap-0 justify-center'>
+                    <div className='row'>
+                    <TextField 
+                    id="standard-basic" 
+                    label="Search Sound Name" 
+                    variant="standard" 
+                    value={wordEntered}
+                    onChange={handleFilter}/>
+                      {!wordEntered ? (
+                      <SearchIcon />
+                    ) : (
+                        <CloseIcon id="clearBtn" onClick={clearDrops} />
+                      )}
+                      </div>
+                      <br/>
+                      {noData ?
+                      null
+                      :
+                      <div className='row text-red-500 text-xs pb-4'><small>Nothing matches your search! try again...</small></div>
+                      }
+                  </div>
+
+                }
+                
+                <div className='grid justify-center bg-gray-800 text-white'>
+                  <Button style={{color: "white!important"}} onClick={clearDrops}>All Sounds</Button>
+                </div>
+              </div>
+            </div>
         </div>
 
-        <div className='pr-10'>
-          Loop or One-shot
-          <select
-          placeholder="Loop or One-shot" 
-          className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-          onChange={handleSetData}
-          >
-            <option></option>
-            <option key={"loop"}>Loop</option>
-            <option key={"one-shot"}>One-shot</option>
-          </select>
-        </div>
-
-        <div className='pr-10'>
-          Instrument
-          <select
-          placeholder="Instrument" 
-          className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-          onChange={handleSetData}
-          >
-          {instruments.map(instrument => (
-            <option key={instrument} placeholder="Instrument">{instrument}</option>
-          ))
-          }
-          </select>
-        </div> */}
-
-        <div className='py-4'>
-          Genre
-          <select 
           
-          placeholder="Genre" 
-          className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-          onChange={handleSetData}
-          required
-          >
-            {
-                genres.map((genre) => (
-                    <option key={genre} placeholder="Genre" value={genre}>
-                      {genre}
-                    </option>
-                ))
-            }
-          </select>
+        <div className='col-span-8 sm:col-span-6'>
+          <AllTable filteredData={filteredData} allSounds={allSounds} searchData={searchData} /> 
         </div>
-        {searchData.length > 0 ? 
-          <div className='grid grid-cols-1 gap-0 justify-center'>
-            <div className='row'>
-            <TextField 
-            id="standard-basic" 
-            label="Search Sound Name" 
-            variant="standard" 
-            value={wordEntered}
-            onChange={handleSpecificFilter}/>
-              {!wordEntered ? (
-              <SearchIcon />
-            ) : (
-                <CloseIcon id="clearBtn" onClick={clearDrops} />
-              )}
-              </div>
-              <br/>
-              {noData ?
-              null
-              :
-              <div className='row text-red-500 text-xs  pb-4'><small>Nothing matches your search! try again...</small></div>
-              }
-          </div>
-          :
-          <div className='grid grid-cols-1 gap-0 justify-center'>
-            <div className='row'>
-            <TextField 
-            id="standard-basic" 
-            label="Search Sound Name" 
-            variant="standard" 
-            value={wordEntered}
-            onChange={handleFilter}/>
-              {!wordEntered ? (
-              <SearchIcon />
-            ) : (
-                <CloseIcon id="clearBtn" onClick={clearDrops} />
-              )}
-              </div>
-              <br/>
-              {noData ?
-              null
-              :
-              <div className='row text-red-500 text-xs pb-4'><small>Nothing matches your search! try again...</small></div>
-              }
-          </div>
 
-        }
-        
-        <div className='grid justify-center bg-gray-800 text-white'>
-          <Button style={{color: "white!important"}} onClick={clearDrops}>All Sounds</Button>
-        </div>
-      </div>
-    </div>
-    
 
-    <AllTable filteredData={filteredData} allSounds={allSounds} searchData={searchData} /> 
-    </>
+    </div>         
+
+  </>
   )
 }
 
