@@ -90,6 +90,7 @@ TablePaginationActions.propTypes = {
 
 const TableData = ({props}) => {
     const sounds = props.map(sound => ({...sound}))
+    console.log(sounds)
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
   
@@ -144,10 +145,7 @@ const TableData = ({props}) => {
                 <a className="text-sm">{sound.userName}</a>
                 </th>
                 <th className="p-4 text-center sm:text-left sm:border-b-0">
-                <audio preload="auto" controls>
-                  <source src={sound.url} type="audio/mpeg"/>
-                  <source src={sound.url} type="audio/wav"/>
-                  <source src={sound.url} type="audio/ogg"/>
+                <audio src={sound.url} controls>
                   Your browser does not support HTML5 audio. Please update your browser to view this media content.
                 </audio>
                 </th>

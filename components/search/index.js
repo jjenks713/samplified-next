@@ -34,7 +34,7 @@ export default function Search(props) {
       const newFilter3 = data.filter((value) => {
         return value.loop.toLowerCase().includes(drop.toLowerCase())
       }); */
-
+      //console.log(newFilter)
       setSearchData(newFilter)
     }
 
