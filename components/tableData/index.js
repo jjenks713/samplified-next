@@ -1,22 +1,20 @@
 import * as React from "react";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import { useTheme, styled } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import TableFooter from "@mui/material/TableFooter";
 import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import TableHead from "@mui/material/TableHead";
-import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
+import Link from "next/link"
 
 
 
@@ -91,7 +89,6 @@ TablePaginationActions.propTypes = {
 
 const TableData = ({props}) => {
     const sounds = props.map(sound => ({...sound}))
-    console.log(sounds)
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
   
@@ -100,7 +97,6 @@ const TableData = ({props}) => {
       page > 0 ? Math.max(0, (1 + page) * rowsPerPage - sounds.length) : 0;
   
     const handleChangePage = (event, newPage) => {
-      console.log(newPage)
       setPage(newPage);
     };
   
@@ -153,7 +149,7 @@ const TableData = ({props}) => {
                 <a className="text-sm">{sound.genre}</a>
                 </th>
                 <th className="p-4 sm:border-b-0 sm:mt-4">
-                <a className="text-sm">{sound.userName}</a>
+                <Link href={`/publicuser/${encodeURIComponent(sound.createdBy)}`}><a className="text-sm hover:opacity-70">{sound.userName}</a></Link>
                 </th>
                 <th className="p-4 text-center sm:text-left sm:border-b-0">
                 <audio src={sound.url} controls>

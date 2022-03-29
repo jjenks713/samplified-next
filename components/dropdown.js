@@ -1,8 +1,6 @@
 import { useSession, signOut } from 'next-auth/client'
-import Head from 'next/head'
 import NextLink from 'next/link'
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -19,15 +17,6 @@ const handleClick = (event) => {
 const handleClose = () => {
   setAnchorEl(null);
 };
-
-/* function signOutFunction() {
-    signOut()
-    homePage()
-}
-function homePage() {
-    window.location.href = '/'
-} */
-
 
     return (
         <button appearance="primary" fontSize="16px">

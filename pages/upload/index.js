@@ -1,8 +1,7 @@
 import Container from '@mui/material/Container';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/client';
-import { useRouter } from 'next/router'
 import AWS from 'aws-sdk'
 import LinearProgress from '@mui/material/LinearProgress';
 import Checkbox from '@mui/material/Checkbox';
@@ -33,7 +32,6 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
 
     const updateTerms = () => {
         setTerms(!terms)
-        console.log(terms)
     }
 
     const uploadFile = (file) => {

@@ -3,7 +3,7 @@ import connectToDB  from '../../../db/connect'
 
 
 
-export default async function dbInfo() {
+export default async function userInfo() {
 
     const { db } = await connectToDB()
 
