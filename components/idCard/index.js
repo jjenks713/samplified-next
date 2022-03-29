@@ -22,7 +22,7 @@ const IdCard = ({ publicUser }) => {
                     </div>
 
                     <div className="flex items-center justify-center">
-                        <img className="w-10 h-10 rounded-full mr-4" src={userInfo.image} alt="Avatar"></img>
+                        <img className="rounded-full mr-4" src={userInfo.image} alt="Avatar"></img>
                     </div>
 
                 </div>
