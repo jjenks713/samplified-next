@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useTheme, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -108,6 +109,16 @@ const TableData = ({props}) => {
       setPage(0);
     };
 
+    useEffect(() => {
+      document.addEventListener('play', function(e){
+        var audios = document.getElementsByTagName('audio');
+        for(var i = 0, len = audios.length; i < len;i++){
+            if(audios[i] != e.target){
+                audios[i].pause();
+            }
+        }
+      }, true);
+    })
 
  
     return (
