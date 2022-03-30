@@ -3,6 +3,7 @@ import connectToDB from './connect';
 import { nanoid } from 'nanoid'
 
 const { db } = connectToDB()
+
 export const getSound = async (sound) => {
   console.log(sound)
   return db
