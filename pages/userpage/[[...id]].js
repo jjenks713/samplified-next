@@ -63,7 +63,8 @@ const User = ({ sounds }) => {
           <div className='grid sm:grid-cols-8 sm:grid-rows-1 justify-center'>
             <div className='col-span-8 lg:col-span-2 bg-gray-200 px-10 py-4 sm:py-10'>
               <IdCard />
-              <div className='grid justify-center'>
+
+              {/* <div className='grid justify-center'>
                 <Button onClick={handleOpen}>Edit Profile</Button>
                 <Modal
                   open={open}
@@ -80,7 +81,7 @@ const User = ({ sounds }) => {
                     </div>
                   </Box>
                 </Modal>
-              </div> 
+              </div>  */}
             </div> 
             <div className='col-span-8 lg:col-span-6'>
               <UserTable sounds={sounds} />

@@ -21,11 +21,10 @@ handler.post(async(req, res) => {
       { 
         id: dataObj.id,
         name: dataObj.name,
-        email: dataObj.email,
         info: dataObj.info,
         soundcloud: dataObj.soundcloud,
         twitter: dataObj.twitter,
-        Facebook: dataObj.facebook
+        facebook: dataObj.facebook
     })
     res.send({ data: editUser });
   })
