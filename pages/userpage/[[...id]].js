@@ -72,8 +72,8 @@ const User = ({ sounds, info }) => {
         return (
           <>
           <Navigator/>
-          <div className='grid sm:grid-cols-8 sm:grid-rows-1 justify-center'>
-            <div className='col-span-8 lg:col-span-2 bg-gray-200 px-4 py-4 sm:py-10'>
+          <div className='grid sm:grid-cols-8 sm:grid-rows-1 text-center justify-center'>
+            <div className='col-span-8 lg:col-span-2 bg-gray-200 px-4 py-4 sm:py-10 justify-center'>
               <IdCard info={userInfo}/>
 
               <div className='grid justify-center'>

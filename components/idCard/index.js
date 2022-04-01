@@ -27,7 +27,7 @@ const IdCard = ({ publicUser, info }) => {
         <div>
             <div className="w-full lg:max-w-full lg:flex py-10 text-center">
     
-                <div className="border p-10 border-gray-800 bg-white rounded-b flex flex-col justify-between text-center leading-normal">
+                <div className="border w-full p-10 border-gray-800 bg-white rounded-b flex flex-col justify-between text-center leading-normal">
                     <div className="mb-8">
                             <div className="text-gray-900 font-bold text-xl mb-2">{userInfo.name}</div>
                             <p className="text-gray-700 text-base">{userInfo.email}</p>
@@ -66,7 +66,7 @@ const IdCard = ({ publicUser, info }) => {
             {session ?
             <div className="w-full lg:max-w-full lg:flex py-10 text-center">
     
-                <div className="border p-4 border-gray-800 bg-white rounded-b flex flex-col justify-between text-center leading-normal">
+                <div className="border w-full p-4 border-gray-800 bg-white rounded-b flex flex-col justify-between text-center leading-normal">
                     <div className="mb-8">
                     <div className="text-gray-900 font-bold text-xl mb-2">{session.user.name}</div>
                     <p className="text-gray-700 text-base">{session.user.email}</p>
