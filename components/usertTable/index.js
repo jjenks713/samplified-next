@@ -55,42 +55,72 @@ export default function userTable( props ) {
         }
       };
 
-
-
-    return (
-      <Container maxWidth="lg" className="pb-10">
-          <div className="grid justify-center pt-14">
-            <div className='grip grid-cols-1 gap-0 justify-center'>
-              <div className='row'>
-              <TextField 
-              id="standard-basic" 
-              label="Search Sound Name" 
-              variant="standard" 
-              value={wordEntered}
-              onChange={handleFilter}/>
-                {filteredData.length === 0 ? (
-                <SearchIcon />
-              ) : (
-                  <CloseIcon id="clearBtn" onClick={clearDrops} />
-                )}
+      if (soundArray.length === 0) {
+        return (
+          <Container maxWidth="lg" className="pb-10">
+              <div className="grid justify-center pt-14">
+                <div className='grip grid-cols-1 gap-0 justify-center'>
+                  <div className='row'>
+                  <TextField 
+                  id="standard-basic" 
+                  label="Search Sound Name" 
+                  variant="standard" 
+                  value={wordEntered}
+                  onChange={handleFilter}/>
+                    {filteredData.length === 0 ? (
+                    <SearchIcon />
+                  ) : (
+                      <CloseIcon id="clearBtn" onClick={clearDrops} />
+                    )}
+                    </div>
+                    <br/>
+                    {noData ?
+                    null
+                    :
+                    <div className='row text-red-500 text-xs'><small>Nothing matches your search! try again...</small></div>
+                    }
                 </div>
-                <br/>
-                {noData ?
-                null
-                :
-                <div className='row text-red-500 text-xs'><small>Nothing matches your search! try again...</small></div>
-                }
-            </div>
-          </div>
-
-        {filteredData.length > 0 ?
-          <TableData props={filteredData} />
-              :
-          <TableData props={soundArray} />
-        }
-      </Container>
-
-    );
+              </div>
+    
+          <div className="text-5xl font-extrabold">You have not uploaded any sounds yet. Please click upload to continue</div>
+          </Container>
+        )
+      } else {
+        return (
+          <Container maxWidth="lg" className="pb-10">
+              <div className="grid justify-center pt-14">
+                <div className='grip grid-cols-1 gap-0 justify-center'>
+                  <div className='row'>
+                  <TextField 
+                  id="standard-basic" 
+                  label="Search Sound Name" 
+                  variant="standard" 
+                  value={wordEntered}
+                  onChange={handleFilter}/>
+                    {filteredData.length === 0 ? (
+                    <SearchIcon />
+                  ) : (
+                      <CloseIcon id="clearBtn" onClick={clearDrops} />
+                    )}
+                    </div>
+                    <br/>
+                    {noData ?
+                    null
+                    :
+                    <div className='row text-red-500 text-xs'><small>Nothing matches your search! try again...</small></div>
+                    }
+                </div>
+              </div>
+    
+            {filteredData.length > 0 ?
+              <TableData props={filteredData} />
+                  :
+              <TableData props={soundArray} />
+            }
+          </Container>
+    
+        );
+      }
   } else {
     return <Link href="/"></Link>
   }

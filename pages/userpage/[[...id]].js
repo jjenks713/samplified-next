@@ -4,13 +4,15 @@ import { getSession, useSession } from 'next-auth/client'
 import Navigator from '../../components/navigator';
 import { useRouter } from 'next/router'
 import IdCard from '../../components/idCard'
-import dbInfo from '../api/db';
+import dbInfo from '../api/db/getSound';
 import Link from 'next/link'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import EditProfile from '../../components/editProfile';
+import userInfo from '../api/db/getInfo';
+
 
 const style = {
   position: 'absolute',
@@ -24,12 +26,14 @@ const style = {
   p: 4,
 };
 
-const User = ({ sounds }) => {
+const User = ({ sounds, info }) => {
     const [session, loading] = useSession()
     const router = useRouter()
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+  
+    //console.log(info)
   
   
     if (!session) {
@@ -57,14 +61,22 @@ const User = ({ sounds }) => {
         </>
       )
       } else {
+
+        let userInfo = []
+
+        const infoMap = info.map((info) => {
+          if (session.user.id == info.createdBy) {
+            userInfo.push(info)
+          }
+        })
         return (
           <>
           <Navigator/>
           <div className='grid sm:grid-cols-8 sm:grid-rows-1 justify-center'>
-            <div className='col-span-8 lg:col-span-2 bg-gray-200 px-10 py-4 sm:py-10'>
-              <IdCard />
+            <div className='col-span-8 lg:col-span-2 bg-gray-200 px-4 py-4 sm:py-10'>
+              <IdCard info={userInfo}/>
 
-              {/* <div className='grid justify-center'>
+              <div className='grid justify-center'>
                 <Button onClick={handleOpen}>Edit Profile</Button>
                 <Modal
                   open={open}
@@ -77,11 +89,11 @@ const User = ({ sounds }) => {
                       <Button className="text-black" onClick={handleClose}>X</Button>
                     </div>
                     <div className='m-5'>
-                      <EditProfile sounds={sounds} />
+                      <EditProfile info={userInfo} />
                     </div>
                   </Box>
                 </Modal>
-              </div>  */}
+              </div> 
             </div> 
             <div className='col-span-8 lg:col-span-6'>
               <UserTable sounds={sounds} />
@@ -105,9 +117,10 @@ export async function getServerSideProps(ctx) {
 
     const props = { }
     const sounds = await dbInfo()
+    const info = await userInfo()
 
     return {
-        props: { sounds },
+        props: { sounds, info },
     }
 }
 

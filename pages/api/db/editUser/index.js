@@ -1,8 +1,8 @@
 import { Db } from 'mongodb'
-import middleware from "../../../middleware/all"
-import updateUser from "../../../db/editUser"
+import middleware from "../../../../middleware/all"
+import updateUser from "../../../../db/editInfo"
 import nc from "next-connect";
-import onError from '../../../middleware/error';
+import onError from '../../../../middleware/error';
 
 const handler = nc({
   onError
@@ -20,7 +20,6 @@ handler.post(async(req, res) => {
     const editUser = await updateUser(req.db,
       { 
         id: dataObj.id,
-        name: dataObj.name,
         info: dataObj.info,
         soundcloud: dataObj.soundcloud,
         twitter: dataObj.twitter,

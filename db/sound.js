@@ -27,5 +27,4 @@ const createSound = async (Db, data) => {
 
     return sounds
 }
-
 export default createSound

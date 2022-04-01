@@ -1,27 +1,24 @@
 import { Db } from 'mongodb'
 import connectToDB from './connect';
 
+const { db } = connectToDB()
 
-export default async function updateUser(Db, data) {
-
-    const { db } = connectToDB()
+const updateUser = async (Db, data) => {
 
     console.log(data, "THIS IS THE SOUNDS HERE")
 
     const id = data.id
-    const name = data.name
     const info = data.info
     const soundcloud = data.soundcloud
     const twitter = data.twitter
     const facebook = data.facebook
 
 
-    const operation = await Db.collection('users').updateOne(
+    const operation = await Db.collection('info').updateOne(
         {
         _id: id,
         },
         { $set: {
-            name: name,
             info: info,
             soundcloud: soundcloud,
             twitter: twitter,
@@ -39,3 +36,5 @@ export default async function updateUser(Db, data) {
     //console.log("thishere", updated)
     return updated
 }
+
+export default updateUser

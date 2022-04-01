@@ -1,14 +1,11 @@
-//import middleware from "../../../middleware/all";
-import connectToDB  from '../../../db/connect'
+import connectToDB  from '../../../../db/connect'
 
-
-
-export default async function dbInfo() {
+export default async function userInfo() {
 
     const { db } = await connectToDB()
 
-    const sounds = await db
-    .collection("sounds")
+    const userInfo = await db
+    .collection("info")
     .find({}, {projection:{_id:0, createdAt:0, updatedAt: 0}})
     .sort({ metacritic: -1 })
     .toArray();
@@ -16,5 +13,5 @@ export default async function dbInfo() {
     
     //const dataArray = accounts.map((account) => {})
 
-    return sounds
+    return userInfo
 }

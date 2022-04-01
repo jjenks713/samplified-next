@@ -1,6 +1,6 @@
 import Navigator from '../../components/navigator'
 import Footer from '../../components/footer'
-import dbInfo from '../api/db';
+import dbInfo from '../api/db/getSound';
 import Search from '../../components/search'
 
 

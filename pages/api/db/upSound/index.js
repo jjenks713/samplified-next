@@ -1,8 +1,8 @@
 import { Db } from 'mongodb'
-import middleware from "../../../middleware/all"
-import createSound from "../../../db/sound"
+import middleware from "../../../../middleware/all"
+import createSound from "../../../../db/sound"
 import nc from "next-connect";
-import onError from '../../../middleware/error';
+import onError from '../../../../middleware/error';
 
 const handler = nc({
   onError

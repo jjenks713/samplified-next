@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import connectToDB  from '../../../db/connect'
+import createInfo from '../../../db/createInfo'
 
 
 
@@ -42,27 +43,17 @@ NextAuth(req, res, {
         },
         async jwt(tokenPayload, user, account, profile, isNewUser) {
         const { db } = await connectToDB()
-/*         if (isNewUser) {
-            const personalFolder = await folder.createFolder(db, { createdBy: `${user.id}`, name: 'Getting Started' })
-            await doc.createDoc(db, {
-            name: 'Start Here',
-            folder: personalFolder._id,
-            createdBy: `${user.id}`,
-            content: {
-                time: 1556098174501,
-                blocks: [
-                {
-                    type: 'header',
-                    data: {
-                    text: 'Some default content',
-                    level: 2,
-                    },
-                },
-                ],
-                version: '2.12.4',
-            },
+        if (isNewUser) {
+            await createInfo(db, {
+              _id: `${user.id}`,
+              createdBy: `${user.id}`,
+              info: '',
+              soundcloud: '',
+              twitter: '',
+              facebook: '',
             })
-        } */
+            //res.send({ data: newInfo });
+        }
     
         if (tokenPayload && user) {
             return { ...tokenPayload, id: `${user.id}` }

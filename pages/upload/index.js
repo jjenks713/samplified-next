@@ -98,7 +98,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
             url: url
         }
 
-        await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/sound`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/db/upSound`, {
         method: 'POST',
         body: JSON.stringify({dataObj}),
         headers: {
