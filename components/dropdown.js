@@ -45,7 +45,7 @@ const handleClose = () => {
             <MenuItem onClick={signOut}>Logout</MenuItem>
             </Menu>
           </> :
-            <NextLink href="/sign-up"><a className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Up/In</a></NextLink>
+            <NextLink href="/sign-up"><button className='sign-button'>Sign Up/In</button></NextLink>
           }
         </button>
     )
