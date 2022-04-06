@@ -19,7 +19,7 @@ const handleClose = () => {
 };
 
     return (
-        <button appearance="primary" fontSize="16px">
+        <button className='relative' appearance="primary" fontSize="16px">
           {session ? 
           <>
             <a
@@ -30,8 +30,10 @@ const handleClose = () => {
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
             >
-            <img className='rounded-full' src={session.user.image} width={34}></img>
+            <img className='rounded-full' src={session.user.image} width={38}></img>
             </a>
+            <a className='border border-theme rounded-full inline-block bg-gtheme w-3 h-3 absolute bottom-0 right-0 text-theme shadow-2xl'>.</a>
+
             <Menu
             id="basic-menu"
             anchorEl={anchorEl}
@@ -41,7 +43,9 @@ const handleClose = () => {
                 'aria-labelledby': 'basic-button',
             }}
             >
-            <MenuItem><NextLink href='/userpage'>Profile</NextLink></MenuItem>
+            <MenuItem>
+            <NextLink href='/userpage'>Profile</NextLink>
+            </MenuItem>
             <MenuItem onClick={signOut}>Logout</MenuItem>
             </Menu>
           </> :

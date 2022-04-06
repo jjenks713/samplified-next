@@ -11,7 +11,8 @@ module.exports = {
     colors: {
       theme: "#151B23",
       gwhite: "#F8F8FF",
-      white: "#ffffff"
+      white: "#ffffff",
+      gtheme: "#03ECAE"
     }
   },
   variants: {},

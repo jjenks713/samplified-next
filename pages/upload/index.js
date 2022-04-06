@@ -118,14 +118,14 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
 
     return (
         <>
-            <Container maxWidth="md" className="grid justify-center pt-24">
+            <Container maxWidth="md" className="grid justify-center pt-24 text-white">
 
                 <div className="position absolute top-3 right-8 font-bold">
                     <Link href="/userpage">X</Link>
                 </div> 
 
                 <div>
-                    <Link href="/"><a className='hover:bg-opacity-30 hover:cursor-pointer'><img className="mx-auto h-12 w-auto" src="/logo-dark.png" alt="Workflow" /></a></Link>
+                    <Link href="/"><a className='hover:bg-opacity-30 hover:cursor-pointer'><img className="mx-auto h-12 w-auto" src="/logo-large.svg" alt="Workflow" /></a></Link>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Submit new Sound</h2>
                     <p className="mt-2 text-center text-sm text-gray-600">
                     </p>
@@ -273,7 +273,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">
 
-                        <button disabled className="shadow opacity-20 bg-purple-500 cursor-auto focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                        <button disabled className="upload-button opacity-20">
                             Submit
                         </button>
 
@@ -284,7 +284,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">
 
-                        <button onClick={submitForm} className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                        <button onClick={submitForm} className="upload-button">
                             Submit
                         </button>
 

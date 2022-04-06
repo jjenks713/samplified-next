@@ -30,7 +30,7 @@ export default function Home() {
     <main 
     style={
       {
-        fontFamily: "'Ubuntu', sans-serif;",
+        fontFamily: `'Ubuntu', sans-serif;`
 
       }
     }
@@ -54,7 +54,7 @@ export default function Home() {
             <div className="absolute top-0 w-full">
             <Navigator/>
             </div>
-            <div className='py-5 px-10 max-w-lg absolute top-44 md:left-32'>
+            <div className='py-5 px-10 max-w-lg absolute top-44 md:left-24'>
 
               <div>
                 <a className='find-your-sound uppercase'>

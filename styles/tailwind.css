@@ -268,3 +268,9 @@ background-color: rgba(0,0,0,0.9);
     border-radius: 26px;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
 }
+.upload-button {
+    height: 52px;
+    width: 200px;
+    border-radius: 26px;
+    background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
+}
