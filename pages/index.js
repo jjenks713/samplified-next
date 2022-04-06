@@ -73,10 +73,10 @@ export default function Home() {
                 }
               </div>
             </div>
-            <div className='absolute bottom-96 diag w-full h-36'>
+            <div className='absolute bottom-96 diag w-full h-36 invisible md:visible'>
               
             </div>
-            <div className='absolute right-44 sm:right-10 sm:h-44 top-80 invisible lg:visible'>
+            <div className='absolute right-44 sm:right-0 sm:h-44 top-80 invisible lg:visible'>
                   <img className="fl-pic" src="/fl.svg" alt="DAW"></img>
             </div>
 

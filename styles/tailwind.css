@@ -142,3 +142,129 @@ background-color: rgba(0,0,0,0.9);
     height: 101.12px;
     width: 443.29px
 }
+.sign-in-to-samplified {
+    height: 36px;
+    width: 236px;
+    color: #FFFFFF;
+    font-family: Ubuntu;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 36px;
+}
+.details {
+    height: 24px;
+    width: 177px;
+    color: #919EAB;
+    font-family: Ubuntu;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+}
+.google {
+    box-sizing: border-box;
+    height: 49px;
+    width: 481px;
+    border: 1px solid #919EAB;
+    border-radius: 24px;
+}
+
+.or {
+    height: 22px;
+    width: 40px;
+    color: #919EAB;
+    font-family: Ubuntu;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-align: center;
+}
+.divider-horizontal-solid-1 {
+    box-sizing: border-box;
+    height: 0px;
+    width: 220px;
+    border: 1px solid rgba(145,158,171,0.24);
+}
+.divider-horizontal-solid {
+    box-sizing: border-box;
+    height: 0px;
+    width: 220px;
+    border: 1px solid rgba(145,158,171,0.24);
+}
+.divider-horizontal-solid-1-2 {
+    box-sizing: border-box;
+    height: 0px;
+    width: 130px;
+    border: 1px solid rgba(145,158,171,0.24);
+}
+.divider-horizontal-solid-2 {
+    box-sizing: border-box;
+    height: 0px;
+    width: 130px;
+    border: 1px solid rgba(145,158,171,0.24);
+}
+.sign-input {
+    height: 49px;
+    width: 480px;
+    background: transparent;
+    border: 1px solid rgba(145,158,171,0.24);
+    border-radius: 5px;
+}
+.sign-input-2 {
+    height: 49px;
+    width: 300px;
+    background: transparent;
+    border: 1px solid rgba(145,158,171,0.24);
+    border-radius: 5px;
+}
+.forgot-password {
+    height: 22px;
+    width: 480px;
+    font-family: Ubuntu;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 22px;
+}
+.forgot-password-2 {
+    height: 22px;
+    width: 300px;
+    font-family: Ubuntu;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 22px;
+}
+.forgot {
+    color: #1D8DBA;
+}
+
+.checkbox-label {
+    height: 24px;
+    width: 24px;  
+}
+.label {
+    height: 18px;
+    width: 75px;
+  }
+.label-text {
+    height: 18px;
+    width: 75px;
+    color: #ffffff44;
+    font-family: Ubuntu;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 18px;
+}
+.sign-in-button {
+    height: 52px;
+    width: 481px;
+    border-radius: 26px;
+    background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
+}
+.sign-in-button-2 {
+    height: 52px;
+    width: 300px;
+    border-radius: 26px;
+    background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
+}
