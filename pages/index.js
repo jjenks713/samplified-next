@@ -40,7 +40,12 @@ export default function Home() {
       <div className='relative w-full'>
 
         <img //eslint-disable-line
-          className="w-full h-screen sm:h-auto sm:w-full"
+          style={
+            {
+              height: "720px"
+            }
+          }
+          className="w-full h-screen sm:w-full"
           src="main.png" 
           alt='main'
           ></img>
@@ -76,7 +81,7 @@ export default function Home() {
 
           <div>
      
-          <div className='pb-10 flex flex-wrap md:flex-nowrap justify-center md:justify-evenly'>
+          <div className='pt-24 pb-10 flex flex-wrap md:flex-nowrap justify-center md:justify-evenly'>
 
                 <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3 text-box text-center'>
                   <div className='grid pb-4 justify-center'>
