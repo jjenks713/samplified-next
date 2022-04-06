@@ -70,9 +70,15 @@ const User = ({ sounds, info }) => {
           }
         })
         return (
-          <>
+          <div
+          style={
+            {
+                backgroundImage: `url(/main.png)`
+            }
+          }
+          >
           <Navigator/>
-          <div className='grid sm:grid-cols-8 sm:grid-rows-1 text-center justify-center'>
+          <div className='grid sm:grid-cols-8 sm:grid-rows-1 text-center justify-center bg-theme'>
             <div className='col-span-8 lg:col-span-2 bg-gray-200 px-4 py-4 sm:py-10 justify-center'>
               <IdCard info={userInfo}/>
 
@@ -99,7 +105,7 @@ const User = ({ sounds, info }) => {
               <UserTable sounds={sounds} />
             </div>
           </div>
-          </>
+          </div>
       )
     }
 }

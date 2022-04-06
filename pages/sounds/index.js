@@ -7,10 +7,18 @@ import Search from '../../components/search'
 export default function AllSounds({ allSounds }) {
 
     return (
-        <>
+        <div className='bg-theme' 
+        style={
+            {
+                backgroundImage: `url(/main.png)`
+            }
+        }
+        >
         <Navigator />
-        <Search allSounds={allSounds}/>
-        </>
+            <div className='bg-theme'>
+            <Search allSounds={allSounds}/>
+            </div>
+        </div>
     )
 }
 

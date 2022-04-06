@@ -8,6 +8,11 @@ module.exports = {
         'footer-texture': "url('/img/footer-texture.png')",
       }
     },
+    colors: {
+      theme: "#151B23",
+      gwhite: "#F8F8FF",
+      white: "#ffffff"
+    }
   },
   variants: {},
   plugins: [],

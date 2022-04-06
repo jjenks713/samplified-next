@@ -31,21 +31,20 @@ export default function Home() {
     style={
       {
         fontFamily: "'Ubuntu', sans-serif;",
-        backgroundColor: "rgba(0,0,0,0.9)"
 
       }
     }
-    className=""
+    
     >
-      <div className='relative w-full'>
+      <div className='relative w-full h-full'>
 
         <img //eslint-disable-line
           style={
             {
-              height: "720px"
+              height: "700px"
             }
           }
-          className="w-full h-screen sm:w-full"
+          className="w-full h-screen sm:w-full main-photo"
           src="main.png" 
           alt='main'
           ></img>
@@ -74,52 +73,54 @@ export default function Home() {
                 }
               </div>
             </div>
-            <div className='absolute right-44 sm:right-10 sm:h-44 top-96 invisible lg:visible'>
+            <div className='absolute bottom-96 diag w-full h-36'>
+              
+            </div>
+            <div className='absolute right-44 sm:right-10 sm:h-44 top-80 invisible lg:visible'>
                   <img className="fl-pic" src="/fl.svg" alt="DAW"></img>
             </div>
+
           </div>
 
-          <div>
-     
-          <div className='pt-24 pb-10 flex flex-wrap md:flex-nowrap justify-center md:justify-evenly'>
+          <div className='pt-28 pb-20 bg-theme flex flex-wrap md:flex-nowrap justify-center md:justify-evenly'>
 
-                <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3 text-box text-center'>
-                  <div className='grid pb-4 justify-center'>
+            <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3 text-box text-center'>
+              <div className='grid pb-4 justify-center'>
+              <img 
+              className="shapes"
+              src="1.svg" alt="DAW"></img>
+              </div>
+
+              <div className='feature text-center'>
+                  Feature 1
+              </div>
+              <p className='text-center boxes-text'>Photographs are a way of preserving a moment in our lives for the rest of our lives. Many of us have at least been tempted at the flashy array of photo printers which seemingly leap off the shelves at even the least tech-savvy.</p>
+            </div>
+            <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3 text-box'>
+              <div className='grid pb-4 justify-center'>
+                <img 
+                className="shapes"
+                src="2.svg" alt="DAW"></img>
+              </div>
+              <div className='feature text-center'>
+                  Feature 2
+              </div>
+              <p className='text-center boxes-text'>Photographs are a way of preserving a moment in our lives for the rest of our lives. Many of us have at least been tempted at the flashy array of photo printers which seemingly leap off the shelves at even the least tech-savvy.</p>
+            </div>
+            <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3 text-box'>
+              <div className='grid pb-4 justify-center'>
                   <img 
                   className="shapes"
-                  src="1.svg" alt="DAW"></img>
-                  </div>
-
-                  <div className='feature text-center'>
-                      Feature 1
-                  </div>
-                  <p className='text-center boxes-text'>Photographs are a way of preserving a moment in our lives for the rest of our lives. Many of us have at least been tempted at the flashy array of photo printers which seemingly leap off the shelves at even the least tech-savvy.</p>
-                </div>
-                <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3 text-box'>
-                  <div className='grid pb-4 justify-center'>
-                    <img 
-                    className="shapes"
-                    src="2.svg" alt="DAW"></img>
-                  </div>
-                  <div className='feature text-center'>
-                      Feature 2
-                  </div>
-                  <p className='text-center boxes-text'>Photographs are a way of preserving a moment in our lives for the rest of our lives. Many of us have at least been tempted at the flashy array of photo printers which seemingly leap off the shelves at even the least tech-savvy.</p>
-                </div>
-                <div className='lg:pl-8 md:pl-2 sm:pl-0 py-3 text-box'>
-                  <div className='grid pb-4 justify-center'>
-                      <img 
-                      className="shapes"
-                      src="3.svg" alt="DAW"></img>
-                  </div>
-                  <div className='feature text-center'>
-                      Feature 3
-                  </div>
-                  <p className='text-center boxes-text'>Photographs are a way of preserving a moment in our lives for the rest of our lives. Many of us have at least been tempted at the flashy array of photo printers which seemingly leap off the shelves at even the least tech-savvy.</p>
-                </div>
-              
+                  src="3.svg" alt="DAW"></img>
               </div>
+              <div className='feature text-center'>
+                  Feature 3
+              </div>
+              <p className='text-center boxes-text'>Photographs are a way of preserving a moment in our lives for the rest of our lives. Many of us have at least been tempted at the flashy array of photo printers which seemingly leap off the shelves at even the least tech-savvy.</p>
+            </div>
+
           </div>
+
       </div>
 
 
