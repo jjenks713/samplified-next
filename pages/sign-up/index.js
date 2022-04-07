@@ -55,7 +55,7 @@ export default function SignIn() {
               }
             >  
 
-
+                {/* mobile sign in */}
                 <div className='text-white visible lg:invisible'>
                     <div
                     className='w-full h-full absolute top-1/2 transform -translate-y-1/2'
@@ -73,13 +73,13 @@ export default function SignIn() {
                                 alt="Workflow" 
                                 />
                             <div className='pb-10 grid text-center'>
-                            <h2 className="">Sign in to Samplified</h2>
-                            <h5 className='text-center text-gwhite'>Enter your details below</h5>
+                            <h2 className="text-2xl">Sign in to Samplified</h2>
+                            <h5 className='text-center text-gwhite opacity-30'>Enter your details below</h5>
                             </div>
                             
-                            <a className='rounded-md cursor-pointer hover:opacity-80 h-10' type="button" onClick={() => signInFunction()}>
-                                <Button>
-                                    <img className='' src="/ic_google.svg" alt="Sign in with Google"></img>
+                            <a className='border mx-12 rounded-full cursor-pointer hover:opacity-80 h-10' type="button" onClick={() => signInFunction()}>
+                                <Button className='border'>
+                                    <img className='mt-1' src="/ic_google.svg" alt="Sign in with Google"></img>
                                 </Button>
                             </a>
 
@@ -116,7 +116,7 @@ export default function SignIn() {
 
                 </div>
 
-
+                {/* Sign in */}
                 <div className="grid grid-cols-4 gap-4 invisible lg:visible">
                     <div className="col-span-2">
                         <div className='relative'>
