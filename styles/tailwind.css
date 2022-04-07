@@ -266,6 +266,89 @@ background-color: rgba(0,0,0,0.9);
     border-radius: 10px;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
 }
+.search-input {
+    height: 40px;
+    width: 369.76px;
+    background-color: transparent;
+    border: 1px solid rgba(145,158,171,0.24);
+    border-radius: 5px;
+    color: white;
+    margin-top: 10px;
+}
+.add-yours {
+    height: 52px;
+    width: 301px;
+    border-radius: 26px;
+    background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 19px;
+    text-align: center;
+}
+
+.table-div {
+    height: 166px;
+    width: 1059px;
+    border-radius: 16px;
+    box-shadow: 5px 5px 5px 5px rgba(3, 236, 174, 0.25);
+    border-radius: 16px;
+    margin-top: 20px;
+    background-color: #212B36;
+}
+.table-bg {
+    height: 93px;
+    width: 103.94px;
+    margin-top: 8px;
+  }
+.bubble-text {
+    height: 20px;
+    width: 42.9px;
+    background-color: #3e4246;
+    padding: 6px;
+    margin-right: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    opacity: 0.45;
+}
+.bubble-w {
+    font-size: 12px;
+    color: #919EAB;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+.user-text {
+    height: 22px;
+    width: 75px;
+    color: #919EAB;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 22px;
+}
+.date-text {
+    height: 22px;
+    width: 75px;
+    color: #919EAB;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 14px;
+}
+.id-table {
+    position: relative;
+    height: 400px;
+
+    background: #151B23;
+    box-shadow: 15px 15px 10px 10px rgba(3, 236, 174, 0.25);
+    border-radius: 7px;
+}
+.table-footer {
+    color: white !important;
+}
+.MuiTablePagination-selectLabel {
+    visibility: hidden !important;
+}
 @media only screen and (max-width: 700px) {
     .find-your-sound {
         color: #FFFFFF;

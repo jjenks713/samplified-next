@@ -4,12 +4,16 @@ import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import AllTable from '../allTable';
+import { useSession } from 'next-auth/client';
+import Link from 'next/link'
 
 const keys = ["", "A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
 const genres = ["", "edm","rock","pop","house","bass-music","cinematic","hip-hop","global","live"]
 const instruments = ["", "fx","guitar","drums","percussion","vocals","bass","keys","string","synth"]
 
 export default function Search(props) {
+
+  const [session, loading] = useSession()
 
   const allSounds = props.allSounds
   const data = props.allSounds
@@ -86,17 +90,11 @@ export default function Search(props) {
 
   return (
   <>   
-    <div className='grid md:grid-cols-8 md:grid-rows-1 justify-center'>
+    <div className='w-full'>
 
-        <div className='col-span-8 md:col-span-2 bg-gray-200 px-10 py-4 sm:py-10'>
-          <div className='pt-4 sm:pt-0'>
-              <h2 className="sm:mt-6 text-center text-3xl font-extrabold text-gray-900">Search all our Sounds</h2>
-              <p className="mt-2 text-center text-sm text-gray-600">
-              </p>
-            </div><br></br><br></br>
-
-            <div className='mx-auto px-4 py-10 bg-white justify-center '>
-              <div className='grid justify-center'>
+        <div className='pt-24 pb-10 w-3/4 mx-auto'>
+            <div className='mx-auto px-4 justify-center text-white relative'>
+              <div className='flex flex-wrap justify-center lg:absolute lg:top-1/2 lg:bottom-0 lg:transform lg:-translate-y-1/2'>
         {/*       <div className='pr-10'>
                   Key
                   <select
@@ -138,30 +136,15 @@ export default function Search(props) {
                   </select>
                 </div> */}
 
-                <div className='py-4'>
-                  Genre
-                  <select 
-                  
-                  placeholder="Genre" 
-                  className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-                  onChange={handleSetData}
-                  required
-                  >
-                    {
-                        genres.map((genre) => (
-                            <option key={genre} placeholder="Genre" value={genre}>
-                              {genre}
-                            </option>
-                        ))
-                    }
-                  </select>
-                </div>
+
+                {/* Search input */}
                 {searchData.length > 0 ? 
                   <div className='grid grid-cols-1 gap-0 justify-center'>
                     <div className='row'>
-                    <TextField 
+                    <input 
+                    className='search-input text-white p-5'
                     id="standard-basic" 
-                    label="Search Sound Name" 
+                    placeholder="Search Sound Name" 
                     variant="standard" 
                     value={wordEntered}
                     onChange={handleSpecificFilter}/>
@@ -181,9 +164,10 @@ export default function Search(props) {
                   :
                   <div className='grid grid-cols-1 gap-0 justify-center'>
                     <div className='row'>
-                    <TextField 
+                    <input
+                    className='search-input text-white p-5'
                     id="standard-basic" 
-                    label="Search Sound Name" 
+                    placeholder="Search Sound Name" 
                     variant="standard" 
                     value={wordEntered}
                     onChange={handleFilter}/>
@@ -202,16 +186,48 @@ export default function Search(props) {
                   </div>
 
                 }
-                
-                <div className='grid justify-center bg-gray-800 text-white'>
-                  <Button style={{color: "white!important"}} onClick={clearDrops}>All Sounds</Button>
+
+                {/* Genre Dropdown */}
+                <div className='w-44 pl-6'>
+                  <label className='mb-1 bg-theme'><p className="">Genre</p></label>
+                  <select 
+                  placeholder="Genre" 
+                  className="bg-theme text-white w-44 border rounded-md" 
+                  onChange={handleSetData}
+                  required
+                  >
+                    {
+                        genres.map((genre) => (
+                            <option key={genre} placeholder="Genre" value={genre}>
+                              {genre}
+                            </option>
+                        ))
+                    }
+                  </select>
                 </div>
+                
+
               </div>
+
+              {/* add sound button */}
+              <div className='cursor-pointer uppercase relative'>
+                  {session ?
+                  <Link href="/userpage">
+                  <button className='add-yours absolute right-0'>ADD YOUR SOUNDS</button>
+                  </Link>
+                    :
+                  <Link href="/sign-up">
+                  <button className='add-yours absolute right-0'>ADD YOUR SOUNDS</button>
+                  </Link>
+                  }
+
             </div>
+            </div>
+
         </div>
 
           
-        <div className='col-span-8 sm:col-span-6'>
+        <div className=''>
           <AllTable filteredData={filteredData} allSounds={allSounds} searchData={searchData} /> 
         </div>
 

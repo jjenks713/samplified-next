@@ -1,5 +1,4 @@
 import * as React from "react";
-import Container from '@mui/material/Container';
 import TableData from '../tableData'
 
 export default function AllTable( props ) {
@@ -7,9 +6,9 @@ export default function AllTable( props ) {
   if (props.slugSounds) {
     const sounds = props.slugSounds.map(sound => ({...sound}))
     return (
-      <Container maxWidth="lg" className="py-14">
+      <div className="py-14">
         <TableData props={sounds} />
-      </Container>
+      </div>
     )
   } else {
     const filteredData = props.filteredData
@@ -18,19 +17,19 @@ export default function AllTable( props ) {
   
     if (filteredData.length == 0 && searchData.length == 0) {
       return (
-        <Container maxWidth="lg" className="py-14">
+        <div className="py-14">
           <TableData props={sounds} />
-        </Container>
+        </div>
       )
     } else {
       return (
-        <Container maxWidth="lg" className="py-14">
+        <div className="py-14">
           {filteredData.length > 0 ? 
             <TableData props={filteredData} />
             :
             <TableData props={searchData} />
           }
-        </Container>
+        </div>
       ); 
     }
   }

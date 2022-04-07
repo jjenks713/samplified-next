@@ -78,10 +78,10 @@ const User = ({ sounds, info }) => {
           >
           <Navigator/>
           <div className='grid sm:grid-cols-8 sm:grid-rows-1 text-center justify-center bg-theme'>
-            <div className='col-span-8 lg:col-span-2 bg-gray-200 px-4 py-4 sm:py-10 justify-center'>
+            <div className='col-span-8 lg:col-span-2 bg-gray-200 px-4 py-8 sm:py-10 justify-center'>
               <IdCard info={userInfo}/>
 
-              <div className='grid justify-center'>
+              <div className='grid justify-center pt-24'>
                 <button className='profile-button shadow-2xl' onClick={handleOpen}>Edit Profile</button>
                 <Modal
                   open={open}

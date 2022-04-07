@@ -23,6 +23,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
     const [instrument, updateInstrument] = useState("")
     const [progress , setProgress] = useState(false);
     const [url, setUrl] = useState(``)
+    const [fileName, setFilename] = useState('')
     const [terms, setTerms] = useState(false)
 
     let user
@@ -49,6 +50,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
         const fileName = file.name.replace(/ /g, '')
 
         setUrl(`https://${S3_BUCKET}.s3.us-west-2.amazonaws.com/${fileName}`)
+        setFilename(fileName)
 
         AWS.config.update({
             accessKeyId: AWSAccessKeyId,
@@ -86,6 +88,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
     const submitForm = async (e) => {
         e.preventDefault()
 
+        const date = new Date().toDateString()
         let dataObj = {
             soundName: name,
             bpm: bpm,
@@ -95,7 +98,9 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
             instrument: instrument,
             user: user.id,
             userName: user.name,
-            url: url
+            url: url,
+            fileName: fileName,
+            date: date
         }
 
         await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/db/upSound`, {

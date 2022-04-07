@@ -54,7 +54,9 @@ export default function SignIn() {
                 }
               }
             >  
-
+                <div className="position absolute top-3 right-8 font-bold text-white">
+                    <Link href="/">X</Link>
+                </div> 
                 {/* mobile sign in */}
                 <div className='text-white visible lg:invisible'>
                     <div

@@ -63,13 +63,14 @@ export default function userTable( props ) {
         )
       } else {
         return (
-          <Container maxWidth="lg" className="pb-10">
-              <div className="grid justify-center pt-14">
-                <div className='grip grid-cols-1 gap-0 justify-center'>
-                  <div className='row'>
-                  <TextField 
+          <div className="pb-10 ">
+              <div className="grid justify-center pt-14  text-white">
+                <div className='grid grid-cols-1 gap-0 justify-center'>
+                  <div className='rounded-xl bg-opacity-20 text-white'>
+                  <input 
+                  className="search-input text-white p-5"
                   id="standard-basic" 
-                  label="Search Sound Name" 
+                  placeholder="Search Sound Name" 
                   variant="standard" 
                   value={wordEntered}
                   onChange={handleFilter}/>
@@ -93,7 +94,7 @@ export default function userTable( props ) {
                   :
               <TableData props={soundArray} />
             }
-          </Container>
+          </div>
     
         );
       }

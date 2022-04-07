@@ -29,9 +29,9 @@ const IdCard = ({ publicUser, info }) => {
             }
         }
         >
-            <div className="w-full lg:max-w-full lg:flex py-10 text-center">
+            <div className="w-full lg:max-w-full lg:flex py-10 text-center  p-10 id-table">
     
-                <div className="border w-full p-10 border-gray-800 bg-white rounded-b flex flex-col justify-between text-center leading-normal">
+                <div className="w-full border-gray-800 text-white rounded-b flex flex-col justify-between text-center leading-normal">
                     <div className="mb-8">
                             <div className="text-gray-900 font-bold text-xl mb-2">{userInfo.name}</div>
                             <p className="text-gray-700 text-base">{userInfo.email}</p>
@@ -67,9 +67,9 @@ const IdCard = ({ publicUser, info }) => {
         return (
         <div>
             {session ?
-            <div className="w-full lg:max-w-full lg:flex py-10 text-center">
+            <div className="w-full lg:max-w-full lg:flex py-10 text-center id-table">
     
-                <div className="border rounded-md w-full p-4 border-gray-800 bg-white rounded-b flex flex-col justify-between text-center leading-normal">
+                <div className="rounded-md w-full p-4 border-gray-800 bg-theme text-white rounded-b flex flex-col justify-between text-center leading-normal">
                     <div className="mb-8">
                     <div className="text-gray-900 font-bold text-xl mb-2">{session.user.name}</div>
                     <p className="text-gray-700 text-base">{session.user.email}</p>
@@ -86,7 +86,7 @@ const IdCard = ({ publicUser, info }) => {
                     </div>
                     ))}
                 </div>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center pb-10">
                         <img className="w-10 h-10 rounded-full mr-4" src={session.user.image} alt="Avatar"></img>
                         <div className="text-sm">
                             <Link href="/upload"><button variant='contained' className='profile-button text-theme shadow-2xl'>Upload Sounds</button></Link>

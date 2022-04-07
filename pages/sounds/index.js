@@ -10,7 +10,8 @@ export default function AllSounds({ allSounds }) {
         <div className='bg-theme' 
         style={
             {
-                backgroundImage: `url(/main.png)`
+                backgroundImage: `url(/main.png)`,
+                fontFamily: `'Ubuntu', sans-serif;`
             }
         }
         >

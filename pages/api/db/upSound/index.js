@@ -27,7 +27,9 @@ handler.post(async(req, res) => {
         loop: dataObj.loop,
         instrument: dataObj.instrument,
         url: dataObj.url,
+        fileName: dataObj.fileName,
         userName: dataObj.userName,
+        date: dataObj.date
     })
     res.send({ data: newSound });
   })

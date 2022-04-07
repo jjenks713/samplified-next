@@ -12,9 +12,8 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import TableFooter from "@mui/material/TableFooter";
 import TablePagination from "@mui/material/TablePagination";
-import TableContainer from "@mui/material/TableContainer";
-import Paper from "@mui/material/Paper";
 import Link from "next/link"
+
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -37,13 +36,13 @@ function TablePaginationActions(props) {
   };
 
   return (
-    <Box sx={{ flexShrink: 0, ml: 2.5 }}>
+    <Box sx={{ flexShrink: 0, ml: 2.5 }} className="text-white">
       <IconButton
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}
         aria-label="first page"
       >
-        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+        {theme.direction === "rtl" ? <LastPageIcon className="text-white" /> : <FirstPageIcon className="text-white" />}
       </IconButton>
       <IconButton
         onClick={handleBackButtonClick}
@@ -51,9 +50,9 @@ function TablePaginationActions(props) {
         aria-label="previous page"
       >
         {theme.direction === "rtl" ? (
-          <KeyboardArrowRight />
+          <KeyboardArrowRight className="text-white" />
         ) : (
-          <KeyboardArrowLeft />
+          <KeyboardArrowLeft className="text-white" />
         )}
       </IconButton>
       <IconButton
@@ -62,9 +61,9 @@ function TablePaginationActions(props) {
         aria-label="next page"
       >
         {theme.direction === "rtl" ? (
-          <KeyboardArrowLeft />
+          <KeyboardArrowLeft className="text-white" />
         ) : (
-          <KeyboardArrowRight />
+          <KeyboardArrowRight className="text-white" />
         )}
       </IconButton>
       <IconButton
@@ -72,7 +71,7 @@ function TablePaginationActions(props) {
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="last page"
       >
-        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+        {theme.direction === "rtl" ? <FirstPageIcon className="text-white" /> : <LastPageIcon className="text-white" />}
       </IconButton>
     </Box>
   );
@@ -89,7 +88,7 @@ const TableData = ({props}) => {
     const sounds = props.map(sound => ({...sound}))
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  
+    console.log(sounds)
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
       page > 0 ? Math.max(0, (1 + page) * rowsPerPage - sounds.length) : 0;
@@ -113,61 +112,71 @@ const TableData = ({props}) => {
         }
       }, true);
     })
-
  
     return (
-    <>
-      <TableContainer component={Paper} className="flex w-full">
-        <table aria-label="custom pagination table" className="w-full">
-          <thead className="bg-gray-800 w-full">
-            <tr className="text-white text-center grid justify-center">
-              <th className="text-center sm:text-left py-4 text-theme">Sounds</th>
-{/*               <th className="text-center sm:text-left">Genre</th>
-              <th className="text-center sm:text-left">User</th>
-              <th className="text-center sm:text-left">Download</th>  */}
-            </tr>
-          </thead>
-          <TableBody>
+
+      <div className="grid text-white justify-center">
+
+        <div aria-label="custom pagination table" className="">
+
             {(rowsPerPage > 0
               ? sounds.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : sounds
             ).map((sound) => (
-              <tr key={sound.createdAt} className="flex flex-wrap sm:flex-nowrap border-b-8 justify-center sm:justify-between">
-              
-                <th component="th" scope="sounds" className="p-4 w-72 text-center sm:text-left sm:border-b-0">
-                  <a className="text-lg underline">{sound.name}</a><br></br>
-                  <ul className="text-xs flex flex-wrap justify-center sm:justify-start pt-2 lowercase">
-                    <li className="border rounded-xl p-1 mr-1">{sound.bpm} bpm</li>
-                    <li className="border rounded-xl p-1 mr-1">Key {sound.key}</li>
-                    <li className="border rounded-xl p-1 mr-1">{sound.loop}</li>
-                    <li className="border rounded-xl p-1 mr-1">{sound.instrument}</li>
-                  </ul>
-                </th>
-                <th className="p-4 sm:border-b-0 w-24 sm:mt-4">
-                <a className="text-sm">{sound.genre}</a>
-                </th>
-                <th className="p-4 sm:border-b-0 sm:mt-4">
-                <Link href={`/publicuser/${encodeURIComponent(sound.createdBy)}`}><a className="text-sm hover:opacity-70">{sound.userName}</a></Link>
-                </th>
-                <th className="p-4 text-center sm:text-left sm:border-b-0">
-                <audio src={sound.url} controls>
-                  Your browser does not support HTML5 audio. Please update your browser to view this media content.
-                </audio>
-                </th>
+              <div key={sound.createdAt} className="flex flex-wrap sm:flex-nowrap justify-between sm:justify-between rounded-lg table-div relative">
+                <div className="absolute bottom-0 right-0 h-24">
+                <img className="table-bg" src="/bg-image.svg"></img>
+
+                </div>
+
+                <div component="th" scope="sounds" className="pl-10 text-center sm:text-left sm:border-b-0 relative w-44">
+                  <div className="absolute top-6">
+                  <a className="text-lg">{sound.name}</a><br></br>
+                  <Link href={`/publicuser/${encodeURIComponent(sound.createdBy)}`}><a className="text-sm hover:opacity-70 user-text">{sound.userName}</a></Link>
+                  </div>
+                  <div className="absolute bottom-6">
+                    <p className="text-xs date-text">{sound.date}</p>
+                  </div>
+                </div>
+
+                <div className="p-4 mt-10 grid justify-center sm:text-left sm:border-b-0">
+                  <audio src={sound.url} controls>
+                    Your browser does not support HTML5 audio. Please update your browser to view this media content.
+                  </audio>
+                </div>
+
+                <div className="w-44 relative">
+                  <div className="absolute top-6">
+                    <ul className="text-xs flex flex-wrap justify-center pt-2 lowercase text-white">
+                        <li><a className="bubble-text">{sound.bpm} bpm</a></li>
+                        <li><a className="bubble-text">Key {sound.key}</a></li>
+                        <li><a className="bubble-text">{sound.loop}</a></li>
+                        <li><a className="bubble-text">{sound.instrument}</a></li>
+                        <li><a className="bubble-text">{sound.genre}</a></li>
+
+                      </ul>
+                  </div>
+                </div>
+
+                <div>
+                    <a href={sound.url} download={sound.fileName}><img className="mt-7 mr-10" src="/ic_download.svg" alt="Download" /></a>
+                </div>
                 
-              </tr>
+              </div>
     
             ))}
+
     
             {emptyRows > 0 && (
               <tr style={{ height: 53 * emptyRows }}>
                 <TableCell colSpan={4} />
               </tr>
             )}
-          </TableBody>
-          <TableFooter className="text-sm">
-            <tr>
+          </div>
+          <div className="text-sm table-footer">
+            <div>
               <TablePagination
+                className="text-white"
                 rowsPerPageOptions={[ 10, 25, 50, 100, { label: "All", value: -1 }]}
                 colSpan={4}
                 count={sounds.length}
@@ -183,11 +192,9 @@ const TableData = ({props}) => {
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 ActionsComponent={TablePaginationActions}
               />
-            </tr>
-          </TableFooter>
-        </table>
-      </TableContainer>
-    </>
+            </div>
+          </div>
+      </div>
     )
 }
 
