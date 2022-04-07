@@ -11,9 +11,6 @@ const IdCard = ({ publicUser, info }) => {
     const [session] = useSession()
     let pubInfo = []
 
-    console.log("this thing", session)
-
-
     if (publicUser) {
     const userInfo = publicUser[0]
 
@@ -24,7 +21,14 @@ const IdCard = ({ publicUser, info }) => {
     })
 
     return (
-        <div>
+        <div
+        style={
+            {
+              fontFamily: `'Ubuntu', sans-serif;`
+      
+            }
+        }
+        >
             <div className="w-full lg:max-w-full lg:flex py-10 text-center">
     
                 <div className="border w-full p-10 border-gray-800 bg-white rounded-b flex flex-col justify-between text-center leading-normal">
@@ -55,7 +59,6 @@ const IdCard = ({ publicUser, info }) => {
         )
     } else {
         let specInfo = []
-        console.log(specInfo)
         const infoMap = info.map((info) => {
             if (info.createdBy === session.user.id) {
                 specInfo.push(info)
@@ -66,7 +69,7 @@ const IdCard = ({ publicUser, info }) => {
             {session ?
             <div className="w-full lg:max-w-full lg:flex py-10 text-center">
     
-                <div className="border w-full p-4 border-gray-800 bg-white rounded-b flex flex-col justify-between text-center leading-normal">
+                <div className="border rounded-md w-full p-4 border-gray-800 bg-white rounded-b flex flex-col justify-between text-center leading-normal">
                     <div className="mb-8">
                     <div className="text-gray-900 font-bold text-xl mb-2">{session.user.name}</div>
                     <p className="text-gray-700 text-base">{session.user.email}</p>
@@ -86,7 +89,7 @@ const IdCard = ({ publicUser, info }) => {
                     <div className="flex items-center justify-center">
                         <img className="w-10 h-10 rounded-full mr-4" src={session.user.image} alt="Avatar"></img>
                         <div className="text-sm">
-                            <Link href="/upload"><Button variant='contained' className='bg-gray'>Upload Sounds</Button></Link>
+                            <Link href="/upload"><button variant='contained' className='profile-button text-theme shadow-2xl'>Upload Sounds</button></Link>
                         </div>
                     </div>
                 </div>

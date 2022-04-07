@@ -33,7 +33,6 @@ const User = ({ sounds, info }) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
   
-    //console.log(info)
   
   
     if (!session) {
@@ -52,8 +51,8 @@ const User = ({ sounds, info }) => {
           onConfirm={() => router.push('/')}
         >
             <div>
-                <Link href="/"><a className='hover:bg-opacity-30 hover:cursor-pointer'><img className="mx-auto h-12 w-auto" src="/logo-dark.png" alt="Workflow" /></a></Link>
-                <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900"><Link href="/sign-up">Please sign in to continue</Link></h2>
+                <Link href="/"><a className='hover:bg-opacity-30 hover:cursor-pointer'><img className="mx-auto h-24 w-auto" src="/logo-large.svg" alt="Workflow" /></a></Link>
+                <h2 className="mt-6 text-center text-3xl font-extrabold text-white"><Link href="/sign-up">Please sign in to continue</Link></h2>
                 <p className="mt-2 text-center text-sm text-gray-600">
                 </p>
             </div><br></br><br></br>
@@ -83,7 +82,7 @@ const User = ({ sounds, info }) => {
               <IdCard info={userInfo}/>
 
               <div className='grid justify-center'>
-                <Button onClick={handleOpen}>Edit Profile</Button>
+                <button className='profile-button shadow-2xl' onClick={handleOpen}>Edit Profile</button>
                 <Modal
                   open={open}
                   onClose={handleClose}

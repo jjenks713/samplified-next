@@ -27,9 +27,12 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-editor-js": "^1.7.0",
+    "react-icons": "^4.3.1",
     "reflect-metadata": "^0.1.13",
+    "styled-components": "^5.3.5",
     "type": "module",
-    "typeorm": "^0.2.41"
+    "typeorm": "^0.2.41",
+    "wavesurfer.js": "^6.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",

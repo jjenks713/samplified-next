@@ -16,8 +16,6 @@ import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import Link from "next/link"
 
-
-
 function TablePaginationActions(props) {
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
@@ -123,7 +121,7 @@ const TableData = ({props}) => {
         <table aria-label="custom pagination table" className="w-full">
           <thead className="bg-gray-800 w-full">
             <tr className="text-white text-center grid justify-center">
-              <th className="text-center sm:text-left py-4">Sounds</th>
+              <th className="text-center sm:text-left py-4 text-theme">Sounds</th>
 {/*               <th className="text-center sm:text-left">Genre</th>
               <th className="text-center sm:text-left">User</th>
               <th className="text-center sm:text-left">Download</th>  */}

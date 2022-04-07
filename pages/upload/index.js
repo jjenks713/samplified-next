@@ -139,7 +139,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Sound Name" onChange={(e) => updateName(e.target.value)} required/>
+                            <input className=" text-theme bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Sound Name" onChange={(e) => updateName(e.target.value)} required/>
                         </div>
                     </div>
                     <div className="md:flex md:items-center mb-6">
@@ -149,7 +149,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="BPM" onChange={(e) => updateBpm(e.target.value)} required/>
+                            <input className="text-theme bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="BPM" onChange={(e) => updateBpm(e.target.value)} required/>
                         </div>
                     </div>
                     <div className="md:flex md:items-center mb-6">
@@ -161,7 +161,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                         <div className="md:w-2/3">
                             <select 
                             placeholder="Key"
-                            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                            className="text-theme bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                             disabled={!keys.length}
                             onChange={(e) => updateKey(e.target.value)}
                             onBlur={(e) => updateKey(e.target.value)}
@@ -187,7 +187,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                             <select 
                             value={genre} 
                             placeholder="Genre" 
-                            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                            className="text-theme bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                             onChange={(e) => updateGenre(e.target.value)}
                             required
                             >
@@ -211,7 +211,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                             <select 
                             value={loop} 
                             placeholder="Loop or One-Shot" 
-                            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                            className="text-theme bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                             onChange={(e) => updateLoop(e.target.value)}
                             required
                             >
@@ -230,7 +230,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                         <div className="md:w-2/3">
                             <select 
                             value={instrument} 
-                            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                            className="text-theme bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                             onChange={(e) => updateInstrument(e.target.value)}
                             required
                             >
