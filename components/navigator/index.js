@@ -59,11 +59,11 @@ export default function Navigator() {
             </div>
             
             {/* Nav */}
-            <div className='invisible sm:visible w-1/2 pl-10 pt-6 cursor-pointer'>
+            <div className='w-10 invisible sm:visible sm:w-1/2 pl-10 pt-6 cursor-pointer'>
               <NextLink href="/"><img src="/logo.svg" /></NextLink>
               </div>
-              <div className='invisible sm:visible w-1/2 pl-24 relative rectangle shado-2xl text-white'>
-                <div className='w-full absolute top-1/2 bottom-0 transform -translate-y-1/2'>
+              <div className='w-1/2 invisible sm:visible pl-24 relative rectangle shado-2xl text-white'>
+                <div className='absolute top-1/2 bottom-0 transform -translate-y-1/2'>
                   <div className='flex relative'> 
                     <div className='pr-10 pt-1'>
                     <NextLink href="/">
@@ -75,13 +75,12 @@ export default function Navigator() {
                       <a>Sounds</a>
                     </NextLink>
                     </div>
-
-                    <div className='absolute right-32'>
-                    <DropDown />
-                    </div>
                   </div>
-                </div>
 
+                </div>
+                <div className='absolute top-1/2 transform -translate-y-1/2 right-5'>
+                    <DropDown />
+                </div>
                 <div className='absolute left-14 bottom-0'>
                   <img src='/corner.svg' />
                 </div>

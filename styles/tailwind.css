@@ -129,6 +129,15 @@ background-color: rgba(0,0,0,0.9);
         letter-spacing: 0;
         line-height: 22px;
     }
+    .rectangle {
+        height: 80px;
+        width: fill;
+        box-shadow: 0 20px 40px 0 rgba(0,0,0,0.26);
+        background: transparent
+    }
+}
+@media only screen and (max-width: 400px) {
+
 }
 .bg-sign {
     height: 992px;
