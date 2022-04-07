@@ -53,10 +53,7 @@ export default function SignIn() {
           
                 }
               }
-            >
-                <div classNam we="position text-white absolute top-3 right-8 font-bold">
-                <Link href="/">X</Link>
-                </div>   
+            >  
 
 
                 <div className='text-white visible lg:invisible'>
@@ -160,13 +157,13 @@ export default function SignIn() {
                             }
                         }
                         >
-                            <div className='absolute top-1/2 transform -translate-y-1/2'>
+                            <div className='absolute top-1/2 transform -translate-y-1/2 remove-w'>
                                 <div className='pb-10'>
                                 <h2 className="sign-in-to-samplified">Sign in to Samplified</h2>
                                 <h5 className='details'>Enter your details below</h5>
                                 </div>
                                 
-                                <a className='google grid justify-center cursor-pointer hover:opacity-80' type="button" onClick={() => signInFunction()}>
+                                <a className='google grid justify-center cursor-pointer hover:opacity-80 remove-w' type="button" onClick={() => signInFunction()}>
                                     <Button>
                                         <img className='' src="/ic_google.svg" alt="Sign in with Google"></img>
                                     </Button>
@@ -182,12 +179,12 @@ export default function SignIn() {
 
                                 <div className='pt-10'>
                                     <form className='relative w-96'>
-                                        <label className='label absolute bottom-60 mb-1 bg-theme left-3'><p className="label-text">Email Address</p></label>
-                                        <input className='sign-input pl-3' type="email" placeholder="your@email.com" />
+                                        <label className='label absolute bottom-60 mb-1 bg-theme left-3 remove-w'><p className="label-text">Email Address</p></label>
+                                        <input className='sign-input pl-3 remove-w' type="email" placeholder="your@email.com" />
                                         
-                                        <input className='sign-input mt-5 pl-3' type="password" placeholder='Password' />
+                                        <input className='sign-input mt-5 pl-3 remove-w' type="password" placeholder='Password' />
 
-                                        <div className='forgot-password flex justify-between mt-5'>
+                                        <div className='forgot-password flex justify-between mt-5 remove-w'>
                                         <a className='flex justify-between'>
                                             <Checkbox {...label}/>
                                             <p>Remember Me</p>
@@ -195,7 +192,7 @@ export default function SignIn() {
                                         <Link href="/forgot"><a className='forgot'>Forgot Password?</a></Link>
                                         </div>
 
-                                        <button className='sign-in-button mt-10'>
+                                        <button className='sign-in-button mt-10 remove-w'>
                                             Sign In
                                         </button>
                                     </form>
