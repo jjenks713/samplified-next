@@ -145,7 +145,7 @@ const TableData = ({props}) => {
                   <audio src={sound.url} controls>
                     Your browser does not support HTML5 audio. Please update your browser to view this media content.
                   </audio>
-                  {/* <AudioWaveform FileContext={sound.url} /> */}
+                  {/* trying to get audio wave to work <AudioWaveform FileContext={sound.url} /> */}
 
                 </div>
 
