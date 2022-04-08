@@ -37,7 +37,13 @@ const User = ({ sounds, info }) => {
   
     if (!session) {
       return (
-        <>
+        <div 
+        style={
+          {
+              backgroundImage: `url(/main.png)`
+          }
+        }
+        >
         <Navigator />
         <div
           className='py-24'
@@ -57,7 +63,7 @@ const User = ({ sounds, info }) => {
                 </p>
             </div><br></br><br></br>
         </div>
-        </>
+        </div>
       )
       } else {
 
