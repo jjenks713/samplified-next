@@ -26,7 +26,15 @@ const publicuser = ({ publicSound, userData, info }) => {
     })
   
         return (
-          <>
+          <div
+          style={
+            {
+                backgroundImage: `url(/main.png)`,
+                fontFamily: `'Ubuntu', sans-serif;`,
+                backgroundSize: "fill"
+            }
+          }
+          >
           <Navigator/>
           <div className='grid sm:grid-cols-8 sm:grid-rows-1 justify-center'>
             <div className='col-span-8 lg:col-span-2 bg-gray-200 px-10 py-4 sm:py-10'>
@@ -36,7 +44,7 @@ const publicuser = ({ publicSound, userData, info }) => {
               <AllTable slugSounds={sounds} />
             </div>
           </div>
-          </>
+          </div>
       )
 }
 
