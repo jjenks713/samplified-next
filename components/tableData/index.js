@@ -116,38 +116,38 @@ const TableData = ({props}) => {
  
     return (
 
-      <div className="grid text-white justify-center">
+      <div className="text-white justify-center table-cont">
 
-        <div aria-label="custom pagination table" className="">
+        <div aria-label="custom pagination table" className="table-cont px-5 md:px-24">
 
             {(rowsPerPage > 0
               ? sounds.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : sounds
             ).map((sound) => (
-              <div key={sound.createdAt} className="flex flex-wrap sm:flex-nowrap justify-between sm:justify-between rounded-lg table-div relative">
+              <div key={sound.createdAt} className="grid sm:flex sm:flex-nowrap justify-center sm:justify-between rounded-lg table-div relative">
                 <div className="absolute bottom-0 right-0 h-24">
                 <img className="table-bg" src="/bg-image.svg"></img>
 
                 </div>
 
-                <div component="th" scope="sounds" className="pl-10 text-center sm:text-left sm:border-b-0 relative w-44">
-                  <div className="absolute top-6">
+                <div component="th" scope="sounds" className="sm:pl-10 text-center sm:text-left sm:border-b-0 relative sm:w-44">
+                  <div className="md:absolute md:top-6">
                   <a className="text-lg">{sound.name}</a><br></br>
                   <Link href={`/publicuser/${encodeURIComponent(sound.createdBy)}`}><a className="text-sm hover:opacity-70 user-text">{sound.userName}</a></Link>
                   </div>
-                  <div className="absolute bottom-6">
+                  <div className="md:absolute md:bottom-6 grid justify-center">
                     <p className="text-xs date-text">{sound.date}</p>
                   </div>
                 </div>
 
-                <div className="p-4 mt-10 grid justify-center sm:text-left sm:border-b-0">
+                <div className="sm:p-4 sm:mt-10 grid justify-center sm:text-left sm:border-b-0">
                   <audio src={sound.url} controls>
                     Your browser does not support HTML5 audio. Please update your browser to view this media content.
                   </audio>
                 </div>
 
-                <div className="w-44 relative">
-                  <div className="absolute top-6">
+                <div className="w-80 md:w-44 relative">
+                  <div className="md:absolute md:top-6">
                     <ul className="text-xs flex flex-wrap justify-center pt-2 lowercase text-white">
                         <li><a className="bubble-text">{sound.bpm} bpm</a></li>
                         <li><a className="bubble-text">Key {sound.key}</a></li>
@@ -159,8 +159,8 @@ const TableData = ({props}) => {
                   </div>
                 </div>
 
-                <div>
-                    <a href={sound.url} download={sound.fileName}><img className="mt-7 mr-10" src="/ic_download.svg" alt="Download" /></a>
+                <div className="absolute md:relative top-4 right-4 md:top-0 md:right-0">
+                    <a href={sound.url} download={sound.fileName}><img className="md:mt-7 md:mr-10" src="/ic_download.svg" alt="Download" /></a>
                 </div>
                 
               </div>
@@ -177,7 +177,7 @@ const TableData = ({props}) => {
           <div className="text-sm table-footer">
             <div>
               <TablePagination
-                className="text-white"
+                className="text-white w-full"
                 rowsPerPageOptions={[ 10, 25, 50, 100, { label: "All", value: -1 }]}
                 colSpan={4}
                 count={sounds.length}

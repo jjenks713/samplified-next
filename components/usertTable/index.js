@@ -66,19 +66,22 @@ export default function userTable( props ) {
           <div className="pb-10 ">
               <div className="grid justify-center pt-14  text-white">
                 <div className='grid grid-cols-1 gap-0 justify-center'>
-                  <div className='rounded-xl bg-opacity-20 text-white'>
+                  <div className='rounded-xl bg-opacity-20 text-white relative'>
+                    <label className='absolute left-1.5 top-4'>
+                        {filteredData.length === 0 ? (
+                          <SearchIcon />
+                        ) : (
+                            <CloseIcon id="clearBtn" onClick={clearDrops} />
+                          )}
+                    </label>
                   <input 
-                  className="search-input text-white p-5"
+                  className="search-input text-white p-5 pl-9"
                   id="standard-basic" 
                   placeholder="Search Sound Name" 
                   variant="standard" 
                   value={wordEntered}
                   onChange={handleFilter}/>
-                    {filteredData.length === 0 ? (
-                    <SearchIcon />
-                  ) : (
-                      <CloseIcon id="clearBtn" onClick={clearDrops} />
-                    )}
+
                     </div>
                     <br/>
                     {noData ?

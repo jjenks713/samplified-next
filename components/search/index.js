@@ -141,19 +141,21 @@ export default function Search(props) {
                 {searchData.length > 0 ? 
                   <div className='grid grid-cols-1 gap-0 justify-center'>
                     <div className='row'>
-                    <input 
-                    className='search-input text-white p-5'
-                    id="standard-basic" 
-                    placeholder="Search Sound Name" 
-                    variant="standard" 
-                    value={wordEntered}
-                    onChange={handleSpecificFilter}/>
-                      {!wordEntered ? (
-                      <SearchIcon />
-                    ) : (
-                        <CloseIcon id="clearBtn" onClick={clearDrops} />
-                      )}
-                      </div>
+                      <label className='absolute left-1.5 top-4'>
+                        {!wordEntered ? (
+                          <SearchIcon />
+                        ) : (
+                            <CloseIcon id="clearBtn" onClick={clearDrops} />
+                          )}
+                      </label>
+                      <input 
+                      className='search-input text-white p-5'
+                      id="standard-basic" 
+                      placeholder="Search Sound Name" 
+                      variant="standard" 
+                      value={wordEntered}
+                      onChange={handleSpecificFilter}/>
+                    </div>
                       <br/>
                       {noData ?
                       null
@@ -163,20 +165,24 @@ export default function Search(props) {
                   </div>
                   :
                   <div className='grid grid-cols-1 gap-0 justify-center'>
-                    <div className='row'>
-                    <input
-                    className='search-input text-white p-5'
-                    id="standard-basic" 
-                    placeholder="Search Sound Name" 
-                    variant="standard" 
-                    value={wordEntered}
-                    onChange={handleFilter}/>
+                    <div className='row relative'>
+                      <label className='absolute left-1.5 top-4'>
                       {!wordEntered ? (
-                      <SearchIcon />
-                    ) : (
-                        <CloseIcon id="clearBtn" onClick={clearDrops} />
-                      )}
-                      </div>
+                        <SearchIcon />
+                      ) : (
+                          <CloseIcon id="clearBtn" onClick={clearDrops} />
+                        )}
+                      </label>
+
+                      <input
+                      className='search-input text-white p-5 pl-10'
+                      id="standard-basic" 
+                      placeholder="Search Sound Name" 
+                      variant="standard" 
+                      value={wordEntered}
+                      onChange={handleFilter}/>
+
+                    </div>
                       <br/>
                       {noData ?
                       null
@@ -188,11 +194,11 @@ export default function Search(props) {
                 }
 
                 {/* Genre Dropdown */}
-                <div className='w-44 pl-6'>
+                <div className='w-80 h-10 grid justify-center lg:w-44 lg:pl-6'>
                   <label className='mb-1 bg-theme'><p className="">Genre</p></label>
                   <select 
                   placeholder="Genre" 
-                  className="bg-theme text-white w-44 border rounded-md" 
+                  className="bg-theme text-white w-72 lg:w-44 border rounded-md" 
                   onChange={handleSetData}
                   required
                   >
@@ -210,14 +216,14 @@ export default function Search(props) {
               </div>
 
               {/* add sound button */}
-              <div className='cursor-pointer uppercase relative'>
+              <div className='cursor-pointer uppercase grid justify-center lg:relative mt-10 lg:mt-0'>
                   {session ?
                   <Link href="/userpage">
-                  <button className='add-yours absolute right-0'>ADD YOUR SOUNDS</button>
+                  <button className='add-yours lg:absolute lg:right-0'>ADD YOUR SOUNDS</button>
                   </Link>
                     :
                   <Link href="/sign-up">
-                  <button className='add-yours absolute right-0'>ADD YOUR SOUNDS</button>
+                  <button className='add-yours lg:absolute lg:right-0'>ADD YOUR SOUNDS</button>
                   </Link>
                   }
 
