@@ -58,11 +58,11 @@ export default function Home() {
 
               <div>
                 <a className='find-your-sound uppercase'>
-                Find your sound  
+                Get Samplified  
                 </a><br></br><br></br>
                 <p className='samplified-is-the-in'>
                 Samplified is the industrys highest quality,
-                open source sample library. Get access to millions offset
+                open source sample library. Get access to millions of
                 sounds made by producers, and sound designers—all
                 available at your fingertips.
                 </p><br></br>

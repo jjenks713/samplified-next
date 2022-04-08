@@ -79,7 +79,7 @@ export default function SignIn() {
                             <h5 className='text-center text-gwhite opacity-30'>Enter your details below</h5>
                             </div>
                             
-                            <a className='border mx-12 rounded-full cursor-pointer hover:opacity-80 h-10' type="button" onClick={() => signInFunction()}>
+                            <a className='border mx-12 rounded-full cursor-pointer h-10' type="button" onClick={() => signInFunction()}>
                                 <Button className='border'>
                                     <img className='mt-1' src="/ic_google.svg" alt="Sign in with Google"></img>
                                 </Button>
@@ -165,7 +165,7 @@ export default function SignIn() {
                                 <h5 className='details'>Enter your details below</h5>
                                 </div>
                                 
-                                <a className='google grid justify-center cursor-pointer hover:opacity-80 remove-w' type="button" onClick={() => signInFunction()}>
+                                <a className='google grid justify-center cursor-pointer remove-w' type="button" onClick={() => signInFunction()}>
                                     <Button>
                                         <img className='' src="/ic_google.svg" alt="Sign in with Google"></img>
                                     </Button>

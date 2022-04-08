@@ -262,7 +262,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                         placeholder="File" 
                         onChange={(e) => uploadFile(e.target.files[0])}
                         />
-                        <div>{progress ? <LinearProgress /> : null }</div>
+                        <div>{progress ? <LinearProgress color="success" /> : null }</div>
                         </div>
                     </div>
 

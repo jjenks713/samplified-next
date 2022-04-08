@@ -13,6 +13,7 @@ import TableBody from "@mui/material/TableBody";
 import TableFooter from "@mui/material/TableFooter";
 import TablePagination from "@mui/material/TablePagination";
 import Link from "next/link"
+import AudioWaveform from "../AudioWaveform";
 
 
 function TablePaginationActions(props) {
@@ -105,7 +106,7 @@ const TableData = ({props}) => {
 
     useEffect(() => {
       document.addEventListener('play', function(e){
-        var audios = document.getElementsByTagName('audio');
+        var audios = document.getElementsByTagName('AudioWaveform');
         for(var i = 0, len = audios.length; i < len;i++){
             if(audios[i] != e.target){
                 audios[i].pause();
@@ -140,20 +141,22 @@ const TableData = ({props}) => {
                   </div>
                 </div>
 
-                <div className="sm:p-4 sm:mt-10 grid justify-center sm:text-left sm:border-b-0">
+                <div className="grid justify-center sm:mt-14 sm:text-left sm:border-b-0 player-div">
                   <audio src={sound.url} controls>
                     Your browser does not support HTML5 audio. Please update your browser to view this media content.
                   </audio>
+                  {/* <AudioWaveform FileContext={sound.url} /> */}
+
                 </div>
 
                 <div className="w-80 md:w-44 relative">
                   <div className="md:absolute md:top-6">
                     <ul className="text-xs flex flex-wrap justify-center pt-2 lowercase text-white">
-                        <li><a className="bubble-text">{sound.bpm} bpm</a></li>
-                        <li><a className="bubble-text">Key {sound.key}</a></li>
-                        <li><a className="bubble-text">{sound.loop}</a></li>
-                        <li><a className="bubble-text">{sound.instrument}</a></li>
-                        <li><a className="bubble-text">{sound.genre}</a></li>
+                        <li className="mt-0 md:mt-4"><a className="bubble-text">{sound.bpm} bpm</a></li>
+                        <li className="mt-0 md:mt-4"><a className="bubble-text">Key {sound.key}</a></li>
+                        <li className="mt-0 md:mt-4"><a className="bubble-text">{sound.loop}</a></li>
+                        <li className="mt-0 md:mt-4"><a className="bubble-text">{sound.instrument}</a></li>
+                        <li className="mt-0 md:mt-4"><a className="bubble-text">{sound.genre}</a></li>
 
                       </ul>
                   </div>

@@ -352,6 +352,17 @@ background-color: rgba(0,0,0,0.9);
 .MuiTablePagination-selectLabel {
     visibility: hidden !important;
 }
+.player-div audio {
+    box-shadow: 5px 5px 5px 5px rgba(3, 236, 174, 0.25);
+    border-radius: 30px;
+}
+.waveform-container {
+    height: 20px;
+    width: 600px;
+}
+div wave {
+    height: 20px
+}
 @media only screen and (max-width: 700px) {
     .find-your-sound {
         color: #FFFFFF;
