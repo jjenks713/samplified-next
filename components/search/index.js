@@ -140,28 +140,30 @@ export default function Search(props) {
                 {/* Search input */}
                 {searchData.length > 0 ? 
                   <div className='grid grid-cols-1 gap-0 justify-center'>
-                    <div className='row'>
+                    <div className='row relative'>
                       <label className='absolute left-1.5 top-4'>
-                        {!wordEntered ? (
-                          <SearchIcon />
-                        ) : (
-                            <CloseIcon id="clearBtn" onClick={clearDrops} />
-                          )}
+                      {!wordEntered ? (
+                        <SearchIcon />
+                      ) : (
+                          <CloseIcon id="clearBtn" onClick={clearDrops} />
+                        )}
                       </label>
-                      <input 
-                      className='search-input text-white p-5'
+
+                      <input
+                      className='search-input text-white p-5 pl-10'
                       id="standard-basic" 
                       placeholder="Search Sound Name" 
                       variant="standard" 
                       value={wordEntered}
                       onChange={handleSpecificFilter}/>
+
                     </div>
-                      <br/>
-                      {noData ?
-                      null
-                      :
-                      <div className='row text-red-500 text-xs  pb-4'><small>Nothing matches your search! try again...</small></div>
-                      }
+                    <br/>
+                    {noData ?
+                    null
+                    :
+                    <div className='row text-red-500 text-xs pb-4'><small>Nothing matches your search! try again...</small></div>
+                    }
                   </div>
                   :
                   <div className='grid grid-cols-1 gap-0 justify-center'>
