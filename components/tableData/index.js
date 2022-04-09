@@ -89,7 +89,7 @@ const TableData = ({props}) => {
     const sounds = props.map(sound => ({...sound}))
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
-    console.log(sounds)
+    //console.log(sounds)
     // Avoid a layout jump when reaching the last page with empty rows.
     /* hello */
     const emptyRows =

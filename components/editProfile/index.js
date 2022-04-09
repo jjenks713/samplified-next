@@ -41,9 +41,14 @@ export default function EditProfile( { info } ) {
     }
 
     return (
-        <>
+        <div
+        className="bg-theme"
+        
+        >
         {info.map(info => (
-            <form onSubmit={editForm}>
+            <form 
+            onSubmit={editForm}
+            >
                 <div className="md:flex text-center mb-6">
                     <div className="md:w-1/3">
                         <label htmlFor='name' className="block text-gray-500 text-right font-bold mb-1 md:mb-0 pr-4">
@@ -59,7 +64,7 @@ export default function EditProfile( { info } ) {
                         </label>
                     </div>
                     <div className="md:w-2/3">
-                        <textarea className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                        <textarea className="text-theme p-4 rounded-lg" 
                         value={about}
                         onChange={(e) => setAbout(e.target.value)} />
                     </div>
@@ -71,7 +76,7 @@ export default function EditProfile( { info } ) {
                         </label>
                     </div>
                     <div className="md:w-2/3">
-                        <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                        <input className="text-theme p-4 rounded-lg" 
                         value={soundcloud} 
                         onChange={(e) => setSoundcloud(e.target.value)} />
                     </div>
@@ -83,7 +88,7 @@ export default function EditProfile( { info } ) {
                         </label>
                     </div>
                     <div className="md:w-2/3">
-                        <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                        <input className="text-theme p-4 rounded-lg" 
                         value={twitter}
                         onChange={(e) => setTwitter(e.target.value)} />
                     </div>
@@ -95,7 +100,7 @@ export default function EditProfile( { info } ) {
                         </label>
                     </div>
                     <div className="md:w-2/3">
-                        <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                        <input className="text-theme p-4 rounded-lg" 
                         value={facebook} 
                         onChange={(e) => setFacebook(e.target.value)} />
                     </div>
@@ -104,7 +109,7 @@ export default function EditProfile( { info } ) {
                     <div className="md:w-1/3"></div>
                     <div className="md:w-2/3">
 
-                    <button className="shadow bg-purple-500 cursor-auto focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                    <button className="profile-button">
                         Submit
                     </button>
 
@@ -113,6 +118,6 @@ export default function EditProfile( { info } ) {
             </form>
         ))}
 
-        </>
+        </div>
     )
 }

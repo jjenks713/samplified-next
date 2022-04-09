@@ -19,11 +19,12 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  borderRadius: 5,
 };
 
 const User = ({ sounds, info }) => {
@@ -94,10 +95,11 @@ const User = ({ sounds, info }) => {
                   onClose={handleClose}
                   aria-labelledby="modal-modal-title"
                   aria-describedby="modal-modal-description"
+                  className="bg-theme bg-opacity-10"
                 >
-                  <Box sx={style} className='grid'>
-                    <div className='absolute top-2 right-0 mb-10'>
-                      <Button className="text-black" onClick={handleClose}>X</Button>
+                  <Box sx={style} className='grid bg-theme text-white'>
+                    <div className='absolute top-4 right-10 mb-10'>
+                      <a className="text-white cursor-pointer" onClick={handleClose}>X</a>
                     </div>
                     <div className='m-5'>
                       <EditProfile info={userInfo} />
