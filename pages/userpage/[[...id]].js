@@ -59,7 +59,7 @@ const User = ({ sounds, info }) => {
         >
             <div>
                 <Link href="/"><a className='hover:bg-opacity-30 hover:cursor-pointer'><img className="mx-auto h-24 w-auto" src="/logo-large.svg" alt="Workflow" /></a></Link>
-                <h2 className="mt-6 text-center text-3xl font-extrabold text-white"><Link href="/sign-up">Please sign in to continue</Link></h2>
+                <h2 className="mt-6 text-center text-3xl font-extrabold text-white"><Link href="/sign-up">You've been signed out, Please sign in to continue</Link></h2>
                 <p className="mt-2 text-center text-sm text-gray-600">
                 </p>
             </div><br></br><br></br>
