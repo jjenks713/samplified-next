@@ -73,7 +73,7 @@ const AudioPlayer = ({url}) => {
     <div className={styles.audioPlayer}>
       <div className='grid justify-center'>
 
-        <div className='flex justify-center mb-4'>
+        <div className='flex justify-center mb-1 md:mb-4'>
           {/* current time */}
           <div className={styles.currentTime}>{calculateTime(currentTime)}</div>
 
