@@ -9,12 +9,10 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import TableCell from "@mui/material/TableCell";
-import TableBody from "@mui/material/TableBody";
-import TableFooter from "@mui/material/TableFooter";
 import TablePagination from "@mui/material/TablePagination";
 import Link from "next/link"
 import AudioWaveform from "../AudioWaveform";
-
+import { AudioPlayer } from "../AudioPlayer";
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -141,12 +139,15 @@ const TableData = ({props}) => {
                   </div>
                 </div>
 
-                <div className="grid justify-center sm:mt-14 sm:text-left sm:border-b-0 player-div">
-                  <audio src={sound.url} controls>
+                <div className="grid justify-center player-div">
+                  {/* <audio src={sound.url} controls>
                     Your browser does not support HTML5 audio. Please update your browser to view this media content.
-                  </audio>
+                  </audio> */}
                   {/* trying to get audio wave to work <AudioWaveform FileContext={sound.url} /> */}
+                  <div className="mt-10">
+                  <AudioPlayer url={sound.url} />
 
+                  </div>
                 </div>
 
                 <div className="w-80 md:w-44 relative">

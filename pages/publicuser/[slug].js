@@ -30,7 +30,7 @@ const publicuser = ({ publicSound, userData, info }) => {
           style={
             {
                 backgroundImage: `url(/main.png)`,
-                fontFamily: `'Ubuntu', sans-serif;`,
+                fontFamily: `'Ubuntu', sans-serif`,
                 backgroundSize: "fill"
             }
           }

@@ -10,7 +10,6 @@ const AudioWaveform = ({ FileContext }) => {
 	const wavesurferRef = useRef(null);
 	// fetch file url from the context
 	const { fileURL, setFileURL } = useState(FileContext);
-	const fileArray = [FileContext]
 	//console.log(fileArray)
 
 	// crate an instance of the wavesurfer

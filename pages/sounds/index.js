@@ -11,7 +11,7 @@ export default function AllSounds({ allSounds }) {
         style={
             {
                 backgroundImage: `url(/main.png)`,
-                fontFamily: `'Ubuntu', sans-serif;`
+                fontFamily: `'Ubuntu', sans-serif`
             }
         }
         >
