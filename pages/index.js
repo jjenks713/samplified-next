@@ -30,7 +30,7 @@ export default function Home() {
     <main 
     style={
       {
-        fontFamily: `'Ubuntu', sans-serif;`
+        fontFamily: `'Ubuntu', sans-serif`
 
       }
     }
