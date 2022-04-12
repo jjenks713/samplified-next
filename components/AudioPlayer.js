@@ -73,7 +73,7 @@ const AudioPlayer = ({url}) => {
     <div className={styles.audioPlayer}>
       <div className='grid justify-center'>
 
-        <div className='flex justify-center mb-1 md:mb-4'>
+        <div className='flex justify-center mb-0 md:mb-4'>
           {/* current time */}
           <div className={styles.currentTime}>{calculateTime(currentTime)}</div>
 
@@ -84,7 +84,9 @@ const AudioPlayer = ({url}) => {
 
           {/* duration */}
 
-          <div className={styles.duration}>{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
+          <div className={styles.duration}
+          onLoad={calculateTime(duration)}
+          >{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
         </div>
 
         <div className='flex justify-center'>
