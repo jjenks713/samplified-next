@@ -95,7 +95,7 @@ const AudioPlayer = ({url}) => {
 
           {/* duration */}
 
-          { duration === `NaN:NaN` ? <div>. . .</div> : <div className={styles.duration}>{duration}</div> }
+          { duration === `NaN:NaN` ? <div>...</div> : <div className={styles.duration}>{duration}</div> }
         </div>
 
         <div className='flex justify-center'>
