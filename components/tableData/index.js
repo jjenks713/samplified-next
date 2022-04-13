@@ -10,6 +10,7 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import TableCell from "@mui/material/TableCell";
 import TablePagination from "@mui/material/TablePagination";
+import Pagination from "@mui/material/Pagination";
 import Link from "next/link"
 import AudioWaveform from "../AudioWaveform";
 import { AudioPlayer } from "../AudioPlayer";
@@ -17,6 +18,7 @@ import { AudioPlayer } from "../AudioPlayer";
 function TablePaginationActions(props) {
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
+  const pageCount = page + 1;
 
   const handleFirstPageButtonClick = (event) => {
     onPageChange(event, 0);
@@ -34,15 +36,18 @@ function TablePaginationActions(props) {
     onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
 
+  console.log(pageCount)
+
+
   return (
-    <Box sx={{ flexShrink: 0, ml: 2.5 }} className="text-white">
-      <IconButton
+    <div className="text-white flex">
+{/*       <IconButton
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}
         aria-label="first page"
       >
         {theme.direction === "rtl" ? <LastPageIcon className="text-white" /> : <FirstPageIcon className="text-white" />}
-      </IconButton>
+      </IconButton> */}
       <IconButton
         onClick={handleBackButtonClick}
         disabled={page === 0}
@@ -54,6 +59,33 @@ function TablePaginationActions(props) {
           <KeyboardArrowLeft className="text-white" />
         )}
       </IconButton>
+      <div className="flex justify-center px-10 relative">
+        <p className="absolute top-1/2 bottom-0 transform -translate-y-1/2">
+          <button
+          className="px-2"
+          onClick={handleFirstPageButtonClick}
+          disabled={page === 0}
+          aria-label="first page">
+          1 
+          </button>
+          <button
+          className="px-2"
+          onClick={handleNextButtonClick}
+          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+          aria-label="next page">
+          {onPageChange.length} 
+          </button>
+          ...
+          <button
+          className="pl-2"          
+          onClick={handleLastPageButtonClick}
+          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+          aria-label="last page"
+          >
+          {onPageChange.length}
+          </button>  
+        </p>
+      </div>
       <IconButton
         onClick={handleNextButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
@@ -65,14 +97,14 @@ function TablePaginationActions(props) {
           <KeyboardArrowRight className="text-white" />
         )}
       </IconButton>
-      <IconButton
+{/*       <IconButton
         onClick={handleLastPageButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="last page"
       >
         {theme.direction === "rtl" ? <FirstPageIcon className="text-white" /> : <LastPageIcon className="text-white" />}
-      </IconButton>
-    </Box>
+      </IconButton> */}
+    </div>
   );
 }
 
@@ -174,14 +206,14 @@ const TableData = ({props}) => {
     
             {emptyRows > 0 && (
               <tr style={{ height: 53 * emptyRows }}>
-                <TableCell colSpan={4} />
+                <TableCell colSpan={4} className="border-none" />
               </tr>
             )}
           </div>
-          <div className="text-sm table-footer">
-            <div>
+          <div className="text-sm table-footer flex justify-center text-white">
+            <div className="text-white">
               <TablePagination
-                className="text-white w-full"
+                className="text-white w-full border-none flex justify-between"
                 rowsPerPageOptions={[ 10, 25, 50, 100, { label: "All", value: -1 }]}
                 colSpan={4}
                 count={sounds.length}
