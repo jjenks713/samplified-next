@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styles from "../styles/AudioPlayer.module.css";
-import { BsArrowLeftShort } from "react-icons/bs"
 import Forward30Icon from '@mui/icons-material/Forward30';
 import Replay30Icon from '@mui/icons-material/Replay30';
 import { FaPlay } from "react-icons/fa"
@@ -17,11 +16,22 @@ const AudioPlayer = ({url}) => {
   const progressBar = useRef();   // reference our progress bar
   const animationRef = useRef();  // reference the animation
 
-  useEffect(() => {
-    const seconds = Math.floor(audioPlayer.current.duration);
-    setDuration(seconds);
-    progressBar.current.max = seconds;
+  useEffect(async () => {
+    const secs = await Math.floor(audioPlayer.current.duration);
+    console.log(secs)
+    loadDuration(secs)
+    progressBar.current.max = secs;
+
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
+
+  const loadDuration = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    setDuration(`${returnedMinutes}:${returnedSeconds}`);
+    console.log(duration)
+  }
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
@@ -30,6 +40,7 @@ const AudioPlayer = ({url}) => {
     const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
     return `${returnedMinutes}:${returnedSeconds}`;
   }
+
 
   const togglePlayPause = () => {
     const prevValue = isPlaying;
@@ -84,9 +95,7 @@ const AudioPlayer = ({url}) => {
 
           {/* duration */}
 
-          <div className={styles.duration}
-          onLoad={calculateTime(duration)}
-          >{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
+          { duration === `NaN:NaN` ? <div>. . .</div> : <div className={styles.duration}>{duration}</div> }
         </div>
 
         <div className='flex justify-center'>
