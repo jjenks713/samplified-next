@@ -41,6 +41,7 @@
 .play {
   position: relative;
   left: 2px;
+  color: #212B36;
 }
 
 .currentTime,

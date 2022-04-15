@@ -351,6 +351,7 @@ background-color: rgba(0,0,0,0.9);
 }
 .MuiTablePagination-selectLabel {
     visibility: hidden !important;
+    width: 0px !important;
 }
 /* .player-div {
     box-shadow: 5px 5px 5px 5px rgba(3, 236, 174, 0.25);

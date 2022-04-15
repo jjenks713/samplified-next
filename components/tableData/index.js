@@ -36,7 +36,7 @@ function TablePaginationActions(props) {
     onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
 
-  console.log(pageCount)
+  console.log(props)
 
 
   return (
@@ -196,7 +196,7 @@ const TableData = ({props}) => {
                 </div>
 
                 <div className="absolute md:relative top-4 right-4 md:top-0 md:right-0">
-                    <a href={sound.url} download={sound.fileName}><img className="md:mt-7 md:mr-10" src="/ic_download.svg" alt="Download" /></a>
+                    <a download={sound.fileName}  href={sound.url} target='_blank'><img className="md:mt-7 md:mr-10" src="/ic_download.svg" alt="Download" /></a>
                 </div>
                 
               </div>

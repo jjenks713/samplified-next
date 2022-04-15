@@ -18,7 +18,6 @@ const AudioPlayer = ({url}) => {
 
   useEffect(async () => {
     const secs = await Math.floor(audioPlayer.current.duration);
-    console.log(secs)
     loadDuration(secs)
     progressBar.current.max = secs;
 
@@ -30,7 +29,6 @@ const AudioPlayer = ({url}) => {
     const seconds = Math.floor(secs % 60);
     const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
     setDuration(`${returnedMinutes}:${returnedSeconds}`);
-    console.log(duration)
   }
 
   const calculateTime = (secs) => {
