@@ -1,137 +1,48 @@
 import * as React from "react";
-import { useEffect } from "react";
-import PropTypes from "prop-types";
-import { useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import FirstPageIcon from "@mui/icons-material/FirstPage";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import LastPageIcon from "@mui/icons-material/LastPage";
-import TableCell from "@mui/material/TableCell";
-import TablePagination from "@mui/material/TablePagination";
+import { useEffect, useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import Link from "next/link"
 import AudioWaveform from "../AudioWaveform";
 import { AudioPlayer } from "../AudioPlayer";
 
-function TablePaginationActions(props) {
-  const theme = useTheme();
-  const { count, page, rowsPerPage, onPageChange } = props;
-  const pageCount = page + 1;
+function usePagination(data, itemsPerPage) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const maxPage = Math.ceil(data.length / itemsPerPage);
 
-  const handleFirstPageButtonClick = (event) => {
-    onPageChange(event, 0);
-  };
+  function currentData() {
+    const begin = (currentPage - 1) * itemsPerPage;
+    const end = begin + itemsPerPage;
+    return data.slice(begin, end);
+  }
 
-  const handleBackButtonClick = (event) => {
-    onPageChange(event, page - 1);
-  };
+  function next() {
+    setCurrentPage(currentPage => Math.min(currentPage + 1, maxPage));
+  }
 
-  const handleNextButtonClick = (event) => {
-    onPageChange(event, page + 1);
-  };
+  function prev() {
+    setCurrentPage(currentPage => Math.max(currentPage - 1, 1));
+  }
 
-  const handleLastPageButtonClick = (event) => {
-    onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-  };
+  function jump(page) {
+    const pageNumber = Math.max(1, page);
+    setCurrentPage(currentPage => Math.min(pageNumber, maxPage));
+  }
 
-  console.log(props)
-
-
-  return (
-    <div className="text-white flex">
-{/*       <IconButton
-        onClick={handleFirstPageButtonClick}
-        disabled={page === 0}
-        aria-label="first page"
-      >
-        {theme.direction === "rtl" ? <LastPageIcon className="text-white" /> : <FirstPageIcon className="text-white" />}
-      </IconButton> */}
-      <IconButton
-        onClick={handleBackButtonClick}
-        disabled={page === 0}
-        aria-label="previous page"
-      >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowRight className="text-white" />
-        ) : (
-          <KeyboardArrowLeft className="text-white" />
-        )}
-      </IconButton>
-      <div className="flex justify-center px-10 relative">
-        <p className="absolute top-1/2 bottom-0 transform -translate-y-1/2">
-          <button
-          className="px-2"
-          onClick={handleFirstPageButtonClick}
-          disabled={page === 0}
-          aria-label="first page">
-          1 
-          </button>
-          <button
-          className="px-2"
-          onClick={handleNextButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="next page">
-          {onPageChange.length} 
-          </button>
-          ...
-          <button
-          className="pl-2"          
-          onClick={handleLastPageButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="last page"
-          >
-          {onPageChange.length}
-          </button>  
-        </p>
-      </div>
-      <IconButton
-        onClick={handleNextButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="next page"
-      >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowLeft className="text-white" />
-        ) : (
-          <KeyboardArrowRight className="text-white" />
-        )}
-      </IconButton>
-{/*       <IconButton
-        onClick={handleLastPageButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="last page"
-      >
-        {theme.direction === "rtl" ? <FirstPageIcon className="text-white" /> : <LastPageIcon className="text-white" />}
-      </IconButton> */}
-    </div>
-  );
+  return { next, prev, jump, currentData, currentPage, maxPage };
 }
 
-TablePaginationActions.propTypes = {
-  count: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
-  rowsPerPage: PropTypes.number.isRequired
-};
 
 const TableData = ({props}) => {
     const sounds = props.map(sound => ({...sound}))
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
-    //console.log(sounds)
-    // Avoid a layout jump when reaching the last page with empty rows.
-    /* hello */
-    const emptyRows =
-      page > 0 ? Math.max(0, (1 + page) * rowsPerPage - sounds.length) : 0;
-  
-    const handleChangePage = (event, newPage) => {
-      setPage(newPage);
-    };
-  
-    const handleChangeRowsPerPage = (event) => {
-      setRowsPerPage(parseInt(event.target.value, 10));
-      setPage(0);
+    const [page, setPage] = useState(1);
+    const PER_PAGE = 10;
+
+    const count = Math.ceil(sounds.length / PER_PAGE);
+    const _DATA = usePagination(sounds, PER_PAGE);
+
+    const handleChange = (e, p) => {
+      setPage(p);
+      _DATA.jump(p);
     };
 
     useEffect(() => {
@@ -151,10 +62,7 @@ const TableData = ({props}) => {
 
         <div aria-label="custom pagination table" className="table-cont px-5 md:px-24">
 
-            {(rowsPerPage > 0
-              ? sounds.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              : sounds
-            ).map((sound) => (
+            {_DATA.currentData().map((sound) => (
               <div key={sound.createdAt} className="grid sm:flex sm:flex-nowrap justify-center sm:justify-between rounded-lg table-div relative">
                 <div className="absolute bottom-0 right-0 h-24">
                 <img className="table-bg" src="/bg-image.svg"></img>
@@ -204,30 +112,17 @@ const TableData = ({props}) => {
             ))}
 
     
-            {emptyRows > 0 && (
-              <tr style={{ height: 53 * emptyRows }}>
-                <TableCell colSpan={4} className="border-none" />
-              </tr>
-            )}
           </div>
-          <div className="text-sm table-footer flex justify-center text-white">
+          <div className="text-sm table-footer pt-14 flex justify-center text-white">
             <div className="text-white">
-              <TablePagination
+              <Pagination
                 className="text-white w-full border-none flex justify-between"
-                rowsPerPageOptions={[ 10, 25, 50, 100, { label: "All", value: -1 }]}
-                colSpan={4}
-                count={sounds.length}
-                rowsPerPage={rowsPerPage}
+                count={count}
+                size="large"
                 page={page}
-                SelectProps={{
-                  inputProps: {
-                    "aria-label": "rows per page"
-                  },
-                  native: true
-                }}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                ActionsComponent={TablePaginationActions}
+                variant="outlined"
+                onChange={handleChange}
+                color="primary"
               />
             </div>
           </div>
