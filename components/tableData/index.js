@@ -114,15 +114,13 @@ const TableData = ({props}) => {
     
           </div>
           <div className="text-sm table-footer pt-14 flex justify-center text-white">
-            <div className="text-white">
+            <div className="text-white bg-gwhite rounded-full bg-opacity-30">
               <Pagination
                 className="text-white w-full border-none flex justify-between"
                 count={count}
                 size="large"
                 page={page}
-                variant="outlined"
                 onChange={handleChange}
-                color="primary"
               />
             </div>
           </div>
