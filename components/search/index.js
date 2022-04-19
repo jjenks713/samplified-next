@@ -92,7 +92,7 @@ export default function Search(props) {
   <>   
     <div className='w-full'>
 
-        <div className='pt-24 pb-10 w-3/4 mx-auto'>
+        <div className='pt-24 pb-4 px-0 md:px-20 mx-auto'>
             <div className='mx-auto px-4 justify-center text-white relative'>
               <div className='flex flex-wrap justify-center lg:absolute lg:top-1/2 lg:bottom-0 lg:transform lg:-translate-y-1/2'>
         {/*       <div className='pr-10'>

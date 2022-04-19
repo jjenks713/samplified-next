@@ -16,8 +16,8 @@ const AudioPlayer = ({url}) => {
   const progressBar = useRef();   // reference our progress bar
   const animationRef = useRef();  // reference the animation
 
-  useEffect(async () => {
-    const secs = await Math.floor(audioPlayer.current.duration);
+  useEffect(() => {
+    const secs = Math.floor(audioPlayer.current.duration);
     loadDuration(secs)
     progressBar.current.max = secs;
 
@@ -29,6 +29,7 @@ const AudioPlayer = ({url}) => {
     const seconds = Math.floor(secs % 60);
     const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
     setDuration(`${returnedMinutes}:${returnedSeconds}`);
+    console.log(duration)
   }
 
   const calculateTime = (secs) => {
@@ -92,8 +93,8 @@ const AudioPlayer = ({url}) => {
           </div>
 
           {/* duration */}
-
-          { duration === `NaN:NaN` ? <div> ...</div> : <div className={styles.duration}>{duration}</div> }
+          {/* <div>{duration}</div> */}
+          { duration === `NaN:NaN` ? <div> ...</div> : <div className='pl-4'>{duration}</div> }
         </div>
 
         <div className='flex justify-center'>
