@@ -87,13 +87,13 @@ const AudioPlayer = ({url}) => {
           <div className={styles.currentTime}>{calculateTime(currentTime)}</div>
 
           {/* progress bar */}
-          <div className="w-52 md:w-96">
+          <div className="w-52 md:w-80">
             <input type="range" className={styles.progressBar} defaultValue="0" ref={progressBar} onChange={changeRange} />
           </div>
 
           {/* duration */}
 
-          { duration === `NaN:NaN` ? <div>...</div> : <div className={styles.duration}>{duration}</div> }
+          { duration === `NaN:NaN` ? <div> ...</div> : <div className={styles.duration}>{duration}</div> }
         </div>
 
         <div className='flex justify-center'>

@@ -79,7 +79,7 @@ const TableData = ({props}) => {
                   </div>
                 </div>
 
-                <div className="grid justify-center player-div pl-0 md:pl-6">
+                <div className="grid justify-center player-div pl-0 md:pl-7">
                   {/* <audio src={sound.url} controls>
                     Your browser does not support HTML5 audio. Please update your browser to view this media content.
                   </audio> */}
