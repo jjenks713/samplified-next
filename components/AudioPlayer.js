@@ -87,7 +87,7 @@ const AudioPlayer = ({url}) => {
           <div className={styles.currentTime}>{calculateTime(currentTime)}</div>
 
           {/* progress bar */}
-          <div>
+          <div className="w-52 md:w-96">
             <input type="range" className={styles.progressBar} defaultValue="0" ref={progressBar} onChange={changeRange} />
           </div>
 

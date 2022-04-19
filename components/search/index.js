@@ -196,7 +196,7 @@ export default function Search(props) {
                 }
 
                 {/* Genre Dropdown */}
-                <div className='w-80 h-10 grid justify-center lg:w-44 lg:pl-6'>
+                {/* <div className='w-80 h-10 grid justify-center lg:w-44 lg:pl-6'>
                   <label className='mb-1 bg-theme'><p className="">Genre</p></label>
                   <select 
                   placeholder="Genre" 
@@ -212,7 +212,7 @@ export default function Search(props) {
                         ))
                     }
                   </select>
-                </div>
+                </div> */}
                 
 
               </div>

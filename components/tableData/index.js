@@ -79,7 +79,7 @@ const TableData = ({props}) => {
                   </div>
                 </div>
 
-                <div className="grid justify-center player-div">
+                <div className="grid justify-center player-div pl-0 md:pl-6">
                   {/* <audio src={sound.url} controls>
                     Your browser does not support HTML5 audio. Please update your browser to view this media content.
                   </audio> */}
@@ -90,9 +90,9 @@ const TableData = ({props}) => {
                   </div>
                 </div>
 
-                <div className="w-80 md:w-44 relative">
+                <div className="w-80 md:w-36 relative">
                   <div className="md:absolute md:top-6">
-                    <ul className="text-xs flex flex-wrap justify-center pt-2 lowercase text-white">
+                    <ul className="text-xs flex flex-wrap justify-center pt-2 sm:pt-0 lowercase text-white">
                         <li className="mt-0 md:mt-4"><a className="bubble-text">{sound.bpm} bpm</a></li>
                         <li className="mt-0 md:mt-4"><a className="bubble-text">Key {sound.key}</a></li>
                         <li className="mt-0 md:mt-4"><a className="bubble-text">{sound.loop}</a></li>
