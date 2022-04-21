@@ -37,7 +37,6 @@ const TableData = ({props}) => {
     const sounds = props.map(sound => ({...sound}))
     const [page, setPage] = useState(1);
     const PER_PAGE = 10;
-    console.log(sounds)
     const count = Math.ceil(sounds.length / PER_PAGE);
     const _DATA = usePagination(sounds, PER_PAGE);
 
@@ -57,11 +56,10 @@ const TableData = ({props}) => {
       }, true);
     })
     
-    const saveFunc = (url, fileName) => {
-      console.log(url, fileName)
+    const saveFunc = (url, name) => {
       saveAs(
         url,
-        fileName
+        name
       )
     }
  
@@ -113,7 +111,7 @@ const TableData = ({props}) => {
                 </div>
 
                 <div className="absolute md:relative top-4 right-4 md:top-0 md:right-0 cursor-pointer">
-                    <a key={sound.url} onClick={() => saveFunc(sound.url, sound.fileName)}><img className="md:mt-7 md:mr-10" src="/ic_download.svg" alt="Download" /></a>
+                    <a key={sound.url} onClick={() => saveFunc(sound.url, sound.name)}><img className="md:mt-7 md:mr-10" src="/ic_download.svg" alt="Download" /></a>
                 </div>
                 
               </div>
