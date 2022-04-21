@@ -59,7 +59,7 @@ const TableData = ({props}) => {
     const saveFunc = (url, name) => {
       console.log("download", url, name)
       saveAs(
-        url,
+        "https://cors-anywhere.herokuapp.com/" + url,
         name
       )
     }
