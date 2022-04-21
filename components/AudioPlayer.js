@@ -25,19 +25,22 @@ const AudioPlayer = ({url}) => {
 
   const loadDuration = (secs) => {
     const minutes = Math.floor(secs / 60);
-    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const returnedMinutes = minutes < 10 ? `${minutes}` : `${minutes}`;
     const seconds = Math.floor(secs % 60);
     const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
     setDuration(`${returnedMinutes}:${returnedSeconds}`);
-    console.log(duration)
   }
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
-    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const returnedMinutes = minutes < 10 ? `${minutes}` : `${minutes}`;
     const seconds = Math.floor(secs % 60);
     const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${returnedMinutes}:${returnedSeconds}`;
+    return (
+      <div>
+        {returnedMinutes}:{returnedSeconds}
+      </div>
+    );
   }
 
 
@@ -93,7 +96,7 @@ const AudioPlayer = ({url}) => {
           </div>
 
           {/* duration */}
-          {/* <div>{duration}</div> */}
+        
           { duration === `NaN:NaN` ? <div> ...</div> : <div className='pl-4'>{duration}</div> }
         </div>
 
