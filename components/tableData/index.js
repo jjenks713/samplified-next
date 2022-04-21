@@ -57,6 +57,7 @@ const TableData = ({props}) => {
     })
     
     const saveFunc = (url, name) => {
+      console.log("download", url, name)
       saveAs(
         url,
         name
