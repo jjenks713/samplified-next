@@ -96,7 +96,7 @@ const AudioPlayer = ({url}) => {
           </div>
 
           {/* duration */}
-        
+          
           { duration === `NaN:NaN` ? <div> ...</div> : <div className='pl-4'>{duration}</div> }
         </div>
 

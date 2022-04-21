@@ -15,6 +15,7 @@
     "@mui/styled-engine-sc": "^5.4.1",
     "aws-sdk": "^2.1096.0",
     "evergreen-ui": "^6.8.2",
+    "file-saver": "^2.0.5",
     "gray-matter": "^4.0.2",
     "lodash.orderby": "^4.6.0",
     "mongodb": "^3.6.3",

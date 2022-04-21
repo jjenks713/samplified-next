@@ -4,6 +4,8 @@ import Pagination from "@mui/material/Pagination";
 import Link from "next/link"
 import AudioWaveform from "../AudioWaveform";
 import { AudioPlayer } from "../AudioPlayer";
+import { saveAs } from "file-saver";
+
 
 function usePagination(data, itemsPerPage) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,12 +33,11 @@ function usePagination(data, itemsPerPage) {
   return { next, prev, jump, currentData, currentPage, maxPage };
 }
 
-
 const TableData = ({props}) => {
     const sounds = props.map(sound => ({...sound}))
     const [page, setPage] = useState(1);
     const PER_PAGE = 10;
-
+    console.log(sounds)
     const count = Math.ceil(sounds.length / PER_PAGE);
     const _DATA = usePagination(sounds, PER_PAGE);
 
@@ -55,6 +56,14 @@ const TableData = ({props}) => {
         }
       }, true);
     })
+    
+    const saveFunc = (url, fileName) => {
+      console.log(url, fileName)
+      saveAs(
+        url,
+        fileName
+      )
+    }
  
     return (
 
@@ -103,8 +112,8 @@ const TableData = ({props}) => {
                   </div>
                 </div>
 
-                <div className="absolute md:relative top-4 right-4 md:top-0 md:right-0">
-                    <a download={sound.fileName}  href={sound.url} target='_blank'><img className="md:mt-7 md:mr-10" src="/ic_download.svg" alt="Download" /></a>
+                <div className="absolute md:relative top-4 right-4 md:top-0 md:right-0 cursor-pointer">
+                    <a key={sound.url} onClick={() => saveFunc(sound.url, sound.fileName)}><img className="md:mt-7 md:mr-10" src="/ic_download.svg" alt="Download" /></a>
                 </div>
                 
               </div>
