@@ -14,7 +14,7 @@ const AudioPlayer = ({url}) => {
   // references
   const audioPlayer = useRef();   // reference our audio component
   const progressBar = useRef();   // reference our progress bar
-  const animationRef = useRef();  // reference the animation
+  const animationRef = useRef();  // reference the animation yup
 
   useEffect(() => {
     const secs = Math.floor(audioPlayer.current.duration);
