@@ -458,6 +458,6 @@ div wave {
         letter-spacing: 0;
         line-height: 12px;
         text-align: center;
-        position: relative;
+        position: relative !important;
     }
 }
