@@ -304,7 +304,7 @@ background-color: rgba(0,0,0,0.9);
     letter-spacing: 0;
     line-height: 19px;
     text-align: center;
-    position: absolute;
+    position: absolute !important;
 }
 
 .table-div {
@@ -457,19 +457,6 @@ div wave {
         font-weight: bold;
         letter-spacing: 0;
         line-height: 12px;
-        text-align: center;
-    }
-    .add-yours {
-        height: 52px;
-        width: 301px;
-        border-radius: 26px !important;
-        background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
-        color: #FFFFFF !important;
-        font-family: Helvetica;
-        font-size: 16px;
-        font-weight: bold;
-        letter-spacing: 0;
-        line-height: 19px;
         text-align: center;
         position: relative;
     }
