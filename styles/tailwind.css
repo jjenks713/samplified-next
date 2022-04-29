@@ -297,7 +297,7 @@ background-color: rgba(0,0,0,0.9);
     width: 301px;
     border-radius: 26px;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     font-family: Helvetica;
     font-size: 16px;
     font-weight: bold;

@@ -218,7 +218,7 @@ export default function Search(props) {
               </div>
 
               {/* add sound button */}
-              <div className='cursor-pointer uppercase grid justify-center lg:relative mt-10 lg:mt-0'>
+              <div className='cursor-pointer uppercase grid justify-center mt-10 lg:mt-0'>
                   {session ?
                   <Link href="/userpage">
                   <Button className='add-yours lg:absolute lg:right-0'>ADD YOUR SOUNDS</Button>
