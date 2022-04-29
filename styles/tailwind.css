@@ -9,7 +9,7 @@
 .button-color {
     height: 52px;
     width: 363px;
-    border-radius: 26px;
+    border-radius: 26px !important;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
     color: white !important;
 }
@@ -71,7 +71,7 @@ background-color: rgba(0,0,0,0.9);
     .button-color {
         height: 52px;
         width: 200px;
-        border-radius: 26px;
+        border-radius: 26px !important;
         background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
         color: white !important;
     }
@@ -116,7 +116,7 @@ background-color: rgba(0,0,0,0.9);
 .sign-button {
     height: 34px;
     width: 120px;
-    border-radius: 26px;
+    border-radius: 26px !important;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
     color: white !important;
 }
@@ -258,28 +258,28 @@ background-color: rgba(0,0,0,0.9);
 .sign-in-button {
     height: 52px;
     width: 481px;
-    border-radius: 26px;
+    border-radius: 26px !important;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
     color: white !important;
 }
 .sign-in-button-2 {
     height: 52px;
     width: 300px;
-    border-radius: 26px;
+    border-radius: 26px !important;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
     color: white !important;
 }
 .upload-button {
     height: 52px;
     width: 200px;
-    border-radius: 26px;
+    border-radius: 26px !important;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
     color: white !important;
 }
 .profile-button {
     height: 35px;
     width: 200px;
-    border-radius: 10px;
+    border-radius: 10px !important;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
     color: white !important;
 }
@@ -288,14 +288,14 @@ background-color: rgba(0,0,0,0.9);
     width: 369.76px;
     background-color: transparent;
     border: 1px solid rgba(145,158,171,0.24);
-    border-radius: 5px;
+    border-radius: 5px !important;
     color: white;
     margin-top: 10px;
 }
 .add-yours {
     height: 52px;
     width: 301px;
-    border-radius: 26px;
+    border-radius: 26px !important;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
     color: #FFFFFF !important;
     font-family: Helvetica;
