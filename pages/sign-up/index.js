@@ -108,9 +108,9 @@ export default function SignIn() {
                                     <Link href="/forgot"><a className='forgot'>Forgot Password?</a></Link>
                                     </div>
 
-                                    <button className='sign-in-button-2 mt-10'>
+                                    <Button className='sign-in-button-2 mt-10'>
                                         Sign In
-                                    </button>
+                                    </Button>
                                 </form>
                             </div>
                         </div>
@@ -194,9 +194,9 @@ export default function SignIn() {
                                         <Link href="/forgot"><a className='forgot'>Forgot Password?</a></Link>
                                         </div>
 
-                                        <button className='sign-in-button mt-10 remove-w'>
+                                        <Button className='sign-in-button mt-10 remove-w'>
                                             Sign In
-                                        </button>
+                                        </Button>
                                     </form>
                                 </div>
                             </div>
