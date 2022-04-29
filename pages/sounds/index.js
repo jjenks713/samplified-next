@@ -24,7 +24,7 @@ export default function AllSounds({ allSounds }) {
             <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet"></link>
         </Head>
         <Navigator />
-            <div className='bg-theme'>
+            <div className='container max-w-7xl mx-auto bg-theme rounded-xl'>
             <Search allSounds={allSounds}/>
             </div>
         </div>

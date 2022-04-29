@@ -79,7 +79,7 @@ const TableData = ({props}) => {
 
                 <div component="th" scope="sounds" className="sm:pl-10 text-center sm:text-left sm:border-b-0 relative sm:w-44">
                   <div className="md:absolute md:top-6">
-                  <a className="text-lg">{sound.name}</a><br></br>
+                  <a className="txt-1">{sound.name}</a><br></br>
                   <Link href={`/publicuser/${encodeURIComponent(sound.createdBy)}`}><a className="text-sm hover:opacity-70 user-text">{sound.userName}</a></Link>
                   </div>
                   <div className="md:absolute md:bottom-6 grid justify-center">

@@ -89,7 +89,7 @@ const IdCard = ({ publicUser, info }) => {
                     <div className="flex items-center justify-center pb-10">
                         <img className="w-10 h-10 rounded-full mr-4" src={session.user.image} alt="Avatar"></img>
                         <div className="text-sm">
-                            <Link href="/upload"><button variant='contained' className='profile-button text-theme shadow-2xl'>Upload Sounds</button></Link>
+                            <Link href="/upload"><Button variant='contained' className='profile-button text-theme shadow-2xl'>Upload Sounds</Button></Link>
                         </div>
                     </div>
                 </div>

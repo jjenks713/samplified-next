@@ -54,7 +54,7 @@ export default function Home() {
             <div className="absolute top-0 w-full">
             <Navigator/>
             </div>
-            <div className='py-5 px-10 max-w-lg absolute top-44 md:left-24'>
+            <div className='py-5 px-10 sm:px-24 max-w-lg absolute top-44 md:left-24'>
 
               <div>
                 <a className='find-your-sound uppercase'>
@@ -67,16 +67,16 @@ export default function Home() {
                 available at your fingertips.
                 </p><br></br>
                 {session ?
-                <button className='button-color text-white text-sm'><Link href="/userpage" className="get-access">Go to your Profile</Link></button>
+                <Button className='button-color text-white text-sm'><Link href="/userpage" className="get-access">Go to your Profile</Link></Button>
                 :
-                <button className='button-color text-white text-sm'><Link href="/sign-up" className="get-access">Get Access</Link></button>
+                <Button className='button-color text-white text-sm'><Link href="/sign-up" className="get-access">Get Access</Link></Button>
                 }
               </div>
             </div>
             <div className='absolute bottom-96 diag w-full h-36 invisible md:visible'>
               
             </div>
-            <div className='absolute right-44 sm:right-0 sm:h-44 top-80 invisible lg:visible'>
+            <div className='absolute right-44 sm:right-24 sm:h-44 top-80 invisible lg:visible'>
                   <img className="fl-pic" src="/fl.svg" alt="DAW"></img>
             </div>
 

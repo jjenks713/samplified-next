@@ -2,6 +2,8 @@ import { useState } from "react"
 import { getSession, useSession } from 'next-auth/client'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import Button from '@mui/material/Button';
+
 
 export default function EditProfile( { info } ) {
     const [session, loading] = useSession()
@@ -109,9 +111,9 @@ export default function EditProfile( { info } ) {
                     <div className="md:w-1/3"></div>
                     <div className="md:w-2/3">
 
-                    <button className="profile-button">
+                    <Button className="profile-button">
                         Submit
-                    </button>
+                    </Button>
 
                     </div>
                 </div>

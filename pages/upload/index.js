@@ -6,6 +6,8 @@ import AWS from 'aws-sdk'
 import LinearProgress from '@mui/material/LinearProgress';
 import Checkbox from '@mui/material/Checkbox';
 import Head from 'next/head'
+import Button from '@mui/material/Button';
+
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } }
 
@@ -287,9 +289,9 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">
 
-                        <button disabled className="upload-button opacity-20">
+                        <Button disabled className="upload-button opacity-20">
                             Submit
-                        </button>
+                        </Button>
 
                         </div>
                     </div>
@@ -298,9 +300,9 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">
 
-                        <button onClick={submitForm} className="upload-button">
+                        <Button onClick={submitForm} className="upload-button">
                             Submit
-                        </button>
+                        </Button>
 
                         </div>
                     </div>

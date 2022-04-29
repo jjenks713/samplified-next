@@ -97,7 +97,7 @@ const User = ({ sounds, info }) => {
               <IdCard info={userInfo}/>
 
               <div className='grid justify-center pt-24'>
-                <button className='profile-button shadow-2xl' onClick={handleOpen}>Edit Profile</button>
+                <Button className='profile-button shadow-2xl' onClick={handleOpen}>Edit Profile</Button>
                 <Modal
                   open={open}
                   onClose={handleClose}

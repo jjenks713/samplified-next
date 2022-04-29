@@ -16,7 +16,7 @@
     height: 45px;
 }
 .rectangle {
-height: 80px;
+height: 85px;
 width: 960px;
 box-shadow: 0 20px 40px 0 rgba(0,0,0,0.26);
 background: 
@@ -52,6 +52,16 @@ background-color: rgba(0,0,0,0.9);
     height: 402.8px;
     width: 717.05px;
 }
+.txt-1 {
+    height: 24px;
+    width: 116px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 24px;
+  }
+
 @media only screen and (max-width: 1250px) {
     .fl-pic {
         height: auto;
@@ -259,12 +269,14 @@ background-color: rgba(0,0,0,0.9);
     width: 200px;
     border-radius: 26px;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
+    color: white !important;
 }
 .profile-button {
     height: 35px;
     width: 200px;
     border-radius: 10px;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
+    color: white;
 }
 .search-input {
     height: 40px;
@@ -293,7 +305,8 @@ background-color: rgba(0,0,0,0.9);
     height: 166px;
     width: fill;
     border-radius: 16px;
-    box-shadow: 5px 5px 5px 5px rgba(3, 236, 174, 0.25);
+    /* box-shadow: 5px 5px 5px 5px rgba(3, 236, 174, 0.25); */
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.24), 0 16px 32px -4px rgba(0,0,0,0.24);
     border-radius: 16px;
     margin-top: 20px;
     background-color: #212B36;
@@ -333,7 +346,7 @@ background-color: rgba(0,0,0,0.9);
 .date-text {
     height: 22px;
     width: 75px;
-    color: #919EAB;
+    color: #637381;
     font-size: 12px;
     letter-spacing: 0;
     line-height: 14px;

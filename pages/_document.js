@@ -10,7 +10,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="container max-w-7xl mx-auto bg-theme">
+        <body className="bg-theme">
           <Main />
           <NextScript />
         </body>
