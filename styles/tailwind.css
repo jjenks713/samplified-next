@@ -279,7 +279,7 @@ background-color: rgba(0,0,0,0.9);
 .profile-button {
     height: 35px;
     width: 200px;
-    border-radius: 10px !important;
+    border-radius: 26px !important;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
     color: white !important;
 }
