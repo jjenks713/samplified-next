@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import NextLink from 'next/link'
 import {signIn, useSession} from 'next-auth/client'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -54,9 +54,6 @@ export default function SignIn() {
                 }
               }
             >  
-                <div className="position absolute top-3 right-8 font-bold text-white">
-                    <Link href="/">X</Link>
-                </div> 
                 {/* mobile sign in */}
                 <div className='text-white visible lg:invisible'>
                     <div
@@ -105,7 +102,7 @@ export default function SignIn() {
                                         <Checkbox {...label}/>
                                         <p>Remember Me</p>
                                     </a>
-                                    <Link href="/forgot"><a className='forgot'>Forgot Password?</a></Link>
+                                    <NextLink href="/forgot"><a className='forgot'>Forgot Password?</a></NextLink>
                                     </div>
 
                                     <Button className='sign-in-button-2 mt-10'>
@@ -138,14 +135,14 @@ export default function SignIn() {
                                 </a>
                             </div>
                             <div className='absolute top-1/2 transform -translate-y-1/2 left-7'>
-                                <Link href="/">
+                                <NextLink href="/">
                                     <a className='hover:bg-opacity-30 hover:cursor-pointer'>
                                     <img 
                                     className="mx-auto h-12 w-auto lg-logo" 
                                     src="/logo-large.svg" 
                                     alt="Workflow" 
                                     /></a>
-                                </Link>
+                                </NextLink>
                             </div>
                         </div>
                     </div>
@@ -191,7 +188,7 @@ export default function SignIn() {
                                             <Checkbox {...label}/>
                                             <p>Remember Me</p>
                                         </a>
-                                        <Link href="/forgot"><a className='forgot'>Forgot Password?</a></Link>
+                                        <NextLink href="/forgot"><a className='forgot'>Forgot Password?</a></NextLink>
                                         </div>
 
                                         <Button className='sign-in-button mt-10 remove-w'>
@@ -205,6 +202,9 @@ export default function SignIn() {
                     </div>
                 </div>
             </div>
+        <div className="position absolute top-3 right-8 font-bold text-white">
+                <NextLink href="/">X</NextLink>
+        </div> 
         </>
 
         )
