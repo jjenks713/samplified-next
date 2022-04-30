@@ -309,7 +309,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
                     }
 
                 </form>
-            </Container>
+            </div>
         </>
     )
 }
