@@ -134,7 +134,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
             <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet"></link>
         </Head>
-            <Container maxWidth="md" className="grid justify-center pt-24 text-white">
+            <div className="grid justify-center pt-24 text-white">
 
                 <div className="position absolute top-3 right-8 font-bold">
                     <Link href="/userpage">X</Link>
