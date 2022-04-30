@@ -258,7 +258,7 @@ background-color: rgba(0,0,0,0.9);
 .sign-in-button {
     height: 52px;
     width: 481px;
-    margin-top: 30px;
+    margin-top: 30px !important;
     border-radius: 26px !important;
     background: linear-gradient(47.72deg, #1D8DBA 0%, #03ECAE 100%);
     color: white !important;
