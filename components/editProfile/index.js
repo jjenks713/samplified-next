@@ -14,11 +14,11 @@ export default function EditProfile( { info } ) {
     const [facebook, setFacebook] = useState(info[0].facebook)
 
     let id = session.user.id
-    console.log(info[0].soundcloud)
+    //console.log(info[0].soundcloud)
 
     const editForm = async (e) => {
-        //e.preventDefault()
-
+        e.preventDefault()
+        console.log("yup")
         const editInfo = {
             id: id,
             info: about,
@@ -111,7 +111,7 @@ export default function EditProfile( { info } ) {
                     <div className="md:w-1/3"></div>
                     <div className="md:w-2/3">
 
-                    <Button className="profile-button">
+                    <Button type="submit" className="profile-button">
                         Submit
                     </Button>
 

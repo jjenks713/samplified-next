@@ -37,9 +37,7 @@ const User = ({ sounds, info }) => {
  
   
       if (session) {
-        let userInfo = []
-        console.log("LOOOKING", session)
-    
+        let userInfo = []    
         const infoMap = info.map((info) => {
           if (session.user.id == info.createdBy) {
             userInfo.push(info)
