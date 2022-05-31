@@ -68,6 +68,7 @@
 
   position: absolute;
   top: 8px;
+  left: 0px;
   background-image: url('/wav.png');
   appearance: none;
   background: var(--bar-bg);;
@@ -177,6 +178,7 @@
   
     position: absolute;
     top: 10px;
+    left: 0px;
     background-image: url('/wav.png');
     appearance: none;
     background: var(--bar-bg);;
