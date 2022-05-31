@@ -89,7 +89,7 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
     }
 
     const submitForm = async (e) => {
-        //e.preventDefault()
+        e.preventDefault()
 
         const date = new Date().toDateString()
         let dataObj = {
@@ -117,9 +117,8 @@ export default function Upload({ S3_BUCKET, AWSAccessKeyId, AWSSecretKey }) {
         if (loading) {
           return null
         }
-        if (confirm("Your sound was uploaded")== true) {
-        //window.location.href = '/userpage'
-        }
+        alert("Your sound was uploaded")
+        window.location.href = '/userpage'
     }
 
 
