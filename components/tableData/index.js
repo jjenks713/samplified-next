@@ -94,6 +94,8 @@ const TableData = ({props}) => {
                   {/* trying to get audio wave to work <AudioWaveform FileContext={sound.url} /> */}
                   <div className="mt-0 md:mt-10">
                   <AudioPlayer url={sound.url} />
+                  {/* <AudioWaveform fileContext={url} /> */}
+
 
                   </div>
                 </div>

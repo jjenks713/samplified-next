@@ -4,6 +4,8 @@ import Forward30Icon from '@mui/icons-material/Forward30';
 import Replay30Icon from '@mui/icons-material/Replay30';
 import { FaPlay } from "react-icons/fa"
 import { FaPause } from "react-icons/fa"
+import AudioWaveform from './AudioWaveform'
+import { filledInputClasses } from '@mui/material';
 
 const AudioPlayer = ({url}) => {
   // state
@@ -19,7 +21,7 @@ const AudioPlayer = ({url}) => {
   useEffect(() => {
     const secs = Math.floor(audioPlayer.current.duration);
     loadDuration(secs)
-    progressBar.current.max = secs;
+    //progressBar.current.max = secs;
 
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
@@ -91,13 +93,22 @@ const AudioPlayer = ({url}) => {
           <div className={styles.currentTime}>{calculateTime(currentTime)}</div>
 
           {/* progress bar */}
-          <div className="w-52 md:w-80">
+          <div className="w-52 md:w-80 relative"
+/*           style={
+            {
+                backgroundImage: `url(/wav.png)`,
+                backgroundSize: '100%',
+            }
+          } */
+          >
+            <img src="/wav.png" alt="wave" className='h-8 sm:h-12 w-full'/>
             <input type="range" className={styles.progressBar} defaultValue="0" ref={progressBar} onChange={changeRange} />
           </div>
+          {/* <AudioWaveform /> */}
 
           {/* duration */}
           
-          { duration === `NaN:NaN` ? <div> ...</div> : <div className='pl-4'>{duration}</div> }
+          { duration === `NaN:NaN` ? <div className='pl-4 pt-1 sm:pt-2'> ...</div> : <div className='pl-4 pt-1 sm:pt-2'>{duration}</div> }
         </div>
 
         <div className='flex justify-center'>

@@ -9,7 +9,7 @@ import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 const AudioWaveform = ({ FileContext }) => {
 	const wavesurferRef = useRef(null);
 	// fetch file url from the context
-	const { fileURL, setFileURL } = useState(FileContext);
+	const { fileURL, setFileURL } = useState("https://samplified.s3.us-west-2.amazonaws.com/AdamBeyerVsPigDan-InLove-Drumcode-DC171.mp3");
 	//console.log(fileArray)
 
 	// crate an instance of the wavesurfer
@@ -125,9 +125,9 @@ const AudioWaveform = ({ FileContext }) => {
 
 
 	return (
-		<section className='waveform-container h-14' >
-			<div ref={wavesurferRef} id='waveform' className='h-14' />
-			<div className='all-controls h-14'>
+		<section className='waveform-container' >
+			<div ref={wavesurferRef} id='waveform' className='' />
+{/* 			<div className='all-controls h-14'>
 				<div className='left-container'>
 					<button
 						title='play/pause'
@@ -165,7 +165,7 @@ const AudioWaveform = ({ FileContext }) => {
 						/>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</section>
 	);
 };
