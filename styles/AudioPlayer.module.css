@@ -60,9 +60,9 @@
 }
 
 .progressBar {
-  /* --bar-bg: white; */
+  --bar-bg: none;
   --seek-before-width: 0;
-  --seek-before-color: #1D8DBA;
+  --seek-before-color: #151B23;
   --knobby: #151B23;
   --selectedKnobby: #1D8DBA;
 
@@ -134,7 +134,7 @@
   width: 5px;
   border-radius: 1px;
   border: none;
-  background-color: var(--knobby);
+  background-color: #151B23;
   cursor: pointer;
   position: relative;
   margin: -2px 0 0 0;

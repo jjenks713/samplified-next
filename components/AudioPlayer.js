@@ -21,7 +21,7 @@ const AudioPlayer = ({url}) => {
   useEffect(() => {
     const secs = Math.floor(audioPlayer.current.duration);
     loadDuration(secs)
-    //progressBar.current.max = secs;
+    progressBar.current.max = secs;
 
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
