@@ -1,22 +1,49 @@
 import NextLink from 'next/link'
 import {signIn, useSession} from 'next-auth/client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Button from '@mui/material/Button';
 import LinearProgress from '@mui/material/LinearProgress';
 import Checkbox from '@mui/material/Checkbox';
+import dbInfo from '../api/db/getUser';
 
 
 
-export default function SignIn() {
+export default function SignIn({allUsers}) {
 
     const [session, loading] = useSession()
     const router = useRouter()
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
 
-    useEffect(() => {
+    //console.log(allUsers);
+
+    const formSubmit = (e) => {
+        e.preventDefault()
+        console.log(email, password)
+        const users = allUsers.map(user => {
+            if (user.email === email) {
+                console.log(user.email)
+                //signInEmail()
+            } else {
+                //createNewEmail()
+                console.log("Doesn't Exist")
+            }
+        })
+    }
+
+    function createNewEmail() {
+        //linking to db to create new user and account. Need to also link to session
+    }
+
+    function signInEmail() {
+        //if existing email, sign in with new session
+    }
+
+   useEffect(() => {
       if (session) {
         router.push('/userpage')
       }
@@ -93,9 +120,9 @@ export default function SignIn() {
                             <div className='pt-10'>
                                 <form className='relative grid justify-center'>
                                     <label className='bg-theme left-3'><p className="label-text">Email Address</p></label>
-                                    <input className='border border-gwhite rounded-md bg-theme h-14 pl-3' type="email" placeholder="your@email.com" />
+                                    <input onChange={(e) => setEmail(e.target.value)} className='border border-gwhite rounded-md bg-theme h-14 pl-3' type="email" placeholder="your@email.com" />
                                     
-                                    <input className='border border-gwhite rounded-md bg-theme h-14 mt-5 pl-3' type="password" placeholder='Password' />
+                                    <input onChange={(e) => setPassword(e.target.value)} className='border border-gwhite rounded-md bg-theme h-14 mt-5 pl-3' type="password" placeholder='Password' />
 
                                     <div className='flex justify-between mt-5'>
                                     <a className='flex justify-between'>
@@ -177,11 +204,11 @@ export default function SignIn() {
                                 </div>
 
                                 <div className='pt-10'>
-                                    <form className='relative w-96'>
+                                    <form onSubmit={formSubmit} className='relative w-96'>
                                         <label className='label absolute bottom-60 mb-1 bg-theme left-3 remove-w'><p className="label-text">Email Address</p></label>
-                                        <input className='sign-input pl-3 remove-w' type="email" placeholder="your@email.com" />
+                                        <input onChange={(e) => setEmail(e.target.value)} className='sign-input pl-3 remove-w' type="email" placeholder="your@email.com" />
                                         
-                                        <input className='sign-input mt-5 pl-3 remove-w' type="password" placeholder='Password' />
+                                        <input onChange={(e) => setPassword(e.target.value)} className='sign-input mt-5 pl-3 remove-w' type="password" placeholder='Password' />
 
                                         <div className='forgot-password flex justify-between mt-5 remove-w'>
                                         <a className='flex justify-between'>
@@ -191,7 +218,7 @@ export default function SignIn() {
                                         <NextLink href="/forgot"><a className='forgot'>Forgot Password?</a></NextLink>
                                         </div>
 
-                                        <Button className='sign-in-button mt-10 remove-w'>
+                                        <Button type="submit" className='sign-in-button mt-10 remove-w'>
                                             Sign In
                                         </Button>
                                     </form>
@@ -210,3 +237,17 @@ export default function SignIn() {
         )
     }
 }
+
+SignIn.defaultProps = {
+    props: [],
+  }
+  
+  export async function getServerSideProps(ctx) {
+  
+      const props = { }
+      const allUsers = await dbInfo()
+   
+      return {
+          props: { allUsers },
+      }
+  }
